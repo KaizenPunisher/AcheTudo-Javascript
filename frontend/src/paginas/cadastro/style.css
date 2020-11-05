@@ -1,0 +1,25 @@
+.cadastro-empresa{
+    /*border: 1px solid black;*/
+    width: 1100px;
+    height: auto;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cadastro-empresa .conteudo{
+    /*border: 1px solid black;*/
+    width: 100%;
+    padding: 96px;
+    background-color: seashell;
+    box-shadow: 0 0 100px rgba(0 , 0, 0, 0.1);
+    border-radius: 8px;
+
+    display: flex;
+    align-items: space-between;
+    justify-content: center;
+}
+.cadastro-empresa .conteudo input{
+    margin-top: 8px;
+}

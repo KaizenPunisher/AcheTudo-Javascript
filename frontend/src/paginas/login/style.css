@@ -1,0 +1,30 @@
+h1 {
+    color: #489424;
+}
+
+.login-conteudo{
+    border: 1px solid black;
+    width: 1100px;
+    height: auto;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-conteudo section.form{
+    border: 5px solid blue;
+    margin: 5px;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+}
+.login-conteudo section.form h1{
+    border: 1px solid red;
+    text-align: center;
+}
+.login-conteudo section.form form{
+    border: 1px solid yellow;
+    margin: auto;
+    width: auto;
+}
