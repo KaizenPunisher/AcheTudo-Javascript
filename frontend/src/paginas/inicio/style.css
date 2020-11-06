@@ -1,3 +1,65 @@
 .pagina-inicial{
     border:1px solid black;
 }
+.pagina-inicial .conteudo{
+    border: 1px solid blue;
+}
+.pagina-inicial .conteudo h1{
+    border: 1px solid black;
+    margin-top: 80px;
+    margin-bottom: 24px;
+}
+.pagina-inicial .conteudo .entrar{
+    width: 300px;
+    height: 60px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(57, 98, 189, 0.966);
+    border: 0px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 700;
+    margin-top: 16px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 60px;
+    transition: filter 0.2s;
+}
+.pagina-inicial .conteudo .entrar:hover{
+    filter: brightness(90%);
+}
+
+.pagina-inicial .conteudo ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 24px;
+    list-style: none;
+}
+.pagina-inicial .conteudo ul li{
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    position: relative;
+}
+.pagina-inicial .conteudo ul li button{
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    border: 0;
+}
+.pagina-inicial .conteudo ul li button:hover{
+    filter: 0.8;
+}
+.pagina-inicial .conteudo ul li strong{
+    display: block;
+    margin-top: 16px;
+    color: #41414d;
+}
+.pagina-inicial .conteudo ul li p{
+    color: #737380;
+    line-height: 21px;
+    font-size: 16px;
+}

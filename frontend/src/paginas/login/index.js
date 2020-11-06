@@ -1,20 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
-import teste from '../../imagens/imagem.jpg';
+import imagem from '../../imagens/imagem.jpg';
+import api from '../../services/api';
 
 export default function Login() {
+    const [id, setId] = useState('');
+
+    async function handlerLogin(e){
+        e.preventDefault();
+
+        try{
+            const response = await api.post('session', { id });
+            console.log(response.data.razao_social);
+        } catch (err){
+            alert('Falha no login');
+        }
+    }
+
     return (
         <div className="login-conteudo">
             <section className="form">
                 <h1>Login</h1>
-                <form>
-                    <input placeholder="Sua ID"/>
-                        <button className="button" type="submit">Entrar</button>
+                <form onSubmit={handlerLogin}>
+                    <input 
+                        placeholder="Sua ID"
+                        value={id}
+                        onChange={e => setId(e.target.value)} 
+                    />
+                    <button className="button" type="submit">Entrar</button>
                     <Link className="back-link" to="/cadastro">Não tenho cadastro</Link>
                 </form>
             </section>
-            <img src={teste} alt="teste" />
+            <img src={imagem} alt="teste" />
         </div>
     );
 }
