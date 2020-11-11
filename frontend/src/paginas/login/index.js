@@ -8,7 +8,7 @@ export default function Login() {
     const [id, setId] = useState('');
     const history = useHistory();
 
-    async function handlerLogin(e){
+    async function handleLogin(e){
         e.preventDefault();
 
         try{
@@ -27,7 +27,7 @@ export default function Login() {
         <div className="login-conteudo">
             <section className="form">
                 <h1>Login</h1>
-                <form onSubmit={handlerLogin}>
+                <form onSubmit={handleLogin}>
                     <input 
                         placeholder="Sua ID"
                         value={id}
