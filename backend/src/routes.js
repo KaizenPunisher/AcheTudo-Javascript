@@ -1,8 +1,9 @@
 const express = require('express');
+const routes = express.Router();
+
 const SessionController = require('./controllers/SessionController');
 const EmpresaController = require('./controllers/EmpresaController');
 const TelefoneController = require('./controllers/TelefoneController');
-const routes = express.Router();
 
 routes.post('/session', SessionController.criarSessao);
 
