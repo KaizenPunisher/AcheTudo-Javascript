@@ -1,5 +1,7 @@
 exports.up = function(knex) {
+
     return knex.schema.createTable('telefones', function(table){
+        
         table.increments('id');
         table.string('ddd').nullable();
         table.string('numero').nullable();

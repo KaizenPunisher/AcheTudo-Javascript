@@ -1,4 +1,5 @@
 exports.up = function(knex) {
+    
     return knex.schema.createTable('empresas', function(table){
         
         table.string('id').primary();
