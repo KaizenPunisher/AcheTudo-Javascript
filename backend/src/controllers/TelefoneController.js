@@ -4,9 +4,9 @@ module.exports = {
 
     async listarTelefone(request, response) {
         const empresa_id = request.headers.authorization;
-        const telefones = await connection('telefones').where('empresa_id', empresa_id).select('*');
+        const telefone = await connection('telefones').where('empresa_id', empresa_id).select('*');
     
-        return response.json(telefones);
+        return response.json(telefone);
     },
 
     async cadastrarTelefone(request, response) {
