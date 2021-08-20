@@ -9,9 +9,9 @@ module.exports = {
 
         const { page = 1 } = request.query;
 
-        
         const empresas = await connection('empresas')
             .join('servicos', 'servicos.id', '=', 'empresas.servico_id')
+            .leftJoin('enderecos', 'enderecos.empresa_id', '=', 'empresas.id')
             .leftJoin('telefones')
             .limit(5)
             .offset((page-1)*5)
@@ -20,6 +20,15 @@ module.exports = {
                 'servicos.id as servico_id',
                 'servicos.empreendimento',
                 'servicos.adm_id',
+                'enderecos.id as endereco_id',
+                'enderecos.logradouro',
+                'enderecos.cep',
+                'enderecos.bairro',
+                'enderecos.cidade',
+                'enderecos.regiao',
+                'enderecos.uf',
+                'enderecos.descricao',
+                'enderecos.empresa_id',
                 'telefones.id as telefone_id',
                 'telefones.ddd',
                 'telefones.numero',
@@ -55,6 +64,7 @@ module.exports = {
     async cadastrarEmpresa(request, response) {
 
         const id = crypto.randomBytes(4).toString('HEX');
+
         const { 
             razao_social, 
             nome_fantasia, 
@@ -64,7 +74,14 @@ module.exports = {
             orgao_publico, 
             horario_de_atendimento, 
             descricao,
-            servico_id 
+            servico_id,
+            logradouro,
+            cep,
+            bairro,
+            cidade,
+            regiao,
+            uf,
+            descricao_endereco
         
         } = request.body;
     
@@ -79,6 +96,17 @@ module.exports = {
             horario_de_atendimento,
             descricao,
             servico_id
+        })
+
+        await connection('enderecos').insert({
+            logradouro: logradouro,
+            cep: cep,
+            bairro: bairro,
+            cidade: cidade,
+            regiao: regiao,
+            uf: uf,
+            descricao: descricao_endereco,
+            empresa_id: id
         })
     
         return response.json({ id });

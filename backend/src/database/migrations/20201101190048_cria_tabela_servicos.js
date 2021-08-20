@@ -4,7 +4,7 @@ exports.up = function(knex) {
         
         table.increments('id').primary();
         table.string('empreendimento');
-        table.string('adm_id');
+        table.integer('adm_id');
     });
 };
 
