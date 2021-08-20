@@ -11,13 +11,13 @@ module.exports = {
 
     async cadastrarServico(request, response) {
         const {
-            nome,
+            empreendimento,
         } = request.body;
 
         const adm_id = request.headers.authorization;
 
         const [id] = await connection('servicos').insert({
-            nome,
+            empreendimento,
             adm_id,
         })
     

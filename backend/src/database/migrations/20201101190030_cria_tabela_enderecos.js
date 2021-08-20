@@ -2,7 +2,7 @@ exports.up = function(knex) {
 
     return knex.schema.createTable('enderecos', function(table){
         
-        table.increments('id');
+        table.increments('id').primary();
         table.string('logradouro').nullable();
         table.string('cep').nullable();
         table.string('bairro').nullable();

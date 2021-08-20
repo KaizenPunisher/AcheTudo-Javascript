@@ -13,7 +13,7 @@ exports.up = function(knex) {
         table.string('descricao').nullable();
         //table.timestamps();
 
-        table.integer('servico_id').nullable();
+        table.integer('servico_id').unsigned();
 
         table.foreign('servico_id').references('id').inTable('servicos');
     });
