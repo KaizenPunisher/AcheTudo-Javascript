@@ -14,6 +14,7 @@ routes.delete('/empresa/:id', EmpresaController.deletarEmpresa);
 
 routes.get('/servico', ServicoController.listarServico);
 routes.post('/servico', ServicoController.cadastrarServico);
+routes.put('/servico/:id', ServicoController.alterarServico);
 routes.delete('/servico/:id', ServicoController.deletarServico);
 
 routes.get('/telefone', TelefoneController.listarTelefone);
