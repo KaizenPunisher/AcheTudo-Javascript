@@ -27,7 +27,7 @@ module.exports = {
                 'enderecos.cidade',
                 'enderecos.regiao',
                 'enderecos.uf',
-                'enderecos.descricao',
+                'enderecos.descricao as endereco_descricao',
                 'enderecos.empresa_id',
                 'telefones.id as telefone_id',
                 'telefones.ddd',
