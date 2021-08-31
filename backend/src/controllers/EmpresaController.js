@@ -12,7 +12,7 @@ module.exports = {
         const empresas = await connection('empresas')
             .join('servicos', 'servicos.id', '=', 'empresas.servico_id')
             .leftJoin('enderecos', 'enderecos.empresa_id', '=', 'empresas.id')
-            .leftJoin('telefones')
+            .leftJoin('telefones', 'telefones.empresa_id', '=', 'empresas.id')
             .limit(5)
             .offset((page-1)*5)
             .select([
@@ -37,24 +37,6 @@ module.exports = {
             ]);
         ;
         
-        /*
-        const [count] = await connection('servicos').count();
-
-        const { page = 1 } = request.query;
-
-        const servicos = await connection('servicos')
-            .join('empresas', 'servico_id', '=', 'servicos.id')
-            .leftJoin('telefones', 'empresa_id', '=', 'empresas.id')
-            .limit(5)
-            .offset((page-1)*5)
-            .select([
-                'servicos.*',
-                'empresas.*',
-                'telefones.*',
-                'telefones.id as telefone_id'
-            ]);
-        ;
-        */
         response.header('X-Total-Count', count['count(*)']);
 
         return response.json(empresas);
