@@ -4,7 +4,7 @@ Estrutura em Node, React e React-Native
 Sistema Web Mobile com objetivo de centralizar informações de comercios locais. Visando a facilidade de pesquisa de produtos e serviços de centros comerciais.
 
 
-Bibliotecas de Ferramentas do React instaladas através do NPM ou NPX:
+Bibliotecas de ferramentas instaladas através do NPM ou NPX:
 
 (Backend)
 * Express - Framework web estruturado para node  ( npm install express )

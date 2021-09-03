@@ -12,6 +12,14 @@ export default function Cadastro(){
     const [orgaopublico, setOrgaopublico] = useState('');
     const [horariodeatendimento, setHorariodeatendimento] = useState('');
     const [descricao, setDescricao] = useState('');
+    const [servicoId, setServicoId] = useState('');
+    const [logradouro, setLogradouro] = useState('');
+    const [cep, setCep] = useState('');
+    const [bairro, setBairro] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [regiao, setRegiao] = useState('');
+    const [uf, setUf] = useState('');
+    const [descricao_endereco, setDescricao_endereco] = useState('');
 
     const history = useHistory();
     
@@ -27,6 +35,14 @@ export default function Cadastro(){
             orgaopublico,
             horariodeatendimento,
             descricao,
+            servicoId,
+            logradouro,
+            cep,
+            bairro,
+            cidade,
+            regiao,
+            uf,
+            descricao_endereco,
         };
 
         try{
@@ -87,6 +103,46 @@ export default function Cadastro(){
                         placeholder="Descrição"
                         value={descricao}
                         onChange={e => setDescricao(e.target.value)} 
+                    />
+                    <select name="cars" id="cars" onChange={e => setServicoId(e.target.value)}>
+                        <option value="1">Restaurante</option>
+                        <option value="2">Padaria</option>
+                        <option value="3">Nenhum</option>
+                    </select>
+                    <input 
+                        placeholder="Logradouro"
+                        value={logradouro}
+                        onChange={e => setLogradouro(e.target.value)} 
+                    />
+                    <input 
+                        placeholder="Cep"
+                        value={cep}
+                        onChange={e => setCep(e.target.value)} 
+                    />
+                    <input 
+                        placeholder="Bairro"
+                        value={bairro}
+                        onChange={e => setBairro(e.target.value)} 
+                    />
+                    <input 
+                        placeholder="Cidade"
+                        value={cidade}
+                        onChange={e => setCidade(e.target.value)} 
+                    />
+                    <input 
+                        placeholder="Região"
+                        value={regiao}
+                        onChange={e => setRegiao(e.target.value)} 
+                    />
+                    <input 
+                        placeholder="UF"
+                        value={uf}
+                        onChange={e => setUf(e.target.value)} 
+                    />
+                    <input 
+                        placeholder="Descrição do Endereço"
+                        value={descricao_endereco}
+                        onChange={e => setDescricao_endereco(e.target.value)} 
                     />
                     <button className="button" type="submit">Cadastrar</button>
                 </form>
