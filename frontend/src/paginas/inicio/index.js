@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './style.css';
 import api from '../../services/api';
 
 export default function Inicio(){
     const [empresas, setEmpresas] = useState([]);
 
+    const history = useHistory();
+
     const empresaId = localStorage.getItem('empresaId');
     const empresaRazaosocial = localStorage.getItem('empresaRazaosocial');
 
     useEffect(() => {
-        api.get('/empresa', {
-            headers: {
-                Authorization: empresaId,
-            }
-        }).then(response => {
+        api.get('empresa').then(response => {
             setEmpresas(response.data);
         })
-    }, [empresaId]);
+    });
 
     async function handleDeletarEmpresas(id){
         try {
-            await api.delete('empresas/${id}', {
+            await api.delete(`empresa/${id}`, {
                 headers: {
                     Authorization: empresaId,
                 }
@@ -31,11 +29,19 @@ export default function Inicio(){
         }
     }
 
+    function handleLogout(){
+        localStorage.clear();
+        history.push('/');
+    }
+
     return (
         <div className="pagina-inicial">
             <div className="conteudo">
                 <header><h3>Bem vindo, {empresaRazaosocial}</h3></header>
-                <h1>Empresas</h1><Link className="entrar" to="/login">Login</Link>
+                <Link className="entrar" to="/login">Login</Link>
+                <button className="logout" onClick={handleLogout} to="/" type="button">Logout</button>
+
+                <h1>Empresas</h1>
                 <ul>
                     {empresas.map(empresa => (
                         <li key={empresa.id}>

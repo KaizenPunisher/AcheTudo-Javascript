@@ -9,7 +9,7 @@ const TelefoneController = require('./controllers/TelefoneController');
 
 routes.post('/session', SessionController.criarSessao);
 
-routes.get('/empresa', EmpresaController.listarEmpresa);
+routes.get('/empresa', EmpresaController.listarEmpresas);
 routes.post('/empresa', EmpresaController.cadastrarEmpresa);
 routes.delete('/empresa/:id', EmpresaController.deletarEmpresa);
 

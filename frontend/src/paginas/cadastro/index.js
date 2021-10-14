@@ -46,9 +46,11 @@ export default function Cadastro(){
         };
 
         try{
+            //console.log(data);
             const response =  await api.post('empresa', data);
             alert(`Seu ID de acesso: ${response.data.id}`);
             history.push("/");
+            
         } catch(err){
             alert('Erro no cadastro');
         }
@@ -104,7 +106,7 @@ export default function Cadastro(){
                         value={descricao}
                         onChange={e => setDescricao(e.target.value)} 
                     />
-                    <select name="cars" id="cars" onChange={e => setServicoId(e.target.value)}>
+                    <select name={servicoId} onChange={e => setServicoId(e.target.value)}>
                         <option value="1">Restaurante</option>
                         <option value="2">Padaria</option>
                         <option value="3">Nenhum</option>

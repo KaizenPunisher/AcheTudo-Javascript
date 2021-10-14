@@ -3,7 +3,7 @@ const connection = require('../database/connection');
 
 module.exports = {
 
-    async listarEmpresa(request, response){
+    async listarEmpresas(request, response){
         
         const [count] = await connection('empresas').count();
 
@@ -14,7 +14,7 @@ module.exports = {
             .leftJoin('enderecos', 'enderecos.empresa_id', '=', 'empresas.id')
             .leftJoin('telefones', 'telefones.empresa_id', '=', 'empresas.id')
             .limit(5)
-            .offset((page-1)*5)
+            .offset((page-1)*3)
             .select([
                 'empresas.*',
                 'servicos.id as servico_id',
