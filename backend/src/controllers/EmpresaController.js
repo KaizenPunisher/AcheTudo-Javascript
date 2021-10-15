@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const connection = require('../database/connection');
+const { listarTelefone } = require('./TelefoneController');
 
 module.exports = {
 
@@ -103,18 +104,11 @@ module.exports = {
             .select('id')
             .first()
         ;
+        
+        const telefone = await connection('telefones').where('empresa_id', empresa_id).select('*');
+        
         if (empresa.id != empresa_id){
             return response.status(401).json({ error: 'Operação não permitida. Empresa não cadastrada' });
-        }
-        
-        const telefone = await connection('telefones')
-            .where('empresa_id', empresa_id)
-            .select('*')
-        ;
-        if (telefone.empresa_id != 'null'){
-            await connection('empresas').where('id', id).delete();
-            return response.status(204).send();
-            
         }
 
         await connection('telefones').where('empresa_id', empresa_id).delete();
