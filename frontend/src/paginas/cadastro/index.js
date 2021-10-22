@@ -4,15 +4,15 @@ import './style.css';
 import api from '../../services/api';
 
 export default function Cadastro(){
-    const [razaosocial, setRazaosocial] = useState('');
-    const [nomefantasia, setNomefantasia] = useState('');
+    const [razao_social, setRazaosocial] = useState('');
+    const [nome_fantasia, setNomefantasia] = useState('');
     const [nome, setNome] = useState('');
     const [cnpj, setCnpj] = useState('');
     const [cpf, setCpf] = useState('');
-    const [orgaopublico, setOrgaopublico] = useState('');
-    const [horariodeatendimento, setHorariodeatendimento] = useState('');
+    const [orgao_publico, setOrgaopublico] = useState('');
+    const [horario_de_atendimento, setHorariodeatendimento] = useState('');
     const [descricao, setDescricao] = useState('');
-    const [servicoId, setServicoId] = useState('');
+    const [servico_id, setServicoId] = useState('');
     const [logradouro, setLogradouro] = useState('');
     const [cep, setCep] = useState('');
     const [bairro, setBairro] = useState('');
@@ -25,33 +25,33 @@ export default function Cadastro(){
     
     async function handleCadastro(e){
         e.preventDefault();
-
+        
         const data = {
-            razaosocial,
-            nomefantasia,
-            nome,
-            cnpj,
-            cpf,
-            orgaopublico,
-            horariodeatendimento,
+            razao_social, 
+            nome_fantasia, 
+            nome, 
+            cnpj, 
+            cpf, 
+            orgao_publico, 
+            horario_de_atendimento, 
             descricao,
-            servicoId,
+            servico_id,
             logradouro,
             cep,
             bairro,
             cidade,
             regiao,
             uf,
-            descricao_endereco,
+            descricao_endereco
         };
+        console.log(data);
 
         try{
-            //console.log(data);
-            const response =  await api.post('empresa', data);
-            alert(`Seu ID de acesso: ${response.data.id}`);
-            history.push("/");
+            //const response =  await api.post('empresa', data);
+            //alert(`Seu ID de acesso: ${response.data.id}`);
+            //history.push("/");
             
-        } catch(err){
+        } catch(erro){
             alert('Erro no cadastro');
         }
         
@@ -68,12 +68,12 @@ export default function Cadastro(){
                 <form onSubmit={handleCadastro}>
                     <input 
                         placeholder="Razão Social"
-                        value={razaosocial}
+                        value={razao_social}
                         onChange={e => setRazaosocial(e.target.value)} 
                     />
                     <input 
                         placeholder="Nome Fantasia"
-                        value={nomefantasia}
+                        value={nome_fantasia}
                         onChange={e => setNomefantasia(e.target.value)}  
                     />
                     <input 
@@ -93,12 +93,12 @@ export default function Cadastro(){
                     />
                     <input 
                         placeholder="Orgão Publico"
-                        value={orgaopublico}
+                        value={orgao_publico}
                         onChange={e => setOrgaopublico(e.target.value)}  
                     />
                     <input 
                         placeholder="Horario de Atendimento"
-                        value={horariodeatendimento}
+                        value={horario_de_atendimento}
                         onChange={e => setHorariodeatendimento(e.target.value)} 
                     />
                     <input 
@@ -106,7 +106,7 @@ export default function Cadastro(){
                         value={descricao}
                         onChange={e => setDescricao(e.target.value)} 
                     />
-                    <select name={servicoId} onChange={e => setServicoId(e.target.value)}>
+                    <select name={servico_id} onChange={e => setServicoId(e.target.value)}>
                         <option value="1">Restaurante</option>
                         <option value="2">Padaria</option>
                         <option value="3">Nenhum</option>

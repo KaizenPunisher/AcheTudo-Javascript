@@ -8,7 +8,6 @@ module.exports = {
     
         return response.json(endereco);
     },
-
     async alterarEndereco(request, response) {
 
         const { id } = request.params;
@@ -45,5 +44,22 @@ module.exports = {
     
         return response.status(204).send();
     },
+    async deletarEndereco(request, response) {
+        const { id } = request.params;
+        const empresa_id = request.headers.authorization;
 
+        const endereco = await connection('enderecos')
+            .where('id', id)
+            .select('empresa_id')
+            .first()
+        ;
+        
+        if (endereco.empresa_id != empresa_id){
+            return response.status(401).json({ error: 'Operação não permitida.' });
+        }
+
+        await connection('enderecos').where('id', id).delete();
+
+        return response.status(204).send();
+    },
 };

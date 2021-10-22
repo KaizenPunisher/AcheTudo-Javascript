@@ -65,9 +65,8 @@ module.exports = {
             regiao,
             uf,
             descricao_endereco
-        
         } = request.body;
-    
+        
         await connection('empresas').insert({
             id, 
             razao_social,
@@ -79,8 +78,8 @@ module.exports = {
             horario_de_atendimento,
             descricao,
             servico_id
-        })
-
+        });
+        
         await connection('enderecos').insert({
             logradouro: logradouro,
             cep: cep,
@@ -90,8 +89,8 @@ module.exports = {
             uf: uf,
             descricao: descricao_endereco,
             empresa_id: id
-        })
-    
+        });
+
         return response.json({ id });
     },
 
@@ -112,6 +111,7 @@ module.exports = {
         }
 
         await connection('telefones').where('empresa_id', empresa_id).delete();
+        await connection('enderecos').where('empresa_id', empresa_id).delete();
         await connection('empresas').where('id', id).delete();
 
         return response.status(204).send();

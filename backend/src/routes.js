@@ -15,6 +15,7 @@ routes.delete('/empresa/:id', EmpresaController.deletarEmpresa);
 
 routes.get('/endereco', EnderecoController.listarEndereco);
 routes.put('/endereco/:id', EnderecoController.alterarEndereco);
+routes.delete('/endereco/:id', EnderecoController.deletarEndereco);
 
 routes.get('/servico', ServicoController.listarServico);
 routes.post('/servico', ServicoController.cadastrarServico);
