@@ -11,6 +11,7 @@ Bibliotecas de ferramentas instaladas através do NPM ou NPX:
 * Knex - Estrutura para conexão com o banco de dados ( npm install knex )
 * Nodemon - Monitorar todas as alterações nos arquivos da aplicação e reinicia automaticamente o servidor quando for necessário. ( npm install nodemon )
 * Cors - (Cross-origin Resource Sharing) é um mecanismo utilizado pelos navegadores para compartilhar recursos entre diferentes origens. O CORS é uma especificação do W3C e faz uso de headers do HTTP para informar aos navegadores se determinado recurso pode ser ou não acessado. ( npm install cors )
+* Celebrate - Ferramenta para validação. É uma estrutura que faz a união do Joi com Express informando os erros de validação através de JSON ( npm install celebrate )
 
 (Frontend)
 * React APP - Estrutura para criação de projeto frontend ( npx create-react-app frontend )
