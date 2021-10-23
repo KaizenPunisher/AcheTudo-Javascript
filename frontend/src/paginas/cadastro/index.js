@@ -47,8 +47,8 @@ export default function Cadastro(){
         console.log(data);
 
         try{
-            //const response =  await api.post('empresa', data);
-            //alert(`Seu ID de acesso: ${response.data.id}`);
+            const response =  await api.post('empresa', data);
+            alert(`Seu ID de acesso: ${response.data.id}`);
             //history.push("/");
             
         } catch(erro){
@@ -106,10 +106,12 @@ export default function Cadastro(){
                         value={descricao}
                         onChange={e => setDescricao(e.target.value)} 
                     />
-                    <select name={servico_id} onChange={e => setServicoId(e.target.value)}>
-                        <option value="1">Restaurante</option>
-                        <option value="2">Padaria</option>
-                        <option value="3">Nenhum</option>
+                    <select name={servico_id}
+                            onChange={e => setServicoId(e.target.value)}
+                            >
+                        <option value="">Nenhum</option>
+                        <option value="1">Padaria</option>
+                        <option value="2">Restaurante</option>
                     </select>
                     <input 
                         placeholder="Logradouro"
