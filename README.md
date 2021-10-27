@@ -18,4 +18,5 @@ Bibliotecas de ferramentas instaladas através do NPM ou NPX:
 * React Router DOM - Estrutura de rotas para frontend ( npm install react-router-dom )
 * Axios - Estrutura cliente HTTP para fazer a conexão de serviços junto as rotas da aplicação. ( npm install axios )
 
-
+(Mobile)
+* Expo - Estrutura para criação de projeto mobile ( npm intall -g expo-cli )
