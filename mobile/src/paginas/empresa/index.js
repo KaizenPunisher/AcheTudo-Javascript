@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { View, Image, TouchableOpacity, Text, Linking } from "react-native";
 import * as MailComposer from 'expo-mail-composer';
 
@@ -9,15 +9,19 @@ import styles from './styles';
 
 export default function Empresa(){
     const navigation = useNavigation();
-    const mensagem = 'Ola Padaria pão queimado, estou querendo comprar alguns pães';
+
+    const route = useRoute();
+    const empresa = route.params.empresa;
 
     function voltar(){
         navigation.goBack()
     }
 
+    const mensagem = `Ola ${empresa.nome_fantasia}, estou querendo comprar alguns pães`;
+
     function sendMail(){
         MailComposer.composeAsync({
-            subject: 'Empresa: Padaria pão queimado',
+            subject: `Empresa: ${empresa.nome_fantasia}`,
             recipients: ['oscar.gomes.junior@hotmail.com'],
             body: mensagem,
         })
@@ -38,14 +42,14 @@ export default function Empresa(){
             </View>
 
             <View style={styles.empresa}>
-                <Text style={styles.descricaoDaEmpresa}>Empresa:</Text>
-                <Text style={styles.descricaoValor}>Padaria</Text>
+                <Text style={styles.descricaoDaEmpresa}>Razão Social:</Text>
+                <Text style={styles.descricaoValor}>{empresa.razao_social}</Text>
 
-                <Text style={styles.descricaoDaEmpresa}>Nome Fantasia:</Text>
-                <Text style={styles.descricaoValor}>Padaria 1</Text>
+                <Text style={styles.descricaoDaEmpresa}>CNPJ:</Text>
+                <Text style={styles.descricaoValor}>{empresa.cnpj}</Text>
 
-                <Text style={styles.descricaoDaEmpresa}>Nome:</Text>
-                <Text style={styles.descricaoValor}>José</Text>
+                <Text style={styles.descricaoDaEmpresa}>Ponto de referência:</Text>
+                <Text style={styles.descricaoValor}>{empresa.endereco_descricao}</Text>
             </View>
 
             <View style={styles.contacBox}>

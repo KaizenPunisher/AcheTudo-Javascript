@@ -26,3 +26,4 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 * Native Stack Navigator - Biblioteca de componentes de botões para se comunicar com a estrutura de rotas ( npm install @react-navigation/native-stack )
 * Constantes - Pacote adcional para o Expo. Fornece informações do sistema que permanecem constantes durante todo o tempo de instalação do aplicativo.( expo install expo-constants )
 * Mail composer - Biblioteca com funções para enviar email. ( expo install expo-mail-composer )
+* Axios - Estrutura cliente HTTP para fazer a conexão de serviços junto as rotas da aplicação. ( npm install axios )
