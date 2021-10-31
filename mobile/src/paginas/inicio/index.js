@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigation } from '@react-navigation/native'
 import { View, FlatList, Image, Text, TouchableOpacity } from "react-native";
 
 import logoImg from '../../imagens/logo.png';
@@ -6,6 +7,12 @@ import logoImg from '../../imagens/logo.png';
 import styles from "./styles";
 
 export default function Inicio(){
+    const navigation = useNavigation();
+
+    function navigateToEmpresa(){
+        navigation.navigate('Empresa');
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.cabecalho}>
@@ -42,7 +49,7 @@ export default function Inicio(){
 
                         <TouchableOpacity 
                             style={styles.descricaoButton} 
-                            onPress={() => {}}
+                            onPress={navigateToEmpresa}
                         >
                             <Text style={styles.descricaoButtonText}>Ver mais detalhes</Text>
                         </TouchableOpacity>

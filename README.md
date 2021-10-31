@@ -4,7 +4,7 @@ Estrutura em Node, React e React-Native
 Sistema Web Mobile com objetivo de centralizar informações de comercios locais. Visando a facilidade de pesquisa de produtos e serviços de centros comerciais.
 
 
-__ Bibliotecas de ferramentas ou tecnologias instaladas através do NPM ou NPX:
+__ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 
 (Backend) Tecnologias
 * Express - Framework web estruturado para node  ( npm install express )
@@ -25,3 +25,4 @@ __ Bibliotecas de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 ( expo install react-native-screens react-native-safe-area-context )
 * Native Stack Navigator - Biblioteca de componentes de botões para se comunicar com a estrutura de rotas ( npm install @react-navigation/native-stack )
 * Constantes - Pacote adcional para o Expo. Fornece informações do sistema que permanecem constantes durante todo o tempo de instalação do aplicativo.( expo install expo-constants )
+* Mail composer - Biblioteca com funções para enviar email. ( expo install expo-mail-composer )

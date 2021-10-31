@@ -2451,6 +2451,14 @@ expo-keep-awake@~10.0.0:
   resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-10.0.0.tgz#275a3e02f99bc0429790047add126c1dcce60d63"
   integrity sha512-x5zRTjIvSry/EISKvjWpnLERGZj5maCwEouOfiDk0JPa0UTg/zFkT7pmiadAfHT95XUgjjb2DOku+wj6J7el7Q==
 
+expo-mail-composer@~11.0.3:
+  version "11.0.3"
+  resolved "https://registry.yarnpkg.com/expo-mail-composer/-/expo-mail-composer-11.0.3.tgz#216d506a95c030d981caa01e4214690a7c637c50"
+  integrity sha512-Ue/0RXqXDfwjbpCiQLv1h+AVA3z/eyj3AQoKhLOy3TOoziI+/O38zIypUA5i7/RsIbVSMgUBFIz8rBc3v6tE5g==
+  dependencies:
+    expo-modules-core "~0.4.4"
+    query-string "^6.2.0"
+
 expo-modules-autolinking@~0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/expo-modules-autolinking/-/expo-modules-autolinking-0.3.3.tgz#95795f2292bd187b388413e36936bfd6fa7a46a9"
@@ -4416,6 +4424,16 @@ pump@^3.0.0:
   dependencies:
     end-of-stream "^1.1.0"
     once "^1.3.1"
+
+query-string@^6.2.0:
+  version "6.14.1"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.14.1.tgz#7ac2dca46da7f309449ba0f86b1fd28255b0c86a"
+  integrity sha512-XDxAeVmpfu1/6IjyT/gXHOl+S0vQ9owggJ30hhWKdHAsNPOcasn5o9BW0eejZqL2e4vMjhAxoW3jVHcD6mbcYw==
+  dependencies:
+    decode-uri-component "^0.2.0"
+    filter-obj "^1.1.0"
+    split-on-first "^1.0.0"
+    strict-uri-encode "^2.0.0"
 
 query-string@^7.0.0:
   version "7.0.1"
