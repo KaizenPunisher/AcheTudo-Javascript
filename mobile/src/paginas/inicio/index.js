@@ -25,7 +25,7 @@ export default function Inicio(){
             return;
         }
 
-        if (total > 0 && empresa.length === total) {
+        if (total > 0 && empresa.length == total) {
             return;
         }
 
@@ -35,7 +35,7 @@ export default function Inicio(){
             params: {page}
         });
         
-        setEmpresa([... empresa, ...response.data]);
+        setEmpresa([ ...empresa, ...response.data]);
         setTotal(response.headers['x-total-count']);
         setPage(page + 1);
         setLoading(false);
@@ -61,25 +61,16 @@ export default function Inicio(){
                 data={empresa}
                 style={styles.listaDeEmpresas}
                 keyExtractor={empresa => String(empresa.id)}
-                showsVerticalScrollIndicator={false}
+                //showsVerticalScrollIndicator={false}
                 onEndReached={loadEmpresas}
                 onEndReachedThreshold={0.2}
                 renderItem={({ item: empresa }) => (
                     <View style={styles.empresa}>
                         <Text style={styles.descricaoDaEmpresa}>Empresa:</Text>
-                        <Text style={styles.descricaoValor}>{empresa.nome_fantasia}</Text>
-
-                        <Text style={styles.descricaoDaEmpresa}>Dono:</Text>
-                        <Text style={styles.descricaoValor}>{empresa.nome}</Text>
-
-                        <Text style={styles.descricaoDaEmpresa}>Empreendimento:</Text>
-                        <Text style={styles.descricaoValor}>{empresa.empreendimento}</Text>
+                        <Text style={styles.descricaoValor}>{empresa.razao_social}</Text>
 
                         <Text style={styles.descricaoDaEmpresa}>ID:</Text>
                         <Text style={styles.descricaoValor}>{empresa.id}</Text>
-
-                        <Text style={styles.descricaoDaEmpresa}>Endereço:</Text>
-                        <Text style={styles.descricaoValor}>{empresa.logradouro}</Text>
 
                         <TouchableOpacity 
                             style={styles.descricaoButton} 
