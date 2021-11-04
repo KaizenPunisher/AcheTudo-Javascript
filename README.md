@@ -7,11 +7,17 @@ Sistema Web Mobile com objetivo de centralizar informações de comercios locais
 __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 
 (Backend) Tecnologias
+* Banco de dados SQLite - Estrura BD feita no modelo relacional
 * Express - Framework web estruturado para node  ( npm install express )
 * Knex - Estrutura para conexão com o banco de dados ( npm install knex )
 * Nodemon - Monitorar todas as alterações nos arquivos da aplicação e reinicia automaticamente o servidor quando for necessário. ( npm install nodemon )
 * Cors - (Cross-origin Resource Sharing) é um mecanismo utilizado pelos navegadores para compartilhar recursos entre diferentes origens. O CORS é uma especificação do W3C e faz uso de headers do HTTP para informar aos navegadores se determinado recurso pode ser ou não acessado. ( npm install cors )
 * Celebrate - Ferramenta para validação. É uma estrutura que faz a união do Joi com Express informando os erros de validação através de JSON ( npm install celebrate )
+
+(Metodo TDD) Tecnologias
+* Jest - Framework de teste em JavaScript projetado para garantir a correção de qualquer código JavaScript. ( npm instal jest -D >> npx jest --init )
+* CROSS-ENV - cross-env permite que você tenha um único comando para configurar e usar a variavel ambiente. ( npm install cross-env )
+* Supertest - Estrutura cliente HTTP para simular testes na aplicação. ( npm install supertest -D )
 
 (Frontend) Tecnologias
 * React APP - Estrutura para criação de projeto frontend ( npx create-react-app frontend )

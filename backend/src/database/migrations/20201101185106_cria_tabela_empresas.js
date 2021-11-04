@@ -3,13 +3,13 @@ exports.up = function(knex) {
     return knex.schema.createTable('empresas', function(table){
         
         table.string('id').primary();
-        table.string('razao_social').notNullable();
-        table.string('nome_fantasia').notNullable();
-        table.string('nome').notNullable();
-        table.string('cnpj').notNullable();
-        table.string('cpf').notNullable();
-        table.boolean('orgao_publico').notNullable();
-        table.string('horario_de_atendimento').notNullable();
+        table.string('razao_social').nullable();
+        table.string('nome_fantasia').nullable();
+        table.string('nome').nullable();
+        table.string('cnpj').nullable();
+        table.string('cpf').nullable();
+        table.boolean('orgao_publico').nullable();
+        table.string('horario_de_atendimento').nullable();
         table.string('descricao').nullable();
         //table.timestamps();
 
