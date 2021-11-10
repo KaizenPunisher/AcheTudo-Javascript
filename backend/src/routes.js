@@ -7,7 +7,11 @@ const EnderecoController = require('./controllers/EnderecoController');
 const ServicoController = require('./controllers/ServicoController');
 const TelefoneController = require('./controllers/TelefoneController');
 
+const UsuarioController = require('./controllers/UsuarioController');
+
 const routes = express.Router();
+
+routes.post('/usuario' , UsuarioController.cadastrarUsuario);
 
 routes.post('/session', SessionController.criarSessao);
 
