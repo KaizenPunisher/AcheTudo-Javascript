@@ -12,7 +12,7 @@ const UsuarioController = require('./controllers/UsuarioController');
 const routes = express.Router();
 
 routes.post('/usuario' , UsuarioController.cadastrarUsuario);
-routes.get('/usuario', UsuarioController.listarUsuario);
+routes.get('/usuario', UsuarioController.listarUsuarios);
 
 routes.post('/session', SessionController.criarSessao);
 

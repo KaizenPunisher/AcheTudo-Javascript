@@ -1,4 +1,3 @@
-const generateUniqueId = require('../utils/generateUniqueId');
 const connection = require('../database/connection');
 const { listarTelefone } = require('./TelefoneController');
 const crypto = require('crypto');

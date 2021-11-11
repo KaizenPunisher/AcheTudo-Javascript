@@ -8,7 +8,7 @@ class Usuario {
     }
 
     async listar(){
-        const [listagem] = await connection('usuarios').select('*');
+        const listagem = await connection('usuarios').select('*');
         return listagem;
     }
 
@@ -16,7 +16,7 @@ class Usuario {
         const [cadastro] = await connection('usuarios').insert({
             nome: this.nome,
             email: this.email,
-            password_hash: this.password_hash
+            password_hash: this.password_hash,
         });
         
         return {id: cadastro};
@@ -24,4 +24,3 @@ class Usuario {
 }
 
 module.exports = Usuario;
-
