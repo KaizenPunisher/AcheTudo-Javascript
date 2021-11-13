@@ -20,6 +20,7 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 * CROSS-ENV - cross-env permite que você tenha um único comando para configurar e usar a variavel ambiente. ( npm install cross-env )
 * DOTENV - Gerenciador de variaveis de ambiente ( npm install dotenv )
 * Supertest - Estrutura cliente HTTP para simular testes na aplicação. ( npm install supertest -D )
+* Bcryptjs -  Biblioteca para encriptação de dados - ( npm add bcryptjs )
 
 (Frontend) Tecnologias
 * React APP - Estrutura para criação de projeto frontend ( npx create-react-app frontend )

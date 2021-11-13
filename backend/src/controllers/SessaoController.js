@@ -17,7 +17,6 @@ module.exports = {
 
         return response.json(usuario);
         */
-        console.log();
         return response.status(200).send();
     }
 }

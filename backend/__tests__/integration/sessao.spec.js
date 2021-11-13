@@ -8,18 +8,16 @@ describe('Autenticação', () => {
     beforeEach(async () => {
         await connection.migrate.rollback();
         await connection.migrate.latest();
+        await connection.migrate.forceFreeMigrationsLock();
     });
 
-    it('Essa rota deve retornar um token JWT quando for chamada com credenciais', async ()=>{
+    it('Rota de cadastro de usuario', async ()=>{
         
         const usuario = new Usuario({nome: 'Oscar', email: 'oscar@gomes.com', password_hash: '123456'});
-        /*
         const cadastrar = await usuario.cadastrar();
-        
         console.log(cadastrar);
         
-        expect(usuario.email).toBe('oscar@gomes.com');
-        */
+        expect(cadastrar).toStrictEqual({"id": 1});
         
         const response = await 
             request(app)
