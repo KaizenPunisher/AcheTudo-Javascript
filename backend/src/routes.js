@@ -2,6 +2,7 @@ const express = require('express');
 const { celebrate, Segments, Joi } = require('celebrate');
 
 const SessionController = require('./controllers/SessionController');
+const SessaoController = require('./controllers/SessaoController');
 const EmpresaController = require('./controllers/EmpresaController');
 const EnderecoController = require('./controllers/EnderecoController');
 const ServicoController = require('./controllers/ServicoController');
@@ -15,6 +16,7 @@ routes.post('/usuario' , UsuarioController.cadastrarUsuario);
 routes.get('/usuario', UsuarioController.listarUsuarios);
 
 routes.post('/session', SessionController.criarSessao);
+routes.post('/sessao', SessaoController.criarSessao);
 
 routes.get('/empresa', 
     celebrate({[Segments.QUERY]: Joi.object().keys({
