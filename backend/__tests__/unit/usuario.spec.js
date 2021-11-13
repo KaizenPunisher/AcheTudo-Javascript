@@ -2,15 +2,16 @@ const Usuario = require("../../src/models/Usuario");
 const connection = require('../../src/database/connection');
 const bcrypt = require("bcryptjs");
 
-describe('Autenticação', () => {
+describe('Usuario', () => {
     
     beforeEach(async () => {
+        await connection.migrate.forceFreeMigrationsLock();
         await connection.migrate.rollback();
         await connection.migrate.latest();
-        await connection.migrate.forceFreeMigrationsLock();
+        
     });
 
-    it('', async ()=>{
+    it('Cadastrando Usuario com HASH', async ()=>{
         
         const usuario = new Usuario({nome: 'Oscar', email: 'oscar@gomes.com', password: '123456'});
         const cadastrar = await usuario.cadastrar();
@@ -22,4 +23,5 @@ describe('Autenticação', () => {
         
         await connection.destroy();
     });
+
 });

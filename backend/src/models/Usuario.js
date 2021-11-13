@@ -1,5 +1,6 @@
 const connection = require('../database/connection');
 const bcrypt = require("bcryptjs");
+const { response } = require('express');
 
 class Usuario {
     constructor({nome, email, password}){
@@ -14,14 +15,19 @@ class Usuario {
         return listagem;
     }
 
+    async encontrar(){
+        const [usuario] = await connection('usuarios').where('email', this.email).select('*');
+        return usuario;
+    }
+
     async cadastrar() {
         const password_hash = await bcrypt.hash(this.password, 8);
-        this.password_hash = password_hash
+        this.password_hash = password_hash;
 
         const [cadastro] = await connection('usuarios').insert({
             nome: this.nome,
             email: this.email,
-            password_hash: password_hash,
+            password_hash: this.password_hash,
         });
         
         return {id: cadastro};

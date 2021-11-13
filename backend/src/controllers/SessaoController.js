@@ -1,22 +1,24 @@
 const connection = require('../database/connection');
+const Usuario = require("../../src/models/Usuario");
+const bcrypt = require("bcryptjs");
 
 module.exports = {
     async criarSessao(request, response) {
-        /*
-        const { id } = request.body;
+        const { email, password } = request.body;
+        const usuario = new Usuario(request.body);
+        //console.log(usuario);
+        const encontrarUsuario = await usuario.encontrar();
 
-        const usuario = await connection('usuarios')
-            .where('id', id)
-            .select('email')
-            .first()
-        ;
+        if (!encontrarUsuario){
+            return response.status(401).json({ error: 'Usuario não existe'});
+        }
+        console.log(encontrarUsuario.password_hash);
+        const verificarSenha = await bcrypt.compare(password, encontrarUsuario.password_hash);
 
-        if (!nome){
-            return response.status(400).json({ error: 'Não existe nenhuma empresa com esse id'});
+        if (!verificarSenha){
+            return response.status(401).json({ error: 'Senha incorreta'});
         }
 
-        return response.json(usuario);
-        */
         return response.status(200).send();
     }
 }
