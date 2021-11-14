@@ -14,13 +14,13 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 * Nodemon - Monitorar todas as alterações nos arquivos da aplicação e reinicia automaticamente o servidor quando for necessário. ( npm install nodemon )
 * Cors - (Cross-origin Resource Sharing) é um mecanismo utilizado pelos navegadores para compartilhar recursos entre diferentes origens. O CORS é uma especificação do W3C e faz uso de headers do HTTP para informar aos navegadores se determinado recurso pode ser ou não acessado. ( npm install cors )
 * Celebrate - Ferramenta para validação. É uma estrutura que faz a união do Joi com Express informando os erros de validação através de JSON ( npm install celebrate )
+* Bcryptjs -  Biblioteca para encriptação de dados - ( npm add bcryptjs )
+* Jsonwebtoken - JSON Web é uma forma de garantir a autenticação e autorização de APIs de maneira bem simples e segura, sendo o JWT um padrão para segurança de APIs RESTful ( npm add jsonwebtoken )
 
 (Metodo TDD) Tecnologias
 * Jest - Framework de teste em JavaScript projetado para garantir a correção de qualquer código JavaScript. ( npm instal jest -D >> npx jest --init )
 * CROSS-ENV - cross-env permite que você tenha um único comando para configurar e usar a variavel ambiente. ( npm install cross-env )
-* DOTENV - Gerenciador de variaveis de ambiente ( npm install dotenv )
 * Supertest - Estrutura cliente HTTP para simular testes na aplicação. ( npm install supertest -D )
-* Bcryptjs -  Biblioteca para encriptação de dados - ( npm add bcryptjs )
 
 (Frontend) Tecnologias
 * React APP - Estrutura para criação de projeto frontend ( npx create-react-app frontend )

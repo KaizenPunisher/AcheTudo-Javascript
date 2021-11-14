@@ -12,13 +12,16 @@ module.exports = {
         if (!encontrarUsuario){
             return response.status(401).json({ error: 'Usuario não existe'});
         }
-        console.log(encontrarUsuario.password_hash);
+        //console.log(encontrarUsuario.password_hash);
         const verificarSenha = await bcrypt.compare(password, encontrarUsuario.password_hash);
 
         if (!verificarSenha){
             return response.status(401).json({ error: 'Senha incorreta'});
         }
 
-        return response.status(200).send();
+        return response.json({ 
+            usuario,
+            token: usuario.gerarToken()
+        });
     }
 }

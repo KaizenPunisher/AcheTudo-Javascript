@@ -30,7 +30,7 @@ describe('Autenticação', () => {
             // .set('Authorization', '1') setando o cabeçalho da requisição Athorization
             .send(usuario)
         ;
-        
+        //console.log(process.env.APP_SECRET);
         expect(response.status).toBe(200);
         
     });
@@ -55,6 +55,25 @@ describe('Autenticação', () => {
         ;
         
         expect(response.status).toBe(401);
+        
+    });
+    
+    it('Recebendo token JWT autenticado', async ()=>{
+        
+        const usuario = new Usuario({nome: 'Oscar', email: 'oscar@gomes.com', password: '123456'});
+        const cadastrar = await usuario.cadastrar();
+        //console.log(cadastrar);
+        
+        expect(cadastrar).toStrictEqual({"id": 1});
+        
+        const response = await 
+            request(app)
+            .post('/sessao')
+            // .set('Authorization', '1') setando o cabeçalho da requisição Athorization
+            .send(usuario)
+        ;
+        
+        expect(response.body).toHaveProperty('token');
         
     });
     
