@@ -1,4 +1,7 @@
 const express = require('express');
+require('dotenv').config({
+    path: process.env.NODE_ENV ===  'test' ? '.env.test' : '.env'
+});
 const routes = require('./routes');
 const { errors } = require('celebrate');
 const cors = require('cors');

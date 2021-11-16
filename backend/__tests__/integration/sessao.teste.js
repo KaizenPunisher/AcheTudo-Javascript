@@ -30,7 +30,8 @@ describe('Autenticação', () => {
             // .set('Authorization', '1') setando o cabeçalho da requisição Athorization
             .send(usuario)
         ;
-        //console.log(process.env.APP_SECRET);
+        console.log(process.env.APP_SECRET);
+        //console.log(process.env.NODE_ENV);
         expect(response.status).toBe(200);
         
     });

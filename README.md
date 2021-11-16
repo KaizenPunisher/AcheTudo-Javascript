@@ -19,7 +19,7 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 
 (Metodo TDD) Tecnologias
 * Jest - Framework de teste em JavaScript projetado para garantir a correção de qualquer código JavaScript. ( npm instal jest -D >> npx jest --init )
-* CROSS-ENV - cross-env permite que você tenha um único comando para configurar e usar a variavel ambiente. ( npm install cross-env )
+* Dotenv - Gerenciamento de variavel ambiente. ( npm install dotenv )
 * Supertest - Estrutura cliente HTTP para simular testes na aplicação. ( npm install supertest -D )
 
 (Frontend) Tecnologias
