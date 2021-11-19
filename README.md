@@ -1,5 +1,5 @@
 # AcheTudo-Javascript
-Estrutura em Node, React e React-Native
+## Estrutura em Node, React e React-Native
 
 Sistema Web Mobile com objetivo de centralizar informações de comercios locais. Visando a facilidade de pesquisa de produtos e serviços em centros comerciais.
 
@@ -7,7 +7,7 @@ Sistema Web Mobile com objetivo de centralizar informações de comercios locais
 
 __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 
-(Backend) Tecnologias
+# (Backend) Tecnologias
 * Banco de dados SQLite - Estrura BD feita no modelo relacional
 * Express - Framework web estruturado para node  ( npm install express )
 * Knex - Estrutura para conexão com o banco de dados ( npm install knex )
@@ -17,17 +17,17 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 * Bcryptjs -  Biblioteca para encriptação de dados - ( npm add bcryptjs )
 * Jsonwebtoken - JSON Web é uma forma de garantir a autenticação e autorização de APIs de maneira bem simples e segura, sendo o JWT um padrão para segurança de APIs RESTful ( npm add jsonwebtoken )
 
-(Metodo TDD) Tecnologias
+# (Metodo TDD) Tecnologias
 * Jest - Framework de teste em JavaScript projetado para garantir a correção de qualquer código JavaScript. ( npm instal jest -D >> npx jest --init )
 * Dotenv - Gerenciamento de variavel ambiente. ( npm install dotenv )
 * Supertest - Estrutura cliente HTTP para simular testes na aplicação. ( npm install supertest -D )
 
-(Frontend) Tecnologias
+# (Frontend) Tecnologias
 * React APP - Estrutura para criação de projeto frontend ( npx create-react-app frontend )
 * React Router DOM - Estrutura de rotas para frontend ( npm install react-router-dom )
 * Axios - Estrutura cliente HTTP para fazer a conexão de serviços junto as rotas da aplicação. ( npm install axios )
 
-(Mobile) Tecnologias
+# (Mobile) Tecnologias
 * Expo - Estrutura para criação de projeto mobile ( npm intall -g expo-cli )
 * React Navigation - Estrura de rotas para aplicação 
 ( npm install @react-navigation/native ) 
@@ -37,4 +37,4 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 * Mail composer - Biblioteca com funções para enviar email. ( expo install expo-mail-composer )
 * Axios - Estrutura cliente HTTP para fazer a conexão de serviços junto as rotas da aplicação. ( npm install axios )
 
-<div align="center"><img src="![Screenshot_6](https://user-images.githubusercontent.com/39317757/142679705-f255b510-27f9-4af0-826d-3fc18d29be54.png)" /></div>
+<div align="center"><img src="\frontend\src\imagens\diagrama_logo.png)" /></div>
