@@ -37,4 +37,4 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 * Mail composer - Biblioteca com funções para enviar email. ( expo install expo-mail-composer )
 * Axios - Estrutura cliente HTTP para fazer a conexão de serviços junto as rotas da aplicação. ( npm install axios )
 
-<div align="center"><img src="/frontend/src/imagens/diagrama_logo.png)" /></div>
+<div align="center"><img src="/frontend/src/imagens/diagrama_logo.png" /></div>
