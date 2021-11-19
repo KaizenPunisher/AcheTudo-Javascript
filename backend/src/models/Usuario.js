@@ -8,7 +8,6 @@ class Usuario {
         this.nome          = nome
         this.email         = email
         this.password      = password
-
     }
 
     async listar(){
@@ -36,8 +35,8 @@ class Usuario {
 
     async gerarToken(){
         const [usuario] = await connection('usuarios').where('email', this.email).select('*');
-        //console.log(usuario.id);
         this.id = usuario.id;
+        //console.log(process.env.APP_SECRET);
         return jwt.sign({ id: this.id }, process.env.APP_SECRET);
     }
 }
