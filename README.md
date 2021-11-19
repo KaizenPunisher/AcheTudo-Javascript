@@ -36,3 +36,5 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 * Constantes - Pacote adcional para o Expo. Fornece informações do sistema que permanecem constantes durante todo o tempo de instalação do aplicativo.( expo install expo-constants )
 * Mail composer - Biblioteca com funções para enviar email. ( expo install expo-mail-composer )
 * Axios - Estrutura cliente HTTP para fazer a conexão de serviços junto as rotas da aplicação. ( npm install axios )
+
+<div align="center"><img src="![Screenshot_6](https://user-images.githubusercontent.com/39317757/142679705-f255b510-27f9-4af0-826d-3fc18d29be54.png)" /></div>
