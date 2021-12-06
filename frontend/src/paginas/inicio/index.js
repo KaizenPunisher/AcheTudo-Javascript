@@ -3,6 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 import './style.css';
 import api from '../../services/api';
 
+import logo from "../../imagens/logo.svg";
+
 export default function Inicio(){
     const [empresas, setEmpresas] = useState([]);
 
@@ -35,13 +37,25 @@ export default function Inicio(){
     }
 
     return (
-        <div className="pagina-inicial">
+        <div className="principal">
+            <div className="topo">
+                <div className="area-usuario">
+                    <Link className="entrar" to="/login">ENTRAR</Link>
+                    <button className="sair" onClick={handleLogout} to="/" type="button">Logout</button>
+                    <h3 className="saudacao">Bem vindo, {empresaRazaosocial}</h3>
+                </div>
+                <div className="titulo-local"><h3>Cidade Tiradentes</h3></div>
+                <Link to="/">
+                    <div className="logo" style={{ backgroundImage: `url(${logo})` }}></div>
+                </Link>
+                <div className="menu">
+                    <ul className="">
+                        <li className="">SSERVIÇOS PUBLICOS</li>
+                        <li className="">COMÉRCIO</li>
+                    </ul>
+                </div>
+            </div>
             <div className="conteudo">
-                <header><h3>Bem vindo, {empresaRazaosocial}</h3></header>
-                <Link className="entrar" to="/login">Login</Link>
-                <button className="logout" onClick={handleLogout} to="/" type="button">Logout</button>
-
-                <h1>Empresas</h1>
                 <ul>
                     {empresas.map(empresa => (
                         <li key={empresa.id}>

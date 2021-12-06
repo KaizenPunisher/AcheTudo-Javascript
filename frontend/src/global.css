@@ -1,10 +1,133 @@
-body {
-    background-color: rgb(235, 219, 219);
+@font-face{
+    font-family: "Franklin Gothic Heavy";
+    font-style: normal;
+    src: local("Franklin Gothic Heavy"), url("./fonts/FRAHV.TTF") format('TTF');
+}
+@font-face{
+    font-family: "Calibri";
+    font-style: normal;
+    src: local("Calibri"), url("./fonts/calibri.ttf") format('TTF');
 }
 
+body {
+    background-color: #ffff00;
+    font-family: "Calibri";
+}
 button {
     cursor: pointer;
 }
+
+.principal{
+    position:relative;
+    width: auto;
+    height: auto;
+    margin: 0px;
+    background-image: linear-gradient(#fff, #6fbbdb);
+    border-radius: 25px;
+    border: 20px solid #fff;
+    border-radius: 25px;
+    -webkit-box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.8);
+    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.8), 
+        inset 0px 5px 20px -15px rgba(0,0,0,0.8), 
+        inset 0px -5px 20px -15px rgba(0,0,0,0.8), 
+        -50px -50px 0px -30px rgba(0,0,0,0)
+    ;
+    padding: 5px;
+    /*border:5px solid black;*/
+}
+.principal .topo{
+    border: 5px solid black;
+    position:inherit;
+    height: auto;
+}
+.principal .topo .logo{
+    /*border: 1px solid blue;*/
+    width: 80px;
+    height: 80px;
+    background: no-repeat center;
+    background-size: contain;
+    float: left;
+    margin-left: 10px;
+}
+
+.principal .topo .titulo-local{
+    border: 1px solid black;
+    width: 40%;
+    height: auto;
+    float: right;
+    padding: 0px 0px 0px 5px;
+}
+
+.principal .topo .area-usuario {
+    border: 1px solid rgb(245, 6, 6);
+    width: 30%;
+    height: auto;
+    float: right;
+    padding: 10px 10px 0px 10px;
+    
+}
+.principal .topo .area-usuario .entrar{
+    font-family:"Franklin Gothic Heavy";
+    font-size: 13px;
+    float: right;
+    width: 100px;
+    height: 25px;
+    background: #fff;
+    border: 0px;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.5s;
+    padding-top: 10px;
+    right: 10px;
+    -webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49); 
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49);
+}
+.principal .topo .area-usuario .entrar:hover{
+    filter: opacity(0.5);
+    transition: 0.5s;
+}
+.principal .topo .login-empresa .sair{
+    border: 1px solid black;
+}
+.principal .topo .login-empresa .saudacao{
+    /*border: 1px solid black;*/
+    width: auto;
+    height: auto;
+}
+.principal .topo .menu{
+    /*border: 1px solid black;*/
+    width: 100%;
+    height: 40px;
+    clear:both;
+}
+.principal .topo .menu ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    list-style: none;
+    padding-top: 20px;
+}
+.principal .topo .menu ul li{
+    /*border: 5px solid yellow;*/
+    background: #fff;
+    text-align: center;
+    height: 30px;
+    margin: -20px 0px 0px -40px;
+    padding-top: 10px;
+    transition: 2s;
+}
+.principal .topo .menu ul li:hover{
+    background: #ffff00; 
+    transition: 2s;
+    
+}
+
+.principal .conteudo{
+    border: 5px solid red;
+}
+
+
+/*--------------------------------------------*/
 
 form input{
     border: 1px solid #dcdce6;
