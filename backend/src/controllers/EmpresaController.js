@@ -14,8 +14,8 @@ module.exports = {
             .join('servicos', 'servicos.id', '=', 'empresas.servico_id')
             .leftJoin('enderecos', 'enderecos.empresa_id', '=', 'empresas.id')
             .leftJoin('telefones', 'telefones.empresa_id', '=', 'empresas.id')
-            .limit(3)
-            .offset((page-1)*3)
+            .limit(20)
+            .offset((page-1)*20)
             .select([
                 'empresas.*',
                 'servicos.id as servico_id',

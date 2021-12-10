@@ -97,7 +97,7 @@ button {
 }
 .principal .topo .menu{
     /*border: 1px solid black;*/
-    width: 100%;
+    width: auto;
     height: 40px;
     clear:both;
 }

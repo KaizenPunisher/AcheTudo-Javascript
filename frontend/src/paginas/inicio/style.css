@@ -1,25 +1,48 @@
-.principal .conteudo h1{
-    border: 1px solid black;
-    margin-top: 80px;
-    margin-bottom: 24px;
-}
-
-.principal .conteudo .entrar:hover{
-    filter: brightness(90%);
-}
-
 .principal .conteudo ul{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 24px;
-    
+    display: flex;
+    list-style:none;
+    flex-wrap: wrap;
+    position: relative;
+    top: -15px;
+    left: 0px;
+    width: 100%;
+    padding: 0px;
 }
 .principal .conteudo ul li{
-    background: #fff;
-    padding: 24px;
-    border-radius: 8px;
-    position: relative;
+    border: 1px solid yellow;
+    width: 140px;
+    height: 140px;
+    float: left;
+	position: relative;
+    transition: 0.5s;
 }
+.principal .conteudo ul li:hover{
+    transition: 0.5s;
+    z-index: 1;
+    -webkit-box-shadow: 0px 0px 5px 3px yellow;
+    box-shadow: 0px 0px 5px 3px yellow;
+}
+
+.principal .conteudo ul li img{
+    width: 100%;
+    height: 100%;
+}
+
+.principal .conteudo ul li header{
+    position: absolute;
+    top: 0px;
+}
+.principal .conteudo ul li section{
+    position: absolute;
+    top: 60px;
+}
+
+.principal .conteudo ul li p{
+    border: 5px solid blue;
+    color: white;
+    width: 100px;
+}
+
 .principal .conteudo ul li button{
     position: absolute;
     right: 24px;
@@ -29,13 +52,130 @@
 .principal .conteudo ul li button:hover{
     filter: 0.8;
 }
-.principal .conteudo ul li strong{
-    display: block;
-    margin-top: 16px;
-    color: #41414d;
-}
 .principal .conteudo ul li p{
     color: #737380;
     line-height: 21px;
     font-size: 16px;
+}
+
+.vitrine {
+    /*border: 5px solid black;*/
+    width: 0px;
+	height: 0px;
+	position: fixed;
+	overflow: hidden;
+	left: 0px;
+	top: 0px;
+	padding: 0px;
+	z-index: 99;
+	text-align: center;
+}
+
+.vitrine > div{
+	position: relative;
+    background: rgba(255, 255, 255, 0.295);
+	opacity: 0;
+	filter: alpha(opacity=0); /* internet explorer */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; /*IE8*/
+	width: 550px;
+	margin: -200px auto 0px auto;
+	-webkit-transition: opacity 0.3s linear 1.3s;
+	-moz-transition: opacity 0.3s linear 1.3s;
+	-o-transition: opacity 0.3s linear 1.3s;
+	-ms-transition: opacity 0.3s linear 1.3s;
+	transition: opacity 0.3s linear 1.3s;
+}
+
+.vitrine div{
+    /*border: 1px solid blue; */
+    padding: 5px 0px 5px 15px;
+	width: auto;
+	height: auto;
+}
+
+.vitrine div h3{
+    border-right: 1px solid black;
+	font-size: 36px;
+    width: 250px;
+	text-align: left;
+    padding-right: 10px;
+}
+
+.vitrine div h4{
+    clear: both;
+}
+
+.vitrine a.fechar{
+	background: black;
+	z-index: 1001;
+	color: #fff;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	font-size: 15px;
+	text-align: center;
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+	opacity: 0;
+	filter: alpha(opacity=0); /* internet explorer */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; /*IE8*/
+	-webkit-transition: opacity 0.3s linear 1.2s;
+	-moz-transition: opacity 0.3s linear 1.2s;
+	-o-transition: opacity 0.3s linear 1.2s;
+	-ms-transition: opacity 0.3s linear 1.2s;
+	transition: opacity 0.3s linear 1.2s;
+}
+
+.vitrine img{
+	/* height: 100%; For Opera max-height does not seem to work */
+	position: relative;
+}
+
+.vitrine:target {
+    margin: auto;
+	width: 80%;
+	height: 90%;
+	right: 0px;
+    -webkit-animation: fadeInScale 1.2s ease-in-out;
+	-moz-animation: fadeInScale 1.2s ease-in-out;
+	-o-animation: fadeInScale 1.2s ease-in-out;
+	-ms-animation: fadeInScale 1.2s ease-in-out;
+	animation: fadeInScale 1.2s ease-in-out;
+}
+
+.vitrine:target img {
+	-webkit-animation: fadeInScale 1.2s ease-in-out;
+	-moz-animation: fadeInScale 1.2s ease-in-out;
+	-o-animation: fadeInScale 1.2s ease-in-out;
+	-ms-animation: fadeInScale 1.2s ease-in-out;
+	animation: fadeInScale 1.2s ease-in-out;
+    
+}
+
+.vitrine:target a.fechar, .vitrine:target > div{
+	opacity: 1;
+	filter: alpha(opacity=99); /* internet explorer */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=99)"; /*IE8*/
+}
+
+@-webkit-keyframes fadeInScale {
+    0% { -webkit-transform: scale(0.6); opacity: 0; }
+    100% { -webkit-transform: scale(1); opacity: 1; }
+}
+@-moz-keyframes fadeInScale {
+    0% { -moz-transform: scale(0.6); opacity: 0; }
+    100% { -moz-transform: scale(1); opacity: 1; }
+}
+@-o-keyframes fadeInScale {
+    0% { -o-transform: scale(0.6); opacity: 0; }
+    100% { -o-transform: scale(1); opacity: 1; }
+}
+@-ms-keyframes fadeInScale {
+    0% { -ms-transform: scale(0.6); opacity: 0; }
+    100% { -ms-transform: scale(1); opacity: 1; }
+}
+@keyframes fadeInScale {
+    0% { transform: scale(0.6); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
