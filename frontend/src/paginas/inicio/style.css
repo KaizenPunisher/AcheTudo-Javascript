@@ -134,8 +134,8 @@
 
 .vitrine:target {
     margin: auto;
-	width: 80%;
-	height: 90%;
+	width: 90%;
+	height: 100%;
 	right: 0px;
     -webkit-animation: fadeInScale 1.2s ease-in-out;
 	-moz-animation: fadeInScale 1.2s ease-in-out;

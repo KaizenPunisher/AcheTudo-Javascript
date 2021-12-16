@@ -45,7 +45,7 @@ export default function Inicio(){
                     <button className="sair" onClick={handleLogout} to="/" type="button">Logout</button>
                     <h3 className="saudacao">Bem vindo, {empresaRazaosocial}</h3>
                 </div>
-                <div className="titulo-local"><h3>Cidade Tiradentes</h3></div>
+                <div className="titulo-local"><h3>Centro Comercial Cidade Tiradentes</h3></div>
                 <Link to="/">
                     <div className="logo" style={{ backgroundImage: `url(${logo})` }}></div>
                 </Link>
