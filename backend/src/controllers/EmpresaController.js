@@ -45,9 +45,10 @@ module.exports = {
     },
 
     async cadastrarEmpresa(request, response) {
-
+        console.log(request.file);
+        /*
         const id = crypto.randomBytes(4).toString('HEX');
-
+        
         const { 
             razao_social, 
             nome_fantasia, 
@@ -92,6 +93,8 @@ module.exports = {
         });
 
         return response.json({ id });
+        */
+        return response.json({Hello: 'word'});
     },
 
     async deletarEmpresa(request, response) {

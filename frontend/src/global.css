@@ -48,13 +48,14 @@ button {
     background-size: contain;
     float: left;
     margin-left: 10px;
+    margin-bottom: 5px;
 }
 
 .principal .topo .titulo-local{
     /*border: 1px solid black;*/
-    width: 40%;
+    width: 50%;
     height: auto;
-    float: right;
+    float: left;
     padding: 0px 0px 0px 5px;
 }
 
@@ -106,6 +107,7 @@ button {
     grid-template-columns: 1fr 1fr;
     list-style: none;
     padding-top: 20px;
+    
 }
 .principal .topo .menu ul li{
     /*border: 5px solid yellow;*/
@@ -113,8 +115,9 @@ button {
     text-align: center;
     height: 30px;
     margin: -20px 0px 0px -40px;
-    padding-top: 10px;
+    padding: 10px 0px 0px 0px;
     transition: 2s;
+    
 }
 .principal .topo .menu ul li:hover{
     background: #ffff00; 
@@ -126,6 +129,7 @@ button {
     /*border: 5px solid red;*/
     width: auto;
     height: auto;
+    
 }
 
 

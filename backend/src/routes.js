@@ -1,5 +1,7 @@
 const express = require('express');
 const { celebrate, Segments, Joi } = require('celebrate');
+const multer = require('multer');
+const multerConfig = require('./config/multer');
 
 const SessionController = require('./controllers/SessionController');
 
@@ -20,7 +22,8 @@ const UsuarioController = require('./controllers/UsuarioController');
 
 const routes = express.Router();
 
-routes.post('/usuario' , UsuarioController.cadastrarUsuario);
+routes.post('/usuario', UsuarioController.cadastrarUsuario);
+
 routes.get('/usuario', UsuarioController.listarUsuarios);
 
 routes.post('/session', SessionController.criarSessao);
@@ -33,26 +36,28 @@ routes.get('/empresa',
         page: Joi.number(),
         })
     }), EmpresaController.listarEmpresas);
-routes.post('/empresa', 
+routes.post('/empresa',
+    multer(multerConfig).single('file'),/*
     celebrate({[Segments.BODY]: Joi.object().keys({
-        razao_social: Joi.string().required(),
-        nome_fantasia: Joi.string().required(),
-        nome: Joi.string().required(),
-        cnpj: Joi.string().required(),
-        cpf: Joi.string().required(),
-        orgao_publico: Joi.boolean().required(),
-        horario_de_atendimento: Joi.string().required(),
-        descricao: Joi.string().required(),
-        servico_id: Joi.number().required(),
-        logradouro: Joi.string().required(),
-        cep: Joi.string().required(),
-        bairro: Joi.string().required(),
-        cidade: Joi.string().required(),
-        regiao: Joi.string().required(),
-        uf: Joi.string().required().length(2),
-        descricao_endereco: Joi.string(),
-    }),
-}), EmpresaController.cadastrarEmpresa);
+            razao_social: Joi.string().required(),
+            nome_fantasia: Joi.string().required(),
+            nome: Joi.string().required(),
+            cnpj: Joi.string().required(),
+            cpf: Joi.string().required(),
+            orgao_publico: Joi.boolean().required(),
+            horario_de_atendimento: Joi.string().required(),
+            descricao: Joi.string().required(),
+            servico_id: Joi.number().required(),
+            logradouro: Joi.string().required(),
+            cep: Joi.string().required(),
+            bairro: Joi.string().required(),
+            cidade: Joi.string().required(),
+            regiao: Joi.string().required(),
+            uf: Joi.string().required().length(2),
+            descricao_endereco: Joi.string(),
+        }),
+    }),*/ 
+    EmpresaController.cadastrarEmpresa);
 routes.delete('/empresa/:id', EmpresaController.deletarEmpresa);
 
 routes.get('/endereco', 
