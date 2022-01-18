@@ -2,6 +2,8 @@ const connection = require('../database/connection');
 const { listarTelefone } = require('./TelefoneController');
 const crypto = require('crypto');
 
+const Anuncio = require("../models/Anuncio");
+
 module.exports = {
 
     async listarEmpresas(request, response){
@@ -94,6 +96,9 @@ module.exports = {
 
         return response.json({ id });
         */
+        const anuncio = new Anuncio(request.file);
+        await anuncio.cadastrar();
+
         return response.json({Hello: 'word'});
     },
 

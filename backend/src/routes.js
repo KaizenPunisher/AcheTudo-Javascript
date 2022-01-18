@@ -20,10 +20,13 @@ const TelefoneController = require('./controllers/TelefoneController');
 
 const UsuarioController = require('./controllers/UsuarioController');
 
+const AnuncioController = require('./controllers/AnuncioController');
+
 const routes = express.Router();
 
-routes.post('/usuario', UsuarioController.cadastrarUsuario);
+routes.get('/anuncio', AnuncioController.listarAnuncio);
 
+routes.post('/usuario', UsuarioController.cadastrarUsuario);
 routes.get('/usuario', UsuarioController.listarUsuarios);
 
 routes.post('/session', SessionController.criarSessao);
