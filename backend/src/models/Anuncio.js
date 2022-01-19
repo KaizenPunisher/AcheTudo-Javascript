@@ -2,11 +2,11 @@ const connection = require('../database/connection');
 const { response } = require('express');
 
 class Anuncio {
-    constructor({originalname, size, filename, url, empresa_id}){
+    constructor({originalname, size, filename, empresa_id}){
         this.imagem     = originalname
         this.tamanho    = size
         this.key        = filename
-        this.url        = url
+        this.url        = `${process.env.APP_URL}/files/${filename}`
         this.empresa_id = empresa_id
     }
 
