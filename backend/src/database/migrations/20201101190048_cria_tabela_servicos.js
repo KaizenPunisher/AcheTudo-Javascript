@@ -4,7 +4,11 @@ exports.up = function(knex) {
         
         table.increments('id').primary();
         table.string('empreendimento');
-        table.integer('adm_id');
+        table.timestamps();
+
+        table.integer('adm_id').unsigned();
+
+        table.foreign('adm_id').references('id').inTable('adm');
     });
 };
 

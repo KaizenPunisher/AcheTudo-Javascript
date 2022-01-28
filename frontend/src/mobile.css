@@ -1,0 +1,5 @@
+@media screen and (max-width:565px){
+    .principal .topo .menu ul li{
+        font-size: 80%;
+    }
+}

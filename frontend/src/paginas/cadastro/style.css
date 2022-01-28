@@ -1,6 +1,7 @@
-.cadastro-empresa{
+.cadastro-usuario{
     /*border: 1px solid black;*/
-    width: 1100px;
+    max-width: 1100px;
+    min-width: auto;
     height: auto;
     margin: auto;
 
@@ -8,18 +9,39 @@
     align-items: center;
     justify-content: center;
 }
-.cadastro-empresa .conteudo{
+.cadastro-usuario .conteudo{
     /*border: 1px solid black;*/
     width: 100%;
-    padding: 96px;
+    padding: 10px 90px 90px 90px;
     background-color: seashell;
     box-shadow: 0 0 100px rgba(0 , 0, 0, 0.1);
     border-radius: 8px;
 
-    display: flex;
-    align-items: space-between;
     justify-content: center;
 }
-.cadastro-empresa .conteudo input{
+.cadastro-usuario .conteudo .logo{
+    /*border: 1px solid blue;*/
+    width: 80px;
+    height: 80px;
+    background: no-repeat center;
+    background-size: contain;
+    margin: auto;
+}
+
+.cadastro-usuario .conteudo .cadastro-titulo{
+    /*border: 1px solid black;*/
+    font-family: Calibri;
+    width: 100%;
+    height: auto;
+}
+.cadastro-usuario .conteudo .cadastro-titulo h1{
+    /*border: 1px solid yellow;*/
+    margin: 5px 0px 0px 10px;
+    float: left;
+}
+.back-link{
+    float: right;
+}
+.cadastro-usuario .conteudo input{
     margin-top: 8px;
 }

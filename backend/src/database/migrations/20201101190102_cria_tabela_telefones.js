@@ -7,6 +7,7 @@ exports.up = function(knex) {
         table.string('numero').nullable();
         table.string('tipo').nullable();
         table.string('descricao').nullable();
+        table.timestamps();
 
         table.string('empresa_id').nullable();
 

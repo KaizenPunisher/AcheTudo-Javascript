@@ -8,10 +8,8 @@
     font-style: normal;
     src: local("Calibri"), url("./fonts/calibri.ttf") format('TTF');
 }
-
 body {
     background-color: #ffff00;
-    font-family: "Calibri";
 }
 button {
     cursor: pointer;
@@ -53,6 +51,7 @@ button {
 
 .principal .topo .titulo-local{
     /*border: 1px solid black;*/
+    font-family: Calibri;
     width: 50%;
     height: auto;
     float: left;
@@ -71,28 +70,57 @@ button {
     font-family:"Franklin Gothic Heavy";
     font-size: 13px;
     float: right;
+    margin-top: 5px;
+    margin-right: 5px;
     width: 100px;
     height: 25px;
     background: #fff;
     border: 0px;
-    color: #000;
+    color: rgb(65, 76, 124);
     text-align: center;
     text-decoration: none;
     transition: 0.5s;
+    filter: opacity(0.7);
     padding-top: 10px;
     right: 10px;
     -webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49); 
     box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49);
 }
 .principal .topo .area-usuario .entrar:hover{
-    filter: opacity(0.5);
+    filter: opacity(1.0);
     transition: 0.5s;
 }
-.principal .topo .login-empresa .sair{
+.principal .topo .area-usuario .cadastro{
+    font-family:"Franklin Gothic Heavy";
+    font-size: 13px;
+    float: right;
+    margin-top: 5px;
+    margin-right: 5px;
+    width: 100px;
+    height: 25px;
+    background: #fff;
+    border: 0px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    text-decoration: none;
+    filter: opacity(0.6);
+    transition: 0.5s;
+    padding-top: 10px;
+    right: 10px;
+    -webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49); 
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49);
+}
+.principal .topo .area-usuario .cadastro:hover{
+    transition: 0.5s;
+    filter: opacity(1.0);
+}
+
+.principal .topo .area-usuario .sair{
     border: 1px solid black;
 }
-.principal .topo .login-empresa .saudacao{
-    /*border: 1px solid black;*/
+.principal .topo .area-usuario .saudacao{
+    /*border: 3px solid black;*/
+    font-family: Calibri;
     width: auto;
     height: auto;
 }
@@ -106,42 +134,36 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr;
     list-style: none;
-    padding-top: 20px;
-    
+    margin-left: -45px;
 }
 .principal .topo .menu ul li{
     /*border: 5px solid yellow;*/
+    font-family: Calibri;
     background: #fff;
     text-align: center;
-    height: 30px;
-    margin: -20px 0px 0px -40px;
-    padding: 10px 0px 0px 0px;
+    width: 100%;
+    height: auto;
+    padding: 10px 0px 10px 0px;
     transition: 2s;
-    
 }
 .principal .topo .menu ul li:hover{
     background: #ffff00; 
     transition: 2s;
-    
 }
 
 .principal .conteudo{
     /*border: 5px solid red;*/
     width: auto;
     height: auto;
-    
 }
-
-
-/*--------------------------------------------*/
 
 form input{
     border: 1px solid #dcdce6;
-    width: 89%;
+    width: 99%;
     height: 60px;
     color: #333;
     border-radius: 8px;
-    padding: 0 24px;
+    text-align: center;
 }
 
 .button{
@@ -153,11 +175,9 @@ form input{
     color: #fff;
     font-weight: 700;
     margin-top: 16px;
-    display: inline-block;
     text-align: center;
     text-decoration: none;
     font-size: 18px;
-    line-height: 60px;
     transition: filter 0.2s;
 }
 .button:hover{
@@ -165,17 +185,26 @@ form input{
 }
 
 .back-link{
-    border: 1px solid green;
+    /*border: 1px solid green;*/
+    padding: 5px;
     display: flex;
     align-items: center;
-    margin-top: 40px;
-    color: red;
+    color: rgb(0, 0, 0);
     font-size: 18px;
     text-decoration: none;
     font-weight: bold;
-    transition: opacity 0.2s;
-    width: auto;
+    opacity: 0.8;
+    transition: 0.5s;
+    width: 90px;
 }
 .back-link:hover{
-    opacity: 0.8;
+    opacity: 1;
+    transition: 0.5s;
+}
+.voltar{
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid rgba(57, 98, 189, 0.966);
+    display: inline-block;
+    margin-right: 10px;
 }

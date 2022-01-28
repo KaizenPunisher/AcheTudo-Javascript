@@ -42,6 +42,8 @@ export default function Inicio(){
             <div className="topo">
                 <div className="area-usuario">
                     <Link className="entrar" to="/login">ENTRAR</Link>
+                    <Link className="cadastro" to="/cadastro">CADASTRO</Link>
+                    
                     <button className="sair" onClick={handleLogout} to="/" type="button">Logout</button>
                     <h3 className="saudacao">Bem vindo, {empresaRazaosocial}</h3>
                 </div>
@@ -50,9 +52,9 @@ export default function Inicio(){
                     <div className="logo" style={{ backgroundImage: `url(${logo})` }}></div>
                 </Link>
                 <div className="menu">
-                    <ul className="">
-                        <li className="">SERVIÇOS PUBLICOS</li>
-                        <li className="">COMÉRCIO</li>
+                    <ul>
+                        <li>SERVIÇOS PUBLICOS</li>
+                        <li>COMÉRCIO</li>
                     </ul>
                 </div>
             </div>
