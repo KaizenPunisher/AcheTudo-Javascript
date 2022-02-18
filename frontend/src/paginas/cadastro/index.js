@@ -19,10 +19,9 @@ export default function Cadastro(){
             email,
             password
         };
-        console.log(data);
 
         try{
-            const response =  await api.post('empresa', data);
+            const response =  await api.post('usuario', data);
             alert(`Seu ID de acesso: ${response.data.id}`);
             //history.push("/");
             
@@ -41,27 +40,27 @@ export default function Cadastro(){
                 <section>
                     <div className='cadastro-titulo'>
                         <h1>Cadastro</h1>
-                        <Link className="back-link" to="/"><div className='voltar'></div>Voltar</Link>
+                        <Link className="back-link" to="/"><div className='voltar'></div>VOLTAR</Link>
                         <div style={{clear: "both"}}></div>
                     </div>
                 </section>
                 <form onSubmit={handleCadastro}>
                     <input 
-                        placeholder="Nome"
+                        placeholder="NOME"
                         value={nome}
                         onChange={e => setNome(e.target.value)} 
                     />
                     <input 
-                        placeholder="Email"
+                        placeholder="EMAIL"
                         value={email}
                         onChange={e => setEmail(e.target.value)}  
                     />
                     <input 
-                        placeholder="Senha"
+                        placeholder="SENHA"
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                     />
-                    <button className="button" type="submit">Cadastrar</button>
+                    <button className="button" type="submit">CADASTRAR</button>
                 </form>
             </div>
         </div>

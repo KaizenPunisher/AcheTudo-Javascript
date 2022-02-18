@@ -57,9 +57,10 @@ module.exports = {
             nome, 
             cnpj, 
             cpf, 
-            orgao_publico, 
+            setor, 
             horario_de_atendimento, 
             descricao,
+            redes_sociais,
             servico_id,
             logradouro,
             cep,
@@ -77,9 +78,10 @@ module.exports = {
             nome,
             cnpj,
             cpf,
-            orgao_publico,
+            setor,
             horario_de_atendimento,
             descricao,
+            redes_sociais,
             servico_id
         });
         

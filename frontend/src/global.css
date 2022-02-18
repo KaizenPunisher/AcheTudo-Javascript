@@ -14,6 +14,12 @@ body {
 button {
     cursor: pointer;
 }
+input[type="file"] {
+    display: none;
+}
+.clear{
+    clear: both;
+}
 
 .principal{
     position:relative;
@@ -44,18 +50,18 @@ button {
     height: 80px;
     background: no-repeat center;
     background-size: contain;
-    float: left;
-    margin-left: 10px;
-    margin-bottom: 5px;
+    margin: auto;
 }
 
 .principal .topo .titulo-local{
     /*border: 1px solid black;*/
-    font-family: Calibri;
-    width: 50%;
+    font-family: 'Calibri';
+    width: auto;
     height: auto;
     float: left;
-    padding: 0px 0px 0px 5px;
+    width: 160px;
+    height: 100px;
+    padding: 0px 0px 0px 50px;
 }
 
 .principal .topo .area-usuario {
@@ -138,10 +144,10 @@ button {
 }
 .principal .topo .menu ul li{
     /*border: 5px solid yellow;*/
-    font-family: Calibri;
+    font-family: 'Calibri';
     background: #fff;
     text-align: center;
-    width: 100%;
+    width: 101%;
     height: auto;
     padding: 10px 0px 10px 0px;
     transition: 2s;
@@ -167,6 +173,7 @@ form input{
 }
 
 .button{
+    font-family:"Franklin Gothic Heavy";
     width: 100%;
     height: 60px;
     background: rgba(57, 98, 189, 0.966);
@@ -186,11 +193,12 @@ form input{
 
 .back-link{
     /*border: 1px solid green;*/
+    font-family:"Franklin Gothic Heavy";
+    color: rgb(0, 0, 0);
+    font-size: 13px;
     padding: 5px;
     display: flex;
     align-items: center;
-    color: rgb(0, 0, 0);
-    font-size: 18px;
     text-decoration: none;
     font-weight: bold;
     opacity: 0.8;
@@ -206,5 +214,23 @@ form input{
     border-bottom: 15px solid transparent;
     border-right: 15px solid rgba(57, 98, 189, 0.966);
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 5px;
+}
+
+.botao-enviar-imagem{
+    font-family:"Franklin Gothic Heavy";
+    cursor: pointer;
+    display: block;
+    padding-top: 20px;
+    font-size: 18px;
+    align-items: center;
+    width: auto;
+    height: 40px;
+    background: rgba(57, 98, 189, 0.966);
+    border: 0px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: filter 0.2s;
 }

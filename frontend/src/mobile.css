@@ -2,4 +2,12 @@
     .principal .topo .menu ul li{
         font-size: 80%;
     }
+    .principal .topo .logo{
+        /*border: 1px solid blue;*/
+        margin: 0px 0px 0px 5px;
+        float: left;
+    }
+    .principal .topo .titulo-local{
+        padding: 0px 0px 0px 10px;
+    }
 }

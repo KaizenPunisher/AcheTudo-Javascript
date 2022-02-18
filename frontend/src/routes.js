@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Login from './paginas/login';
 import Cadastro from './paginas/cadastro';
-import Usuario from './paginas/usuario';
+import PainelDeControle from './paginas/paineldecontrole';
 import Inicio from './paginas/inicio';
 
 export default function Routes(){
@@ -13,7 +13,7 @@ export default function Routes(){
                 <Route path="/" exact component={Inicio} />
                 <Route path="/cadastro" component={Cadastro} />
                 <Route path="/login" component={Login} />
-                <Route path="/usuario" component={Usuario} />
+                <Route path="/paineldecontrole" component={PainelDeControle} />
             </Switch>
         </BrowserRouter>
     );

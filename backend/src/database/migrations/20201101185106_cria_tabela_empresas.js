@@ -7,9 +7,10 @@ exports.up = function(knex) {
         table.string('nome_fantasia').nullable();
         table.string('cnpj').nullable();
         table.string('cpf').nullable();
-        table.boolean('orgao_publico').nullable();
+        table.string('setor').nullable();
         table.string('horario_de_atendimento').nullable();
         table.string('descricao').nullable();
+        table.string('redes_sociais').nullable();
         table.timestamps();
 
         table.integer('servico_id').unsigned();
