@@ -39,7 +39,7 @@ routes.get('/empresa',
         page: Joi.number(),
         })
     }), EmpresaController.listarEmpresas);
-routes.post('/empresa',
+routes.post('/empresa',/*
     multer(multerConfig).single('file'),/*
     celebrate({[Segments.BODY]: Joi.object().keys({
             razao_social: Joi.string().required(),

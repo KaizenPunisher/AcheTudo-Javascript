@@ -35,7 +35,7 @@ export default function PainelDeControle(){
         <div className="painel-de-controle">
             <div className="conteudo">
                 <Link to="/">
-                        <div className="logo" style={{ backgroundImage: `url(${logo})` }}></div>
+                    <div className="logo" style={{ backgroundImage: `url(${logo})` }}></div>
                 </Link>
                 <section>
                     <div className='painel-de-controle-titulo'>

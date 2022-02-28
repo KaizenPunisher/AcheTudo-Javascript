@@ -47,18 +47,17 @@ module.exports = {
     },
 
     async cadastrarEmpresa(request, response) {
-        console.log(request.file);
-        /*
+        //console.log(request.file);
+    
         const id = crypto.randomBytes(4).toString('HEX');
         
         const { 
-            razao_social, 
-            nome_fantasia, 
-            nome, 
-            cnpj, 
-            cpf, 
-            setor, 
-            horario_de_atendimento, 
+            razao_social,
+            nome_fantasia,
+            cnpj,
+            cpf,
+            setor,
+            horario_de_atendimento,
             descricao,
             redes_sociais,
             servico_id,
@@ -75,7 +74,6 @@ module.exports = {
             id, 
             razao_social,
             nome_fantasia,
-            nome,
             cnpj,
             cpf,
             setor,
@@ -97,11 +95,13 @@ module.exports = {
         });
 
         return response.json({ id });
-        */
+    
+       /*
         const anuncio = new Anuncio(request.file);
         await anuncio.cadastrar();
 
         return response.json({Hello: 'word'});
+        */
     },
 
     async deletarEmpresa(request, response) {

@@ -19,10 +19,10 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 * Multer - Middleware que facilita receber arquivos binários nas requisições. ( npm install multer )
 * Morgan - Middleware para logs de requisições HTTP ( npm install morgan )
 * Multer S3 - Biblioteca para realizar store na amazon s3
+* Dotenv - Gerenciamento de variavel ambiente. ( npm install dotenv )
 
 ### (Metodo TDD) Tecnologias
 * Jest - Framework de teste em JavaScript projetado para garantir a correção de qualquer código JavaScript. ( npm instal jest -D >> npx jest --init )
-* Dotenv - Gerenciamento de variavel ambiente. ( npm install dotenv )
 * Supertest - Estrutura cliente HTTP para simular testes na aplicação. ( npm install supertest -D )
 
 ### (Frontend) Tecnologias
