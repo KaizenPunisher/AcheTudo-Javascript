@@ -4,10 +4,27 @@ import './style.css';
 import api from '../../services/api';
 import logo from "../../imagens/logo.svg";
 
-export default function PainelDeControle(){
-    const [nome, setNome] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+export default function Cadastro(){
+    const [razao_social, setRazaoSocial] = useState('');
+    const [nome_fantasia, setNomeFantasia] = useState('');
+    const [cnpj, setCnpj] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [setor, setSetor] = useState('');
+    const [horario_de_atendimento, setHorarioDeAtendimento] = useState('');
+    const [descricao, setDescricao] = useState('');
+    const [redes_sociais, setRedesSociais] = useState('');
+    const [servico_id, setServicoId] = useState('');
+    const [logradouro, setLogradouro] = useState('');
+    const [cep, setCep] = useState('');
+    const [bairro, setBairro] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [regiao, setRegiao] = useState('');
+    const [uf, setUf] = useState('');
+    const [descricao_endereco, setDescricaoEndereco] = useState('');
+    const [numero, setNumero] = useState('');
+    const [ddd, setDdd] = useState('');
+    const [tipo, setTipo] = useState('');
+    const [descricao_telefone, setDescricaoTelefone] = useState('');
 
     const history = useHistory();
     
@@ -15,13 +32,31 @@ export default function PainelDeControle(){
         e.preventDefault();
         
         const data = {
-            nome,
-            email,
-            password
+            razao_social,
+            nome_fantasia,
+            cnpj,
+            cpf,
+            setor,
+            horario_de_atendimento,
+            descricao,
+            redes_sociais,
+            servico_id,
+            logradouro,
+            cep,
+            bairro,
+            cidade,
+            regiao,
+            uf,
+            descricao_endereco,
+            numero,
+            ddd,
+            tipo,
+            descricao_telefone
         };
 
         try{
-            const response =  await api.post('usuario', data);
+            console.log(data);
+            const response =  await api.post('paineldecontrole', data);
             alert(`Seu ID de acesso: ${response.data.id}`);
             //history.push("/");
             
@@ -55,8 +90,8 @@ export default function PainelDeControle(){
                                 <label>Razão Social</label>
                                 <input 
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
+                                    value={razao_social}
+                                    onChange={e => setRazaoSocial(e.target.value)}  
                                 />
                                 <div className="clear"></div>
                             </div>
@@ -64,8 +99,8 @@ export default function PainelDeControle(){
                                 <label>Nome Fantasia</label>
                                 <input 
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
+                                    value={nome_fantasia}
+                                    onChange={e => setNomeFantasia(e.target.value)}  
                                 />
                                 <div className="clear"></div>
                             </div>
@@ -73,8 +108,8 @@ export default function PainelDeControle(){
                                 <label>CNPJ</label>
                                 <input 
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
+                                    value={cnpj}
+                                    onChange={e => setCnpj(e.target.value)}  
                                 />
                                 <div className="clear"></div>
                             </div>
@@ -82,26 +117,32 @@ export default function PainelDeControle(){
                                 <label>CPF</label>
                                 <input 
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
+                                    value={cpf}
+                                    onChange={e => setCpf(e.target.value)}  
                                 />
                                 <div className="clear"></div>
                             </div>
                             <div className="dados">
                                 <label>Setor</label>
-                                <input 
+                                <select 
+                                    name="select"
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
-                                />
+                                    value={setor}
+                                    onChange={e => setSetor(e.target.value)}
+                                    >
+                                    <option>Escolha uma opção</option>
+                                    <option value="Padaria">Privado</option>
+                                    <option value="ONG">ONG</option>
+                                    <option value="ONG">Autonomo</option>
+                                </select>
                                 <div className="clear"></div>
                             </div>
                             <div className="dados">
                                 <label>Horario de<br/>atendimento</label>
                                 <input 
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
+                                    value={horario_de_atendimento}
+                                    onChange={e => setHorarioDeAtendimento(e.target.value)}  
                                 />
                                 <div className="clear"></div>
                             </div>
@@ -109,8 +150,8 @@ export default function PainelDeControle(){
                                 <label>Descrição da<br/>empresa</label>
                                 <textarea
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
+                                    value={descricao}
+                                    onChange={e => setDescricao(e.target.value)}  
                                 />
                                 <div className="clear"></div>
                             </div>
@@ -118,8 +159,8 @@ export default function PainelDeControle(){
                                 <label>Rede Sociais</label>
                                 <textarea
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
+                                    value={redes_sociais}
+                                    onChange={e => setRedesSociais(e.target.value)} 
                                 />
                                 <div className="clear"></div>
                             </div>
@@ -128,21 +169,22 @@ export default function PainelDeControle(){
                                 <select 
                                     name="select"
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}
+                                    value={servico_id}
+                                    onChange={e => setServicoId(e.target.value)}
                                     >
-                                    <option value="valor1">Valor 1</option>
-                                    <option value="valor2" selected>Valor 2</option>
-                                    <option value="valor3">Valor 3</option>
+                                    <option>Escolha uma opção</option>
+                                    <option value="1">Padaria</option>
+                                    <option value="2">Restaurante</option>
                                 </select>
                                 <div className="clear"></div>
                             </div>
+                            
                             <div className="dados">
                                 <label>Endereço</label>
                                 <input 
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
+                                    value={logradouro}
+                                    onChange={e => setLogradouro(e.target.value)}  
                                 />
                                 <div className="clear"></div>
                             </div>
@@ -150,8 +192,8 @@ export default function PainelDeControle(){
                                 <label>CEP</label>
                                 <input 
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
+                                    value={cep}
+                                    onChange={e => setCep(e.target.value)}  
                                 />
                                 <div className="clear"></div>
                             </div>
@@ -159,8 +201,8 @@ export default function PainelDeControle(){
                                 <label>Bairro</label>
                                 <input 
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
+                                    value={bairro}
+                                    onChange={e => setBairro(e.target.value)}  
                                 />
                                 <div className="clear"></div>
                             </div>
@@ -168,8 +210,8 @@ export default function PainelDeControle(){
                                 <label>Cidade</label>
                                 <input 
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
+                                    value={cidade}
+                                    onChange={e => setCidade(e.target.value)}  
                                 />
                                 <div className="clear"></div>
                             </div>
@@ -177,8 +219,8 @@ export default function PainelDeControle(){
                                 <label>Região</label>
                                 <input 
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
+                                    value={regiao}
+                                    onChange={e => setRegiao(e.target.value)}  
                                 />
                                 <div className="clear"></div>
                             </div>
@@ -186,8 +228,8 @@ export default function PainelDeControle(){
                                 <label>Estado</label>
                                 <input 
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
+                                    value={uf}
+                                    onChange={e => setUf(e.target.value)}  
                                 />
                                 <div className="clear"></div>
                             </div>
@@ -195,17 +237,8 @@ export default function PainelDeControle(){
                                 <label>Ponto de<br/>Referência</label>
                                 <input 
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
-                                />
-                                <div className="clear"></div>
-                            </div>
-                            <div className="dados">
-                                <label>Telefone</label>
-                                <input 
-                                    placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
+                                    value={descricao_endereco}
+                                    onChange={e => setDescricaoEndereco(e.target.value)}  
                                 />
                                 <div className="clear"></div>
                             </div>
@@ -213,8 +246,17 @@ export default function PainelDeControle(){
                                 <label>DDD</label>
                                 <input 
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}  
+                                    value={ddd}
+                                    onChange={e => setDdd(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>Telefone</label>
+                                <input 
+                                    placeholder="Nome de registro"
+                                    value={numero}
+                                    onChange={e => setNumero(e.target.value)}  
                                 />
                                 <div className="clear"></div>
                             </div>
@@ -223,11 +265,12 @@ export default function PainelDeControle(){
                                 <select 
                                     name="select"
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}
+                                    value={tipo}
+                                    onChange={e => setTipo(e.target.value)}
                                     >
+                                    <option>Escolha uma opção</option>
                                     <option value="valor1">Valor 1</option>
-                                    <option value="valor2" selected>Valor 2</option>
+                                    <option value="valor2">Valor 2</option>
                                     <option value="valor3">Valor 3</option>
                                 </select>
                                 <div className="clear"></div>
@@ -237,36 +280,32 @@ export default function PainelDeControle(){
                                 <select 
                                     name="select"
                                     placeholder="Nome de registro"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}
+                                    value={descricao_telefone}
+                                    onChange={e => setDescricaoTelefone(e.target.value)}
                                     >
+                                    <option>Escolha uma opção</option>
                                     <option value="valor1">Valor 1</option>
-                                    <option value="valor2" selected>Valor 2</option>
+                                    <option value="valor2" >Valor 2</option>
                                     <option value="valor3">Valor 3</option>
                                 </select>
                                 <div className="clear"></div>
                             </div>
+                            {/*
                             <label for="arquivo" className="botao-enviar-imagem">ENVIAR IMAGEM DO ANUNCIO</label>
                             <input 
                                 id="arquivo"
                                 type="file"
                                 placeholder="ENVIAR"
-                                value={nome}
-                                onChange={e => setNome(e.target.value)}
+                                value={imagem}
+                                onChange={e => setImagem(e.target.value)}
                             />
+                            */}
                             <button className="button" type="submit">CADASTRAR ANUNCIO</button>
                         </form>
                     </div>
                     <div className='painel-de-controle-acesso'>
-                        <form onSubmit={handleCadastro}>
-                            <h3>Alterar a senha</h3>
-                            <input 
-                                placeholder="SENHA"
-                                value={password}
-                                onChange={e => setPassword(e.target.value)}
-                            />
-                            <button className="button" type="submit">SALVAR</button>
-                        </form>
+                        <h3>Alterar a senha</h3>
+                        
                     </div>
                 </div>
             </div>

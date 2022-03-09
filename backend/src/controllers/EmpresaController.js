@@ -1,3 +1,4 @@
+const Empresa = require("../models/Empresa");
 const connection = require('../database/connection');
 const { listarTelefone } = require('./TelefoneController');
 const crypto = require('crypto');
@@ -39,6 +40,7 @@ module.exports = {
                 'telefones.descricao as telefone_descricao'
             ]);
         ;
+        console.log(empresas);
         
         response.header('X-Total-Count', count['count(*)']);
 
@@ -46,11 +48,17 @@ module.exports = {
         
     },
 
-    async cadastrarEmpresa(request, response) {
+    async cadastrarEmpresa(request, response){
+        const empresa = new Empresa(request.body);
+        const cadastrar = await empresa.cadastrar();
+        return response.json(cadastrar);
+    },
+    
+    async cadastrarEmpres(request, response) {
         //console.log(request.file);
     
-        const id = crypto.randomBytes(4).toString('HEX');
-        
+        //const id = crypto.randomBytes(4).toString('HEX');
+        /*
         const { 
             razao_social,
             nome_fantasia,
@@ -70,8 +78,7 @@ module.exports = {
             descricao_endereco
         } = request.body;
         
-        await connection('empresas').insert({
-            id, 
+        await connection('empresas').insert({ 
             razao_social,
             nome_fantasia,
             cnpj,
@@ -95,7 +102,7 @@ module.exports = {
         });
 
         return response.json({ id });
-    
+        */
        /*
         const anuncio = new Anuncio(request.file);
         await anuncio.cadastrar();
@@ -103,7 +110,6 @@ module.exports = {
         return response.json({Hello: 'word'});
         */
     },
-
     async deletarEmpresa(request, response) {
         const { id } = request.params;
         const empresa_id = request.headers.authorization;

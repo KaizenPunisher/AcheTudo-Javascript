@@ -33,6 +33,7 @@ routes.post('/session', SessionController.criarSessao);
 routes.post('/sessao', SessaoController.criarSessao);
 
 routes.get('/paineldecontrole', AutenticacaoUsuario, PainelDeControleController.inicio);
+routes.post('/paineldecontrole', PainelDeControleController.cadastrarEmpresa);
 
 routes.get('/empresa', 
     celebrate({[Segments.QUERY]: Joi.object().keys({

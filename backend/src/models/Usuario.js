@@ -1,7 +1,7 @@
 const connection = require('../database/connection');
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
-const { response } = require('express');
+const crypto = require('crypto');
 
 class Usuario {
     constructor({nome, email, password}){
@@ -21,16 +21,19 @@ class Usuario {
     }
 
     async cadastrar() {
+        const id = crypto.randomBytes(4).toString('HEX');
+        this.id = id;
         const password_hash = await bcrypt.hash(this.password, 8);
         this.password_hash = password_hash;
 
         const [cadastro] = await connection('usuarios').insert({
+            id: this.id,
             nome: this.nome,
             email: this.email,
             password_hash: this.password_hash,
         });
         
-        return {id: cadastro};
+        return {id: this.id};
     }
 
     async gerarToken(){

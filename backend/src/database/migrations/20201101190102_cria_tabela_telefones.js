@@ -3,8 +3,8 @@ exports.up = function(knex) {
     return knex.schema.createTable('telefones', function(table){
         
         table.increments('id');
-        table.string('numero').nullable();
         table.string('ddd').nullable();
+        table.string('numero').nullable();
         table.string('tipo').nullable();
         table.string('descricao').nullable();
         table.timestamps();

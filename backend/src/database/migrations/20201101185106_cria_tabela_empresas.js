@@ -2,7 +2,7 @@ exports.up = function(knex) {
     
     return knex.schema.createTable('empresas', function(table){
         
-        table.string('id').primary();
+        table.increments('id').primary();
         table.string('razao_social').nullable();
         table.string('nome_fantasia').nullable();
         table.string('cnpj').nullable();
