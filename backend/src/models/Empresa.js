@@ -10,7 +10,8 @@ class Empresa {
         horario_de_atendimento, 
         descricao, 
         redes_sociais, 
-        servico_id
+        servico_id,
+        usuario_id
     })
     {
         this.razao_social           = razao_social 
@@ -22,6 +23,7 @@ class Empresa {
         this.descricao              = descricao
         this.redes_sociais          = redes_sociais
         this.servico_id             = servico_id
+        this.usuario_id             = usuario_id
     }
 
     async listar(){
@@ -45,6 +47,7 @@ class Empresa {
             descricao:              this.descricao,
             redes_sociais:          this.redes_sociais,
             servico_id:             this.servico_id,
+            usuario_id:             this.usuario_id,
         });
         
         return {id: cadastro};

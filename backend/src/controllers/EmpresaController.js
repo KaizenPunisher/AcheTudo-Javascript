@@ -20,10 +20,10 @@ module.exports = {
             .limit(20)
             .offset((page-1)*20)
             .select([
+                'usuario_id',
                 'empresas.*',
                 'servicos.id as servico_id',
                 'servicos.empreendimento',
-                'servicos.adm_id',
                 'enderecos.id as endereco_id',
                 'enderecos.logradouro',
                 'enderecos.cep',

@@ -6,7 +6,7 @@ exports.up = function(knex) {
         table.string('empreendimento');
         table.timestamps();
 
-        table.integer('adm_id').unsigned();
+        table.integer('adm_id').nullable();
 
         table.foreign('adm_id').references('id').inTable('adm');
     });

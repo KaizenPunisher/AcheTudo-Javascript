@@ -4,24 +4,27 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
     async criarSessao(request, response) {
-        const { email, password } = request.body;
-        const usuario = new Usuario(request.body);
-        //console.log(usuario);
-        const encontrarUsuario = await usuario.encontrar();
+        //const { email, senha } = request.body;
+        const usuarioLogin = new Usuario(request.body);
+        const usuario = await usuarioLogin.encontrar(usuarioLogin.email);
 
-        if (!encontrarUsuario){
+        if (!usuario){
             return response.status(401).json({ error: 'Usuario não existe'});
         }
-        //console.log(encontrarUsuario.password_hash);
-        const verificarSenha = await bcrypt.compare(password, encontrarUsuario.password_hash);
+        
+        const verificarSenha = await bcrypt.compare(request.body.senha, usuario.password_hash);
 
         if (!verificarSenha){
             return response.status(401).json({ error: 'Senha incorreta'});
         }
 
+        const token = await usuarioLogin.gerarToken(usuario.email);
+        
+        response.header('Authorization', token);
+
         return response.json({ 
             usuario,
-            token: usuario.gerarToken()
+            token: token
         });
     }
 }

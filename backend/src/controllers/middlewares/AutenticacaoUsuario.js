@@ -12,7 +12,7 @@ module.exports = async (request, response, next) => {
     const [, token] = autorizacaoHeader.split('  ');
 
     try {
-        console.log(token);
+        //console.log(token);
         //console.log(process.env.APP_SECRET);
         
         const decoded = await promisify(jwt.verify(token, process.env.APP_SECRET))();

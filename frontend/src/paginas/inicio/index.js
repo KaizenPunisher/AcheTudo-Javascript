@@ -34,6 +34,7 @@ export default function Inicio(){
 
     function handleLogout(){
         localStorage.clear();
+        sessionStorage.clear();
         history.push('/');
     }
 

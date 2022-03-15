@@ -3,37 +3,38 @@ const { celebrate, Segments, Joi } = require('celebrate');
 const multer = require('multer');
 const multerConfig = require('./config/multer');
 
-const SessionController = require('./controllers/SessionController');
-
 const SessaoController = require('./controllers/SessaoController');
-
 const PainelDeControleController = require('./controllers/PainelDeControleController');
 const AutenticacaoUsuario = require('./controllers/middlewares/AutenticacaoUsuario');
-
 const EmpresaController = require('./controllers/EmpresaController');
-
 const EnderecoController = require('./controllers/EnderecoController');
-
 const ServicoController = require('./controllers/ServicoController');
-
 const TelefoneController = require('./controllers/TelefoneController');
-
 const UsuarioController = require('./controllers/UsuarioController');
-
 const AnuncioController = require('./controllers/AnuncioController');
 
 const routes = express.Router();
+
+routes.get('/inicio', 
+    celebrate({[Segments.QUERY]: Joi.object().keys({
+        page: Joi.number(),
+        })
+    }), EmpresaController.listarEmpresas);
+routes.get('/principal', 
+celebrate({[Segments.QUERY]: Joi.object().keys({
+    page: Joi.number(),
+    })
+}), EmpresaController.listarEmpresas);
+
+//routes.get('/paineldecontrole/:id', AutenticacaoUsuario, PainelDeControleController.listarEmpresa);
+routes.post('/paineldecontrole', PainelDeControleController.cadastrarEmpresa);
 
 routes.get('/anuncio', AnuncioController.listarAnuncio);
 
 routes.post('/usuario', UsuarioController.cadastrarUsuario);
 routes.get('/usuario', UsuarioController.listarUsuarios);
 
-routes.post('/session', SessionController.criarSessao);
 routes.post('/sessao', SessaoController.criarSessao);
-
-routes.get('/paineldecontrole', AutenticacaoUsuario, PainelDeControleController.inicio);
-routes.post('/paineldecontrole', PainelDeControleController.cadastrarEmpresa);
 
 routes.get('/empresa', 
     celebrate({[Segments.QUERY]: Joi.object().keys({
