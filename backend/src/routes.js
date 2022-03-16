@@ -26,7 +26,7 @@ celebrate({[Segments.QUERY]: Joi.object().keys({
     })
 }), EmpresaController.listarEmpresas);
 
-//routes.get('/paineldecontrole/:id', AutenticacaoUsuario, PainelDeControleController.listarEmpresa);
+routes.get('/paineldecontrole/:id', AutenticacaoUsuario, PainelDeControleController.encontrarEmpresa);
 routes.post('/paineldecontrole', PainelDeControleController.cadastrarEmpresa);
 
 routes.get('/anuncio', AnuncioController.listarAnuncio);

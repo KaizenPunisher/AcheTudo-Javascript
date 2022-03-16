@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import './style.css';
 import api from '../../services/api';
+import { AuthContext } from '../../contexts/autorizacao';
 
 import imagem from '../../imagens/imagem.jpg';
 import logo from "../../imagens/logo.svg";
 
 export default function Inicio(){
-    const [empresas, setEmpresas] = useState([]);
+    const { logout } = useContext(AuthContext);
 
-    const history = useHistory();
+    const [empresas, setEmpresas] = useState([]);
 
     const empresaId = localStorage.getItem('empresaId');
     const empresaRazaosocial = localStorage.getItem('empresaRazaosocial');
@@ -19,7 +20,7 @@ export default function Inicio(){
             setEmpresas(response.data);
         })
     });
-
+    /*
     async function handleDeletarEmpresas(id){
         try {
             await api.delete(`empresa/${id}`, {
@@ -31,11 +32,9 @@ export default function Inicio(){
             alert('erro ao deletar');
         }
     }
-
-    function handleLogout(){
-        localStorage.clear();
-        sessionStorage.clear();
-        history.push('/');
+    */
+    const handleLogout = () => {
+        logout();
     }
 
     return (

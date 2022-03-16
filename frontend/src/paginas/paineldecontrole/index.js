@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './style.css';
 import api from '../../services/api';
 import logo from "../../imagens/logo.svg";
@@ -26,7 +26,7 @@ export default function Cadastro(){
     const [tipo, setTipo] = useState('');
     const [descricao_telefone, setDescricaoTelefone] = useState('');
 
-    const history = useHistory();
+    //const history = useHistory();
     
     async function handleCadastro(e){
         e.preventDefault();

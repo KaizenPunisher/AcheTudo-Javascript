@@ -15,7 +15,7 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 * Cors - (Cross-origin Resource Sharing) é um mecanismo utilizado pelos navegadores para compartilhar recursos entre diferentes origens. O CORS é uma especificação do W3C e faz uso de headers do HTTP para informar aos navegadores se determinado recurso pode ser ou não acessado. ( npm install cors )
 * Celebrate - Ferramenta para validação. É uma estrutura que faz a união do Joi com Express informando os erros de validação através de JSON ( npm install celebrate )
 * Bcryptjs -  Biblioteca para encriptação de dados - ( npm add bcryptjs )
-* Jsonwebtoken - JSON Web é uma forma de garantir a autenticação e autorização de APIs de maneira bem simples e segura, sendo o JWT um padrão para segurança de APIs RESTful ( npm add jsonwebtoken )
+* Jsonwebtoken - JWT é uma forma de garantir a autenticação e autorização de APIs de maneira bem simples e segura, sendo o JWT um padrão para segurança de APIs RESTful ( npm add jsonwebtoken )
 * Multer - Middleware que facilita receber arquivos binários nas requisições. ( npm install multer )
 * Morgan - Middleware para logs de requisições HTTP ( npm install morgan )
 * Multer S3 - Biblioteca para realizar store na amazon s3

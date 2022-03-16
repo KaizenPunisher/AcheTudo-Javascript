@@ -1,24 +1,25 @@
-import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/autorizacao';
 import './style.css';
 
 import api from '../../services/api';
 import logo from "../../imagens/logo.svg";
 
 export default function Login() {
+    const { autenticado, login } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-    const history = useHistory();
 
     async function handleLogin(e){
         e.preventDefault();
-
         try{
             const response = await api.post('sessao', { email, senha });
             
-            sessionStorage.setItem('nome', response.data.usuario.nome);
-            sessionStorage.setItem('email', response.data.usuario.email);
-            //history.push('/');
+            login(response.data);
+            navigate("/paineldecontrole");
         } catch (error){
             alert('Falha no login');
         }
@@ -34,6 +35,7 @@ export default function Login() {
                     <div className='cadastro-titulo'>
                         <h1>ENTRAR</h1>
                         <Link className="back-link" to="/"><div className='voltar'></div>VOLTAR</Link>
+                        <h3>--- {String(autenticado)} ---</h3>
                         <div style={{clear: "both"}}></div>
                     </div>
                 </section>

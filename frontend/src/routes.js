@@ -1,20 +1,43 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { 
+    BrowserRouter as Routers, 
+    Navigate, 
+    Route, 
+    Routes, 
+} from 'react-router-dom';
 
 import Login from './paginas/login';
 import Cadastro from './paginas/cadastro';
 import PainelDeControle from './paginas/paineldecontrole';
 import Inicio from './paginas/inicio';
 
-export default function Routes(){
+import { AuthProvider, AuthContext } from './contexts/autorizacao';
+
+export default function AppRoutes(){
+    const Private = ({children}) => {
+        const { autenticado, loading } = useContext(AuthContext);
+
+        if(loading){
+            return <div className="loading">CARREGANDO...</div>
+        }
+
+        if (!autenticado) {
+            return <Navigate to="/login" />
+        }
+
+        return children;
+    };
+
     return(
-        <BrowserRouter>
-            <Switch>
-                <Route path="/" exact component={Inicio} />
-                <Route path="/cadastro" component={Cadastro} />
-                <Route path="/login" component={Login} />
-                <Route path="/paineldecontrole" component={PainelDeControle} />
-            </Switch>
-        </BrowserRouter>
+        <Routers>
+            <AuthProvider>
+                <Routes>
+                    <Route exact path="/" element={<Inicio />} />
+                    <Route exact path="/cadastro" element={<Cadastro />} />
+                    <Route exact path="/login" element={<Login />} />
+                    <Route exact path="/paineldecontrole" element={<Private><PainelDeControle /></Private>} />
+                </Routes>
+            </AuthProvider>
+        </Routers>
     );
 }

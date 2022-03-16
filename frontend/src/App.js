@@ -1,11 +1,11 @@
 import React from 'react';
-import Routes from './routes';
 import './global.css';
 import './mobile.css';
+import AppRoutes from './routes';
 
 function App() {
   return (
-    <Routes />
+    <AppRoutes />
   );
 }
 

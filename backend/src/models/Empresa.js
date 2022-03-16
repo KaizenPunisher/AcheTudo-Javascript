@@ -32,7 +32,13 @@ class Empresa {
     }
 
     async encontrar(){
-        const [empresa] = await connection('empresas').where('email', this.email).select('*');
+        const [empresa] = await 
+            connection('empresas')
+            .where('usuario_id', this.usuario_id)
+            .select('usuario_id')
+            .first()
+        ;
+        
         return empresa;
     }
 
