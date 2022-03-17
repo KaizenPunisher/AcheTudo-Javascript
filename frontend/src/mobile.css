@@ -1,13 +1,27 @@
 @media screen and (max-width:565px){
-    .principal .topo .menu ul li{
-        font-size: 80%;
-    }
     .principal .topo .logo{
         /*border: 1px solid blue;*/
-        margin: 0px 0px 0px 5px;
+        margin: 0px 0px 0px 50px;
         float: left;
     }
     .principal .topo .titulo-local{
         padding: 0px 0px 0px 10px;
     }
+
+    /* AREA USUARIO */
+    .principal .topo .area-usuario {
+        width: 30%;
+    }
+    .principal .topo .area-usuario .fazeranuncio{
+        margin-top: 0px;
+    }
+
+    /* MENU */
+    .principal .topo .menu ul li{
+        font-size: 80%;
+    }
+   
+    
+
+    
 }

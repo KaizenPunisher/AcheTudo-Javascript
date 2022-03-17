@@ -7,7 +7,7 @@ import api from '../../services/api';
 import logo from "../../imagens/logo.svg";
 
 export default function Login() {
-    const { autenticado, login } = useContext(AuthContext);
+    const { login } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
@@ -35,7 +35,6 @@ export default function Login() {
                     <div className='cadastro-titulo'>
                         <h1>ENTRAR</h1>
                         <Link className="back-link" to="/"><div className='voltar'></div>VOLTAR</Link>
-                        <h3>--- {String(autenticado)} ---</h3>
                         <div style={{clear: "both"}}></div>
                     </div>
                 </section>

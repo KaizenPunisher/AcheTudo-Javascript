@@ -17,16 +17,17 @@ export const AuthProvider = ({children}) => {
 
         setLoading(false);
     }, []);
-
+    
     const login = (response) => {
 
-        console.log(response);
         const usuarioLogado = JSON.stringify(response.usuario);
         const token = response.token;
 
         localStorage.setItem('usuario', usuarioLogado);
         localStorage.setItem('token', token);
+    
         setUser({usuarioLogado});
+        
     };
     
     const logout = () => {
@@ -34,7 +35,6 @@ export const AuthProvider = ({children}) => {
         localStorage.clear();
         localStorage.clear();
         navigate('/login');
-        console.log('logout');
     };
         
     return (

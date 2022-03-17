@@ -9,16 +9,25 @@ import logo from "../../imagens/logo.svg";
 
 export default function Inicio(){
     const { logout } = useContext(AuthContext);
-
+    const [nome, setNome] = useState();
     const [empresas, setEmpresas] = useState([]);
 
-    const empresaId = localStorage.getItem('empresaId');
-    const empresaRazaosocial = localStorage.getItem('empresaRazaosocial');
-
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    
     useEffect(() => {
         api.get('empresa').then(response => {
             setEmpresas(response.data);
-        })
+        });
+
+        if(usuario !== null){
+            setNome(usuario.nome)
+
+            document.getElementById("saudacao").style.display = "block";
+            document.getElementById("fazeranuncio").style.display = "block";
+            document.getElementById("sair").style.display = "block";
+            document.getElementById("cadastro").style.display = "none";
+            document.getElementById("entrar").style.display = "none";
+        };
     });
     /*
     async function handleDeletarEmpresas(id){
@@ -41,11 +50,12 @@ export default function Inicio(){
         <div className="principal">
             <div className="topo">
                 <div className="area-usuario">
-                    <Link className="entrar" to="/login">ENTRAR</Link>
-                    <Link className="cadastro" to="/cadastro">CADASTRO</Link>
-                    
-                    <button className="sair" onClick={handleLogout} to="/" type="button">Logout</button>
-                    <h3 className="saudacao">Bem vindo, {empresaRazaosocial}</h3>
+                    <Link className="entrar" id='entrar' to="/login">ENTRAR</Link>
+                    <Link className="cadastro" id='cadastro' to="/cadastro">CADASTRO</Link>
+                    <button className="sair" id='sair' onClick={handleLogout} to="/" type="button">SAIR</button>
+                    <div className='clear'></div>
+                    <h3 className="saudacao" id='saudacao'>Bem vindo, {nome}</h3>
+                    <Link className="fazeranuncio" id='fazeranuncio' to="/paineldecontrole">Fazer Anuncio</Link>
                 </div>
                 <div className="titulo-local"><h3>Centro Comercial Cidade Tiradentes</h3></div>
                 <Link to="/">
