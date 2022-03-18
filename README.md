@@ -41,7 +41,7 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 * Axios - Estrutura cliente HTTP para fazer a conexão de serviços junto as rotas da aplicação. ( npm install axios )
 
 <img src="/frontend/src/imagens/diagrama_logo.png"/>
-<img src="/frontend/src/imagens/apresentacao/1.jpg" width="400" height="600"/>
-<img src="/frontend/src/imagens/apresentacao/2.jpg" width="400" height="600"/>
-<img src="/frontend/src/imagens/apresentacao/3.jpg" width="400" height="600"/>
-<img src="/frontend/src/imagens/apresentacao/4.jpg" width="400" height="600"/>
+<img src="/frontend/src/imagens/apresentacao/1.jpg" width="380" height="590"/>
+<img src="/frontend/src/imagens/apresentacao/2.jpg" width="380" height="590"/>
+<img src="/frontend/src/imagens/apresentacao/3.jpg" width="380" height="590"/>
+<img src="/frontend/src/imagens/apresentacao/4.jpg" width="380" height="590"/>
