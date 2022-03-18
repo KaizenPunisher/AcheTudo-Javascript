@@ -81,7 +81,7 @@ export default function Cadastro(){
                 </section>
                 <div className='painel-de-controle-configuracoes'>
                     <div className='painel-de-controle-nome-usuario'>
-                        <h4>Arlete Vasconcelos da Cruz Santos</h4>
+                        <h4>Oscar Gomes</h4>
                     </div>
                     <div className="painel-de-controle-dados">
                         <h3>Dados</h3>

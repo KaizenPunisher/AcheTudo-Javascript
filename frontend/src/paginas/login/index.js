@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/autorizacao';
 import './style.css';
+import './mobile.css';
 
 import api from '../../services/api';
 import logo from "../../imagens/logo.svg";
@@ -33,9 +34,13 @@ export default function Login() {
                 </Link>
                 <section>
                     <div className='cadastro-titulo'>
+                        <div className="voltar">
+                            <Link className="back-link" to="/">
+                                <div className='seta-voltar'></div>VOLTAR
+                            </Link>
+                        </div>
                         <h1>ENTRAR</h1>
-                        <Link className="back-link" to="/"><div className='voltar'></div>VOLTAR</Link>
-                        <div style={{clear: "both"}}></div>
+                        <div className="clear"></div>
                     </div>
                 </section>
                 <form onSubmit={handleLogin}>

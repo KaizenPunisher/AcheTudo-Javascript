@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
+import './mobile.css';
 import api from '../../services/api';
 import logo from "../../imagens/logo.svg";
 
@@ -33,13 +34,18 @@ export default function Cadastro(){
         <div className="cadastro-usuario">
             <div className="conteudo">
                 <Link to="/">
-                        <div className="logo" style={{ backgroundImage: `url(${logo})` }}></div>
+                    <div className="logo" style={{ backgroundImage: `url(${logo})` }}></div>
                 </Link>
                 <section>
                     <div className='cadastro-titulo'>
+                        <div className="voltar">
+                            <Link className="back-link" to="/">
+                                <div className='seta-voltar'></div>VOLTAR
+                            </Link>
+                        </div>
+                        
                         <h1>Cadastro</h1>
-                        <Link className="back-link" to="/"><div className='voltar'></div>VOLTAR</Link>
-                        <div style={{clear: "both"}}></div>
+                        <div className="clear"></div>
                     </div>
                 </section>
                 <form onSubmit={handleCadastro}>

@@ -34,13 +34,19 @@
     width: 100%;
     height: auto;
 }
-.login-conteudo .conteudo .cadastro-titulo h1{
-    /*border: 1px solid yellow;*/
-    margin: 5px 0px 0px 10px;
+.login-conteudo .conteudo .cadastro-titulo .voltar{
+    /*border: 2px solid blue;*/
+    width: 60px;
+    height: auto;
     float: left;
 }
-.back-link{
+.login-conteudo .conteudo .cadastro-titulo h1{
+    /*border: 1px solid yellow;*/
+    margin-bottom: 3px;
     float: right;
+}
+.back-link{
+    float: left;
 }
 .login-conteudo .conteudo input{
     margin-top: 8px;

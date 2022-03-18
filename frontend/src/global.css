@@ -250,7 +250,7 @@ form input{
     /*border: 1px solid green;*/
     font-family:"Franklin Gothic Heavy";
     color: rgb(0, 0, 0);
-    font-size: 13px;
+    font-size: 10px;
     padding: 5px;
     display: flex;
     align-items: center;
@@ -258,13 +258,13 @@ form input{
     font-weight: bold;
     opacity: 0.8;
     transition: 0.5s;
-    width: 90px;
+    width: 50px;
 }
 .back-link:hover{
     opacity: 1;
     transition: 0.5s;
 }
-.voltar{
+.seta-voltar{
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
     border-right: 15px solid rgba(57, 98, 189, 0.966);
