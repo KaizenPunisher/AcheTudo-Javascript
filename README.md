@@ -42,6 +42,6 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 
 <div style="float:left;"><img src="/frontend/src/imagens/diagrama_logo.png" /></div>
 <div style="float:left;width:150px;height:150px;background-image:url('/frontend/src/imagens/apresentacao/1.jpg')"></div>
-<div style="float:left;width:150px;height:150px;"><img src="/frontend/src/imagens/apresentacao/2.jpg" /></div>
+<div style="border:1px solid black;float:left;width:150px;height:150px;"><img src="/frontend/src/imagens/apresentacao/2.jpg" /></div>
 <div style="float:left;width:150px;height:150px;"><img src="/frontend/src/imagens/apresentacao/3.jpg" /></div>
 <div style="float:left;width:150px;height:150px;"><img src="/frontend/src/imagens/apresentacao/4.jpg" /></div>
