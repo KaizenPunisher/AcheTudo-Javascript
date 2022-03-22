@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
 import api from '../../services/api';
 import logo from "../../imagens/logo.svg";
 
 export default function Cadastro(){
+    const [id, setId] = useState('');
+    const [nome, setNome] = useState('');
+    const [empresa, setEmpresa] = useState([]);
+
     const [razao_social, setRazaoSocial] = useState('');
     const [nome_fantasia, setNomeFantasia] = useState('');
     const [cnpj, setCnpj] = useState('');
@@ -28,6 +32,23 @@ export default function Cadastro(){
 
     //const history = useHistory();
     
+    useEffect(() => {
+        async function encontrarEmpresa(){
+            const usuario = await JSON.parse(localStorage.getItem('usuario'));
+            const token = await localStorage.getItem('token');
+            if(usuario !== null){
+                setId(usuario.id);
+                setNome(usuario.nome);
+                
+            };
+            await api.get(`paineldecontrole/${id}`).then(response => {
+                setEmpresa(response);
+            });
+        };
+        encontrarEmpresa();
+    });
+    console.log(empresa);
+
     async function handleCadastro(e){
         e.preventDefault();
         
@@ -75,13 +96,17 @@ export default function Cadastro(){
                 <section>
                     <div className='painel-de-controle-titulo'>
                         <h3>Painel de Controle</h3>
-                        <Link className="back-link" to="/"><div className='voltar'></div>VOLTAR</Link>
+                        <div className="voltar">
+                            <Link className="back-link" to="/">
+                                <div className='seta-voltar'></div>VOLTAR
+                            </Link>
+                        </div>
                         <div style={{clear: "both"}}></div>
                     </div>
                 </section>
                 <div className='painel-de-controle-configuracoes'>
                     <div className='painel-de-controle-nome-usuario'>
-                        <h4>Oscar Gomes</h4>
+                        <h4>{nome}</h4>
                     </div>
                     <div className="painel-de-controle-dados">
                         <h3>Dados</h3>

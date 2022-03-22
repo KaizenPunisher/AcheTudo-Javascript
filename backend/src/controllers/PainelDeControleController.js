@@ -6,6 +6,7 @@ const Telefone = require("../models/Telefone");
 module.exports = {
     async encontrarEmpresa(request, response){
         const { id } = request.params;
+
         const empresa = await connection('empresas')
             .join('servicos', 'servicos.id', '=', 'empresas.servico_id')
             .leftJoin('enderecos', 'enderecos.empresa_id', '=', 'empresas.id')

@@ -39,7 +39,7 @@ export default function Login() {
                                 <div className='seta-voltar'></div>VOLTAR
                             </Link>
                         </div>
-                        <h1>ENTRAR</h1>
+                        <h1>Entrar</h1>
                         <div className="clear"></div>
                     </div>
                 </section>
