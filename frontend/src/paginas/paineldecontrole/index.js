@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
-import { api, cadastrarEmpresa } from '../../services/api';
+import { api, buscarAnuncio, cadastrarEmpresa } from '../../services/api';
 import logo from "../../imagens/logo.svg";
 
 export default function Cadastro(){
@@ -40,14 +40,37 @@ export default function Cadastro(){
                 setId(usuario.id);
                 setNome(usuario.nome);
                 
+                api.defaults.headers.Authorization = `Bearer ${token}`;
+                
+                await buscarAnuncio(id).then(response => {
+                    setEmpresa(response.data[0]);
+
+                    setRazaoSocial(empresa.razao_social);
+                    setNomeFantasia(empresa.nome_fantasia);
+                    setCnpj(empresa.cnpj);
+                    setCpf(empresa.cpf);
+                    setSetor(empresa.setor);
+                    setHorarioDeAtendimento(empresa.horario_de_atendimento);
+                    setDescricao(empresa.descricao);
+                    setRedesSociais(empresa.redes_sociais);
+                    setServicoId(empresa.servico_id);
+                    setLogradouro(empresa.logradouro);
+                    setCep(empresa.cep);
+                    setBairro(empresa.bairro);
+                    setCidade(empresa.cidade);
+                    setRegiao(empresa.regiao);
+                    setUf(empresa.uf);
+                    setDescricaoEndereco(empresa.descricao_endereco);
+                    setNumero(empresa.numero);
+                    setDdd(empresa.ddd);
+                    setTipo(empresa.tipo);
+                    setDescricaoTelefone(empresa.descricao_telefone);
+                });
             };
-            await api.get(`paineldecontrole/${id}`).then(response => {
-                setEmpresa(response);
-            });
         };
         encontrarEmpresa();
     });
-    console.log(empresa);
+    
 
     async function handleCadastro(e){
         e.preventDefault();

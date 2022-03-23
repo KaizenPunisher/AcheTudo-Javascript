@@ -20,3 +20,7 @@ export const cadastrarEmpresa = async (data) => {
 export const buscarAnuncios = async () => {
     return api.get('empresa');
 }
+
+export const buscarAnuncio = async (id) => {
+    return api.get(`paineldecontrole/${id}`);
+}
