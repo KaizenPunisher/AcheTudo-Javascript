@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
-import api from '../../services/api';
+import { api, buscarAnuncios } from '../../services/api';
 import { AuthContext } from '../../contexts/autorizacao';
 
 import imagem from '../../imagens/imagem.jpg';
@@ -15,7 +15,7 @@ export default function Inicio(){
     const usuario = JSON.parse(localStorage.getItem('usuario'));
     
     useEffect(() => {
-        api.get('empresa').then(response => {
+        buscarAnuncios().then(response => {
             setEmpresas(response.data);
         });
 

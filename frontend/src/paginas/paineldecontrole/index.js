@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
-import api from '../../services/api';
+import { api, cadastrarEmpresa } from '../../services/api';
 import logo from "../../imagens/logo.svg";
 
 export default function Cadastro(){
@@ -77,7 +77,7 @@ export default function Cadastro(){
 
         try{
             console.log(data);
-            const response =  await api.post('paineldecontrole', data);
+            const response =  await cadastrarEmpresa(data);
             alert(`Seu ID de acesso: ${response.data.id}`);
             //history.push("/");
             

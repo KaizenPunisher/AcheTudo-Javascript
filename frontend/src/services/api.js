@@ -1,8 +1,22 @@
 import axios from 'axios';
 import env from './../config/env';
 
-const api = axios.create({
+export const api = axios.create({
     baseURL: env.backendBaseUrl,
 })
 
-export default api;
+export const criarSessao = async (email, senha) => {
+    return api.post('sessao', { email, senha });
+}
+
+export const cadastrarUsuario = async (data) => {
+    return api.post('usuario', data);
+}
+
+export const cadastrarEmpresa = async (data) => {
+    return api.post('paineldecontrole', data);
+}
+
+export const buscarAnuncios = async () => {
+    return api.get('empresa');
+}

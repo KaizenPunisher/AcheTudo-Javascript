@@ -4,7 +4,7 @@ import { AuthContext } from '../../contexts/autorizacao';
 import './style.css';
 import './mobile.css';
 
-import api from '../../services/api';
+import { api, criarSessao } from '../../services/api';
 import logo from "../../imagens/logo.svg";
 
 export default function Login() {
@@ -17,7 +17,7 @@ export default function Login() {
     async function handleLogin(e){
         e.preventDefault();
         try{
-            const response = await api.post('sessao', { email, senha });
+            const response = await criarSessao(email, senha);
             
             login(response.data);
             navigate("/paineldecontrole");

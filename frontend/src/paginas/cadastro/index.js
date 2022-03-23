@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
 import './mobile.css';
-import api from '../../services/api';
+import { api, cadastrarUsuario } from '../../services/api';
 import logo from "../../imagens/logo.svg";
 
 export default function Cadastro(){
@@ -20,9 +20,8 @@ export default function Cadastro(){
         };
 
         try{
-            const response =  await api.post('usuario', data);
+            const response =  await cadastrarUsuario(data);
             alert(`Seu ID de acesso: ${response.data.id}`);
-            
             
         } catch(erro){
             alert('Erro no cadastro');
