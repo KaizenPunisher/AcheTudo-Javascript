@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
-import { api, buscarAnuncios } from '../../services/api';
+import { listarAnuncios } from '../../services/api';
 import { AuthContext } from '../../contexts/autorizacao';
 
 import imagem from '../../imagens/imagem.jpg';
@@ -11,13 +11,17 @@ export default function Inicio(){
     const { logout } = useContext(AuthContext);
     const [nome, setNome] = useState();
     const [empresas, setEmpresas] = useState([]);
+    const [count, setCount] = useState(0);
 
     const usuario = JSON.parse(localStorage.getItem('usuario'));
     
     useEffect(() => {
-        buscarAnuncios().then(response => {
-            setEmpresas(response.data);
-        });
+        if(count<5){
+            listarAnuncios().then(response => {
+                setEmpresas(response.data);
+            });
+            setCount(count+1);
+        };
 
         if(usuario !== null){
             setNome(usuario.nome)
@@ -28,7 +32,8 @@ export default function Inicio(){
             document.getElementById("cadastro").style.display = "none";
             document.getElementById("entrar").style.display = "none";
         };
-    });
+        
+    }, [count]);
     /*
     async function handleDeletarEmpresas(id){
         try {

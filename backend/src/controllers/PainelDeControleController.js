@@ -48,5 +48,18 @@ module.exports = {
         
         return response.json(cadastrar);
 
+    },
+
+    async alterarEmpresa(request, response){
+        const { id }  = request.params;
+        const empresa = new Empresa(request.body);
+        const endereco = new Endereco(request.body);
+        const telefone = new Telefone(request.body);
+        
+        const alterar = await empresa.alterar(id);
+        //await endereco.alterar(alterar.id);
+        //await telefone.alterar(alterar.id);
+        
+        return response.json(alterar);
     }
 }

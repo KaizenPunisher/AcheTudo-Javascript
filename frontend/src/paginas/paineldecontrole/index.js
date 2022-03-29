@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import './style.css';
 import { api, buscarAnuncio, cadastrarEmpresa } from '../../services/api';
+import { AuthContext } from '../../contexts/autorizacao';
+
+import './style.css';
 import logo from "../../imagens/logo.svg";
 
 export default function Cadastro(){
-    const [id, setId] = useState('');
-    const [nome, setNome] = useState('');
-    const [empresa, setEmpresa] = useState([]);
-
     const [razao_social, setRazaoSocial] = useState('');
     const [nome_fantasia, setNomeFantasia] = useState('');
     const [cnpj, setCnpj] = useState('');
@@ -22,55 +20,18 @@ export default function Cadastro(){
     const [cep, setCep] = useState('');
     const [bairro, setBairro] = useState('');
     const [cidade, setCidade] = useState('');
-    const [regiao, setRegiao] = useState('');
+    const [regiao, setRegiao] = useState(' ');
     const [uf, setUf] = useState('');
     const [descricao_endereco, setDescricaoEndereco] = useState('');
     const [numero, setNumero] = useState('');
     const [ddd, setDdd] = useState('');
     const [tipo, setTipo] = useState('');
-    const [descricao_telefone, setDescricaoTelefone] = useState('');
+    const [telefone_descricao, setDescricaoTelefone] = useState('');
 
-    //const history = useHistory();
-    
-    useEffect(() => {
-        async function encontrarEmpresa(){
-            const usuario = await JSON.parse(localStorage.getItem('usuario'));
-            const token = await localStorage.getItem('token');
-            if(usuario !== null){
-                setId(usuario.id);
-                setNome(usuario.nome);
-                
-                api.defaults.headers.Authorization = `Bearer ${token}`;
-                
-                await buscarAnuncio(id).then(response => {
-                    setEmpresa(response.data[0]);
-
-                    setRazaoSocial(empresa.razao_social);
-                    setNomeFantasia(empresa.nome_fantasia);
-                    setCnpj(empresa.cnpj);
-                    setCpf(empresa.cpf);
-                    setSetor(empresa.setor);
-                    setHorarioDeAtendimento(empresa.horario_de_atendimento);
-                    setDescricao(empresa.descricao);
-                    setRedesSociais(empresa.redes_sociais);
-                    setServicoId(empresa.servico_id);
-                    setLogradouro(empresa.logradouro);
-                    setCep(empresa.cep);
-                    setBairro(empresa.bairro);
-                    setCidade(empresa.cidade);
-                    setRegiao(empresa.regiao);
-                    setUf(empresa.uf);
-                    setDescricaoEndereco(empresa.descricao_endereco);
-                    setNumero(empresa.numero);
-                    setDdd(empresa.ddd);
-                    setTipo(empresa.tipo);
-                    setDescricaoTelefone(empresa.descricao_telefone);
-                });
-            };
-        };
-        encontrarEmpresa();
-    });
-    
+    const [empresa, setEmpresa] = useState([]);
+    const {usuario} = useContext(AuthContext);
+    const {token} = useContext(AuthContext);
+    const [count, setCount] = useState(0);
 
     async function handleCadastro(e){
         e.preventDefault();
@@ -95,11 +56,10 @@ export default function Cadastro(){
             numero,
             ddd,
             tipo,
-            descricao_telefone
+            telefone_descricao
         };
 
         try{
-            console.log(data);
             const response =  await cadastrarEmpresa(data);
             alert(`Seu ID de acesso: ${response.data.id}`);
             //history.push("/");
@@ -108,7 +68,42 @@ export default function Cadastro(){
             alert('Erro no cadastro');
         }
         
-    }
+    };
+
+    async function encontrarEmpresa(){
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+        if(count<5){
+            await buscarAnuncio(usuario.id).then(response => {
+                setEmpresa(response.data[0]);
+                
+                setRazaoSocial(response.data[0].razao_social);
+                setNomeFantasia(response.data[0].nome_fantasia);
+                setCnpj(response.data[0].cnpj);
+                setCpf(response.data[0].cpf);
+                setSetor(response.data[0].setor);
+                setHorarioDeAtendimento(response.data[0].horario_de_atendimento);
+                setDescricao(response.data[0].descricao);
+                setRedesSociais(response.data[0].redes_sociais);
+                setServicoId(response.data[0].servico_id);
+                setLogradouro(response.data[0].logradouro);
+                setCep(response.data[0].cep);
+                setBairro(response.data[0].bairro);
+                setCidade(response.data[0].cidade);
+                setRegiao(response.data[0].regiao);
+                setUf(response.data[0].uf);
+                setDescricaoEndereco(response.data[0].endereco_descricao);
+                setNumero(response.data[0].numero);
+                setDdd(response.data[0].ddd);
+                setTipo(response.data[0].tipo);
+                setDescricaoTelefone(response.data[0].telefone_descricao);
+            });
+            setCount(count+1);
+        };
+        
+    };
+    useEffect(async() => {
+        await encontrarEmpresa();
+    }, [count]);
 
     return (
         <div className="painel-de-controle">
@@ -129,7 +124,7 @@ export default function Cadastro(){
                 </section>
                 <div className='painel-de-controle-configuracoes'>
                     <div className='painel-de-controle-nome-usuario'>
-                        <h4>{nome}</h4>
+                        <h4>{usuario.nome}</h4>
                     </div>
                     <div className="painel-de-controle-dados">
                         <h3>Dados</h3>
@@ -179,16 +174,17 @@ export default function Cadastro(){
                                     onChange={e => setSetor(e.target.value)}
                                     >
                                     <option>Escolha uma opção</option>
-                                    <option value="Padaria">Privado</option>
-                                    <option value="ONG">ONG</option>
-                                    <option value="ONG">Autonomo</option>
+                                    <option value="publico">Público</option>
+                                    <option value="privado">Privado</option>
+                                    <option value="ong">ONG</option>
+                                    <option value="autonomo">Autonomo</option>
                                 </select>
                                 <div className="clear"></div>
                             </div>
                             <div className="dados">
                                 <label>Horario de<br/>atendimento</label>
                                 <input 
-                                    placeholder="Nome de registro"
+                                    placeholder="Horario de atendimento"
                                     value={horario_de_atendimento}
                                     onChange={e => setHorarioDeAtendimento(e.target.value)}  
                                 />
@@ -197,7 +193,7 @@ export default function Cadastro(){
                             <div className="dados">
                                 <label>Descrição da<br/>empresa</label>
                                 <textarea
-                                    placeholder="Nome de registro"
+                                    placeholder="Descrição"
                                     value={descricao}
                                     onChange={e => setDescricao(e.target.value)}  
                                 />
@@ -221,8 +217,8 @@ export default function Cadastro(){
                                     onChange={e => setServicoId(e.target.value)}
                                     >
                                     <option>Escolha uma opção</option>
-                                    <option value="1">Padaria</option>
-                                    <option value="2">Restaurante</option>
+                                    <option value="1">Restaurante</option>
+                                    <option value="2">Padaria</option>
                                 </select>
                                 <div className="clear"></div>
                             </div>
@@ -317,9 +313,9 @@ export default function Cadastro(){
                                     onChange={e => setTipo(e.target.value)}
                                     >
                                     <option>Escolha uma opção</option>
-                                    <option value="valor1">Valor 1</option>
-                                    <option value="valor2">Valor 2</option>
-                                    <option value="valor3">Valor 3</option>
+                                    <option value="celular">Celular</option>
+                                    <option value="residencial">Residencial</option>
+                                    <option value="empresa">Empresa</option>
                                 </select>
                                 <div className="clear"></div>
                             </div>
@@ -328,13 +324,13 @@ export default function Cadastro(){
                                 <select 
                                     name="select"
                                     placeholder="Nome de registro"
-                                    value={descricao_telefone}
+                                    value={telefone_descricao}
                                     onChange={e => setDescricaoTelefone(e.target.value)}
                                     >
                                     <option>Escolha uma opção</option>
-                                    <option value="valor1">Valor 1</option>
-                                    <option value="valor2" >Valor 2</option>
-                                    <option value="valor3">Valor 3</option>
+                                    <option value="whatsapp">Whatsapp</option>
+                                    <option value="telegram" >Telegram</option>
+                                    <option value="signal">Signal</option>
                                 </select>
                                 <div className="clear"></div>
                             </div>

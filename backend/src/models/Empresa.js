@@ -1,3 +1,4 @@
+const { response } = require('express');
 const connection = require('../database/connection');
 
 class Empresa {
@@ -57,6 +58,34 @@ class Empresa {
         });
         
         return {id: cadastro};
+    }
+
+    async alterar(id){
+
+        const encontrar = await connection('empresas')
+            .where('usuario_id', id)
+            .select('usuario_id')
+            .first()
+        ;
+
+        if (!encontrar){
+            return { error: 'Operação não permitida.' };
+        }
+
+        await connection('empresas').where('usuario_id', id).update({
+            razao_social:           this.razao_social,
+            nome_fantasia:          this.nome_fantasia,
+            cnpj:                   this.cnpj,
+            cpf:                    this.cpf,
+            setor:                  this.setor,
+            horario_de_atendimento: this.horario_de_atendimento,
+            descricao:              this.descricao,
+            redes_sociais:          this.redes_sociais,
+            servico_id:             this.servico_id,
+            usuario_id:             this.usuario_id,
+        });
+
+        return {204: 'Alteração feita com sucesso'};
     }
 
     async gerarToken(){

@@ -5,18 +5,25 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
     const navigate = useNavigate();
-    const [user, setUser] = useState(null);
+    const [usuario, setUsuario] = useState(null);
+    const [token, setToken] = useState('');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        
         const recuperarUsuario = localStorage.getItem('usuario');
+        const recuperarToken = localStorage.getItem('token');
 
         if(recuperarUsuario) {
-            setUser(JSON.parse(recuperarUsuario));
+            setUsuario(JSON.parse(recuperarUsuario));
         }
-
+        if(recuperarToken){
+            setToken(recuperarToken);
+        }
+        
         setLoading(false);
-    }, []);
+      
+    }, [token]);
     
     const login = (response) => {
 
@@ -26,22 +33,23 @@ export const AuthProvider = ({children}) => {
         localStorage.setItem('usuario', usuarioLogado);
         localStorage.setItem('token', token);
     
-        setUser({usuarioLogado});
-        
+        setUsuario({usuarioLogado});
+        setToken(token);
     };
     
     const logout = () => {
-        setUser("null");
+        setUsuario("null");
         localStorage.clear();
         localStorage.clear();
         navigate('/login');
     };
-        
+    
     return (
         <AuthContext.Provider 
             value={{autenticado: 
-                !!user, 
-                user,
+                !!usuario, 
+                usuario,
+                token,
                 loading,
                 login, 
                 logout

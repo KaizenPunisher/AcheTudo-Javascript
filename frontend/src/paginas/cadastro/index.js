@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
 import './mobile.css';
-import { api, cadastrarUsuario } from '../../services/api';
+import { cadastrarUsuario } from '../../services/api';
 import logo from "../../imagens/logo.svg";
 
 export default function Cadastro(){
