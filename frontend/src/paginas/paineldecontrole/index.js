@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { api, buscarAnuncio, cadastrarEmpresa } from '../../services/api';
+import { api, buscarAnuncio, cadastrarEmpresa, alterarEmpresa } from '../../services/api';
 import { AuthContext } from '../../contexts/autorizacao';
 
 import './style.css';
 import logo from "../../imagens/logo.svg";
 
 export default function Cadastro(){
+    const [length, setLength] = useState('');
+    const {usuario} = useContext(AuthContext);
+    const {token} = useContext(AuthContext);
+    const [empresaId, setEmpresaId] = useState('');
     const [razao_social, setRazaoSocial] = useState('');
     const [nome_fantasia, setNomeFantasia] = useState('');
     const [cnpj, setCnpj] = useState('');
@@ -27,11 +31,6 @@ export default function Cadastro(){
     const [ddd, setDdd] = useState('');
     const [tipo, setTipo] = useState('');
     const [telefone_descricao, setDescricaoTelefone] = useState('');
-
-    const [empresa, setEmpresa] = useState([]);
-    const {usuario} = useContext(AuthContext);
-    const {token} = useContext(AuthContext);
-    const [count, setCount] = useState(0);
 
     async function handleCadastro(e){
         e.preventDefault();
@@ -70,12 +69,49 @@ export default function Cadastro(){
         
     };
 
+    async function handleAlteracao(e){
+        e.preventDefault();
+        
+        const data = {
+            razao_social,
+            nome_fantasia,
+            cnpj,
+            cpf,
+            setor,
+            horario_de_atendimento,
+            descricao,
+            redes_sociais,
+            servico_id,
+            logradouro,
+            cep,
+            bairro,
+            cidade,
+            regiao,
+            uf,
+            descricao_endereco,
+            numero,
+            ddd,
+            tipo,
+            telefone_descricao
+        };
+
+        try{
+            const response =  await alterarEmpresa(data);
+            alert(`Mensagem: ${response}`);
+            //history.push("/");
+            
+        } catch(erro){
+            alert('Erro na alteração');
+        }
+        
+    };
+
     async function encontrarEmpresa(){
         api.defaults.headers.Authorization = `Bearer ${token}`;
-        if(count<5){
-            await buscarAnuncio(usuario.id).then(response => {
-                setEmpresa(response.data[0]);
-                
+        
+        await buscarAnuncio(usuario.id).then(response => {
+            setLength(response.data.length);
+            if(response.data.length != 0){
                 setRazaoSocial(response.data[0].razao_social);
                 setNomeFantasia(response.data[0].nome_fantasia);
                 setCnpj(response.data[0].cnpj);
@@ -96,14 +132,19 @@ export default function Cadastro(){
                 setDdd(response.data[0].ddd);
                 setTipo(response.data[0].tipo);
                 setDescricaoTelefone(response.data[0].telefone_descricao);
-            });
-            setCount(count+1);
-        };
+                setEmpresaId(response.data[0].empresa_id);
+            };
+            if(response.data.length !== 0){
+                document.getElementById("painel-de-controle-alteracao").style.display = "block";
+                document.getElementById("painel-de-controle-cadastro").style.display = "none";
+            };
+        });
         
     };
     useEffect(async() => {
         await encontrarEmpresa();
-    }, [count]);
+        
+    }, []);
 
     return (
         <div className="painel-de-controle">
@@ -126,9 +167,9 @@ export default function Cadastro(){
                     <div className='painel-de-controle-nome-usuario'>
                         <h4>{usuario.nome}</h4>
                     </div>
-                    <div className="painel-de-controle-dados">
+                    <div className="painel-de-controle-dados" id='painel-de-controle-dados'>
                         <h3>Dados</h3>
-                        <form onSubmit={handleCadastro}>
+                        <form onSubmit={handleCadastro} id='painel-de-controle-cadastro'>
                             <div className="dados">
                                 <label>Razão Social</label>
                                 <input 
@@ -345,6 +386,225 @@ export default function Cadastro(){
                             />
                             */}
                             <button className="button" type="submit">CADASTRAR ANUNCIO</button>
+                        </form>
+                        <br/>
+                        <form onSubmit={handleAlteracao} id='painel-de-controle-alteracao' className="painel-de-controle-alteracao">
+                            <div className="dados">
+                                <label>Razão Social</label>
+                                <input 
+                                    placeholder="Nome de registro"
+                                    value={razao_social}
+                                    onChange={e => setRazaoSocial(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>Nome Fantasia</label>
+                                <input 
+                                    placeholder="Nome de registro"
+                                    value={nome_fantasia}
+                                    onChange={e => setNomeFantasia(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>CNPJ</label>
+                                <input 
+                                    placeholder="Nome de registro"
+                                    value={cnpj}
+                                    onChange={e => setCnpj(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>CPF</label>
+                                <input 
+                                    placeholder="Nome de registro"
+                                    value={cpf}
+                                    onChange={e => setCpf(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>Setor</label>
+                                <select 
+                                    name="select"
+                                    placeholder="Nome de registro"
+                                    value={setor}
+                                    onChange={e => setSetor(e.target.value)}
+                                    >
+                                    <option>Escolha uma opção</option>
+                                    <option value="publico">Público</option>
+                                    <option value="privado">Privado</option>
+                                    <option value="ong">ONG</option>
+                                    <option value="autonomo">Autonomo</option>
+                                </select>
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>Horario de<br/>atendimento</label>
+                                <input 
+                                    placeholder="Horario de atendimento"
+                                    value={horario_de_atendimento}
+                                    onChange={e => setHorarioDeAtendimento(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>Descrição da<br/>empresa</label>
+                                <textarea
+                                    placeholder="Descrição"
+                                    value={descricao}
+                                    onChange={e => setDescricao(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>Rede Sociais</label>
+                                <textarea
+                                    placeholder="Nome de registro"
+                                    value={redes_sociais}
+                                    onChange={e => setRedesSociais(e.target.value)} 
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>Empreendimento</label>
+                                <select 
+                                    name="select"
+                                    placeholder="Nome de registro"
+                                    value={servico_id}
+                                    onChange={e => setServicoId(e.target.value)}
+                                    >
+                                    <option>Escolha uma opção</option>
+                                    <option value="1">Restaurante</option>
+                                    <option value="2">Padaria</option>
+                                </select>
+                                <div className="clear"></div>
+                            </div>
+                            
+                            <div className="dados">
+                                <label>Endereço</label>
+                                <input 
+                                    placeholder="Nome de registro"
+                                    value={logradouro}
+                                    onChange={e => setLogradouro(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>CEP</label>
+                                <input 
+                                    placeholder="Nome de registro"
+                                    value={cep}
+                                    onChange={e => setCep(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>Bairro</label>
+                                <input 
+                                    placeholder="Nome de registro"
+                                    value={bairro}
+                                    onChange={e => setBairro(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>Cidade</label>
+                                <input 
+                                    placeholder="Nome de registro"
+                                    value={cidade}
+                                    onChange={e => setCidade(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>Região</label>
+                                <input 
+                                    placeholder="Nome de registro"
+                                    value={regiao}
+                                    onChange={e => setRegiao(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>Estado</label>
+                                <input 
+                                    placeholder="Nome de registro"
+                                    value={uf}
+                                    onChange={e => setUf(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>Ponto de<br/>Referência</label>
+                                <input 
+                                    placeholder="Nome de registro"
+                                    value={descricao_endereco}
+                                    onChange={e => setDescricaoEndereco(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>DDD</label>
+                                <input 
+                                    placeholder="Nome de registro"
+                                    value={ddd}
+                                    onChange={e => setDdd(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>Telefone</label>
+                                <input 
+                                    placeholder="Nome de registro"
+                                    value={numero}
+                                    onChange={e => setNumero(e.target.value)}  
+                                />
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>Tipo do telefone</label>
+                                <select 
+                                    name="select"
+                                    placeholder="Nome de registro"
+                                    value={tipo}
+                                    onChange={e => setTipo(e.target.value)}
+                                    >
+                                    <option>Escolha uma opção</option>
+                                    <option value="celular">Celular</option>
+                                    <option value="residencial">Residencial</option>
+                                    <option value="empresa">Empresa</option>
+                                </select>
+                                <div className="clear"></div>
+                            </div>
+                            <div className="dados">
+                                <label>Aplicativo de<br/>mensagem</label>
+                                <select 
+                                    name="select"
+                                    placeholder="Nome de registro"
+                                    value={telefone_descricao}
+                                    onChange={e => setDescricaoTelefone(e.target.value)}
+                                    >
+                                    <option>Escolha uma opção</option>
+                                    <option value="whatsapp">Whatsapp</option>
+                                    <option value="telegram" >Telegram</option>
+                                    <option value="signal">Signal</option>
+                                </select>
+                                <div className="clear"></div>
+                            </div>
+                            {/*
+                            <label for="arquivo" className="botao-enviar-imagem">ENVIAR IMAGEM DO ANUNCIO</label>
+                            <input 
+                                id="arquivo"
+                                type="file"
+                                placeholder="ENVIAR"
+                                value={imagem}
+                                onChange={e => setImagem(e.target.value)}
+                            />
+                            */}
+                            <button className="button" type="submit">ALTERAR ANUNCIO</button>
                         </form>
                     </div>
                     <div className='painel-de-controle-acesso'>

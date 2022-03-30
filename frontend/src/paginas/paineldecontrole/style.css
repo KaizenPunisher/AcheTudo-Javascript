@@ -114,6 +114,12 @@
     text-align: center;
 }
 /**/
+/**/
+.painel-de-controle-alteracao{
+    display: none;
+}
+/**/
+/**/
 .painel-de-controle-acesso{
     /*border: 2px solid yellow;*/
     padding-top: 20px;

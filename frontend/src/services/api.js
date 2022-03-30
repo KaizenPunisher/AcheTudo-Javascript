@@ -18,7 +18,7 @@ export const cadastrarEmpresa = async (data) => {
 }
 
 export const alterarEmpresa = async (data) => {
-    return api.post('paineldecontrole', data);
+    return api.put('paineldecontrole/:id', data);
 }
 
 export const listarAnuncios = async () => {
