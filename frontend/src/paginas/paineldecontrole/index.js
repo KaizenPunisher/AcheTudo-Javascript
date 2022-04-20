@@ -7,10 +7,9 @@ import './style.css';
 import logo from "../../imagens/logo.svg";
 
 export default function Cadastro(){
-    const [length, setLength] = useState('');
     const {usuario} = useContext(AuthContext);
     const {token} = useContext(AuthContext);
-    const [empresaId, setEmpresaId] = useState('');
+    const [usuario_id, setUsuarioId] = useState(usuario.id);
     const [razao_social, setRazaoSocial] = useState('');
     const [nome_fantasia, setNomeFantasia] = useState('');
     const [cnpj, setCnpj] = useState('');
@@ -30,12 +29,13 @@ export default function Cadastro(){
     const [numero, setNumero] = useState('');
     const [ddd, setDdd] = useState('');
     const [tipo, setTipo] = useState('');
-    const [telefone_descricao, setDescricaoTelefone] = useState('');
+    const [descricao_telefone, setDescricaoTelefone] = useState('');
 
     async function handleCadastro(e){
         e.preventDefault();
         
         const data = {
+            usuario_id,
             razao_social,
             nome_fantasia,
             cnpj,
@@ -55,13 +55,12 @@ export default function Cadastro(){
             numero,
             ddd,
             tipo,
-            telefone_descricao
+            descricao_telefone
         };
 
         try{
             const response =  await cadastrarEmpresa(data);
             alert(`Seu ID de acesso: ${response.data.id}`);
-            //history.push("/");
             
         } catch(erro){
             alert('Erro no cadastro');
@@ -92,12 +91,13 @@ export default function Cadastro(){
             numero,
             ddd,
             tipo,
-            telefone_descricao
+            descricao_telefone
         };
 
         try{
-            const response =  await alterarEmpresa(data);
-            alert(`Mensagem: ${response}`);
+            const response =  await alterarEmpresa(usuario.id,data);
+            alert(`Mensagem: Alteração feita com sucesso`);
+            //alert(`${usuario.id}`)
             //history.push("/");
             
         } catch(erro){
@@ -110,7 +110,6 @@ export default function Cadastro(){
         api.defaults.headers.Authorization = `Bearer ${token}`;
         
         await buscarAnuncio(usuario.id).then(response => {
-            setLength(response.data.length);
             if(response.data.length != 0){
                 setRazaoSocial(response.data[0].razao_social);
                 setNomeFantasia(response.data[0].nome_fantasia);
@@ -131,8 +130,8 @@ export default function Cadastro(){
                 setNumero(response.data[0].numero);
                 setDdd(response.data[0].ddd);
                 setTipo(response.data[0].tipo);
-                setDescricaoTelefone(response.data[0].telefone_descricao);
-                setEmpresaId(response.data[0].empresa_id);
+                setDescricaoTelefone(response.data[0].descricao_telefone);
+                
             };
             if(response.data.length !== 0){
                 document.getElementById("painel-de-controle-alteracao").style.display = "block";
@@ -365,7 +364,7 @@ export default function Cadastro(){
                                 <select 
                                     name="select"
                                     placeholder="Nome de registro"
-                                    value={telefone_descricao}
+                                    value={descricao_telefone}
                                     onChange={e => setDescricaoTelefone(e.target.value)}
                                     >
                                     <option>Escolha uma opção</option>
@@ -584,7 +583,7 @@ export default function Cadastro(){
                                 <select 
                                     name="select"
                                     placeholder="Nome de registro"
-                                    value={telefone_descricao}
+                                    value={descricao_telefone}
                                     onChange={e => setDescricaoTelefone(e.target.value)}
                                     >
                                     <option>Escolha uma opção</option>

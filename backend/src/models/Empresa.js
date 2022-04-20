@@ -64,7 +64,7 @@ class Empresa {
 
         const encontrar = await connection('empresas')
             .where('usuario_id', id)
-            .select('usuario_id')
+            .select('id')
             .first()
         ;
 
@@ -84,8 +84,8 @@ class Empresa {
             servico_id:             this.servico_id,
             usuario_id:             this.usuario_id,
         });
-
-        return {204: 'Alteração feita com sucesso'};
+        //console.log(encontrar);
+        return encontrar;
     }
 
     async gerarToken(){

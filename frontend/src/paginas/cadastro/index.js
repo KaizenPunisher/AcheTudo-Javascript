@@ -1,27 +1,32 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { cadastrarUsuario } from '../../services/api';
+
 import './style.css';
 import './mobile.css';
-import { cadastrarUsuario } from '../../services/api';
 import logo from "../../imagens/logo.svg";
 
 export default function Cadastro(){
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    
+    const [senha, setSenha] = useState('');
+    const navigate = useNavigate();
+
     async function handleCadastro(e){
         e.preventDefault();
         
         const data = {
             nome,
             email,
-            password
+            senha
         };
 
         try{
             const response =  await cadastrarUsuario(data);
             alert(`Seu ID de acesso: ${response.data.id}`);
+            
+            navigate("/");
             
         } catch(erro){
             alert('Erro no cadastro');
@@ -59,9 +64,10 @@ export default function Cadastro(){
                         onChange={e => setEmail(e.target.value)}  
                     />
                     <input 
+                        type="password"
                         placeholder="SENHA"
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
+                        value={senha}
+                        onChange={e => setSenha(e.target.value)}
                     />
                     <button className="button" type="submit">CADASTRAR</button>
                 </form>

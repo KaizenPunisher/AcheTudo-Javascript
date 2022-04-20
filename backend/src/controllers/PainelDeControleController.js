@@ -30,7 +30,7 @@ module.exports = {
                 'telefones.ddd',
                 'telefones.numero',
                 'telefones.tipo',
-                'telefones.descricao as telefone_descricao'
+                'telefones.descricao as descricao_telefone'
             ]);
         ;
 
@@ -57,8 +57,8 @@ module.exports = {
         const telefone = new Telefone(request.body);
         
         const alterar = await empresa.alterar(id);
-        //await endereco.alterar(alterar.id);
-        //await telefone.alterar(alterar.id);
+        await endereco.alterar(alterar.id);
+        await telefone.alterar(alterar.id);
         
         return response.json(alterar);
     }

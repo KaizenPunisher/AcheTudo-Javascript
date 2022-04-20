@@ -37,7 +37,7 @@ module.exports = {
                 'telefones.ddd',
                 'telefones.numero',
                 'telefones.tipo',
-                'telefones.descricao as telefone_descricao'
+                'telefones.descricao as descricao_telefone'
             ]);
         ;
         console.log(empresas);

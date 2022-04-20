@@ -30,11 +30,26 @@ class Telefone {
         return {id: cadastro};
     }
 
-    async gerarToken(){
-        const [usuario] = await connection('usuarios').where('email', this.email).select('*');
-        this.id = usuario.id;
-        //console.log(process.env.APP_SECRET);
-        return jwt.sign({ id: this.id }, process.env.APP_SECRET);
+    async alterar(empresa_id){
+
+        const encontrar = await connection('telefones')
+            .where('empresa_id', empresa_id)
+            .select('empresa_id')
+            .first()
+        ;
+
+        if (!encontrar){
+            return { error: 'Operação não permitida.' };
+        }
+
+        await connection('telefones').where('empresa_id', empresa_id).update({
+            ddd:        this.ddd,
+            numero:     this.numero,
+            tipo:       this.tipo,
+            descricao:  this.descricao_telefone,
+        });
+
+        return encontrar;
     }
 }
 
