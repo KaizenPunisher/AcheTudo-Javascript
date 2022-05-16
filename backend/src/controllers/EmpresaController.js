@@ -47,13 +47,11 @@ module.exports = {
         return response.json(empresas);
         
     },
-
     async cadastrarEmpresa(request, response){
         const empresa = new Empresa(request.body);
         const cadastrar = await empresa.cadastrar();
         return response.json(cadastrar);
     },
-    
     async cadastrarEmpres(request, response) {
         //console.log(request.file);
     

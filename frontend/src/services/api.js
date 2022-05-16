@@ -5,6 +5,10 @@ export const api = axios.create({
     baseURL: env.backendBaseUrl,
 })
 
+export const listarAnuncios = async () => {
+    return api.get('inicio');
+}
+
 export const criarSessao = async (email, senha) => {
     return api.post('sessao', { email, senha });
 }
@@ -13,16 +17,13 @@ export const cadastrarUsuario = async (data) => {
     return api.post('usuario', data);
 }
 
-export const cadastrarEmpresa = async (data) => {
-    return api.post('paineldecontrole', data);
+export const cadastrarEmpresa = async (formData, headers) => {
+    //console.log(headers);
+    return api.post('paineldecontrole', formData, headers);
 }
 
 export const alterarEmpresa = async (id, data) => {
     return api.put(`paineldecontrole/${id}`, data);
-}
-
-export const listarAnuncios = async () => {
-    return api.get('empresa');
 }
 
 export const buscarAnuncio = async (id) => {

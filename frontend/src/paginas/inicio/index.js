@@ -60,7 +60,7 @@ export default function Inicio(){
                     <button className="sair" id='sair' onClick={handleLogout} to="/" type="button">SAIR</button>
                     <div className='clear'></div>
                     <h3 className="saudacao" id='saudacao'>Bem vindo, {nome}</h3>
-                    <Link className="fazeranuncio" id='fazeranuncio' to="/paineldecontrole">Fazer Anuncio</Link>
+                    <Link className="fazeranuncio" id='fazeranuncio' to="/paineldecontrole">ANUNCIO</Link>
                 </div>
                 <div className="titulo-local"><h3>Centro Comercial Cidade Tiradentes</h3></div>
                 <Link to="/">

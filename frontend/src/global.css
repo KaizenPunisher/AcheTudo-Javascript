@@ -14,9 +14,11 @@ body {
 button {
     cursor: pointer;
 }
+/*
 input[type="file"] {
-    display: none;
+    display: block;
 }
+*/
 .clear{
     clear: both;
 }

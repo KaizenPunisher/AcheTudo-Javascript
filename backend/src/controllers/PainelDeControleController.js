@@ -2,6 +2,7 @@ const connection = require('../database/connection');
 const Empresa = require("../models/Empresa");
 const Endereco = require("../models/Endereco");
 const Telefone = require("../models/Telefone");
+const Anuncio = require("../models/Anuncio");
 
 module.exports = {
     async encontrarEmpresa(request, response){
@@ -38,15 +39,18 @@ module.exports = {
     },
 
     async cadastrarEmpresa(request, response){
+        console.log(request.file);
         const empresa = new Empresa(request.body);
         const endereco = new Endereco(request.body);
         const telefone = new Telefone(request.body);
+        //const anuncio = new Anuncio(request.file);
+        //console.log(anuncio);
+        //const cadastrar = await empresa.cadastrar();
+        //await endereco.cadastrar(cadastrar.id);
+        //await telefone.cadastrar(cadastrar.id);
+        //await anuncio.cadastrar(cadastrar.id);
         
-        const cadastrar = await empresa.cadastrar();
-        await endereco.cadastrar(cadastrar.id);
-        await telefone.cadastrar(cadastrar.id);
-        
-        return response.json(cadastrar);
+        return response.json(request.file);
 
     },
 
@@ -55,11 +59,13 @@ module.exports = {
         const empresa = new Empresa(request.body);
         const endereco = new Endereco(request.body);
         const telefone = new Telefone(request.body);
+        const anuncio = new Anuncio(request.body);
+        console.log(anuncio);
+        //const alterar = await empresa.alterar(id);
+        //await endereco.alterar(alterar.id);
+        //await telefone.alterar(alterar.id);
+        //await anuncio.alterar(cadastrar.id);
         
-        const alterar = await empresa.alterar(id);
-        await endereco.alterar(alterar.id);
-        await telefone.alterar(alterar.id);
-        
-        return response.json(alterar);
+        return response.json(anuncio);
     }
 }

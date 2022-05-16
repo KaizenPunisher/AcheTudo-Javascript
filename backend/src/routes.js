@@ -19,16 +19,24 @@ routes.get('/inicio',
     celebrate({[Segments.QUERY]: Joi.object().keys({
         page: Joi.number(),
         })
-    }), EmpresaController.listarEmpresas);
-routes.get('/principal', 
-celebrate({[Segments.QUERY]: Joi.object().keys({
-    page: Joi.number(),
-    })
-}), EmpresaController.listarEmpresas);
+    }), 
+    EmpresaController.listarEmpresas
+);
 
-routes.get('/paineldecontrole/:id', AutenticacaoUsuario, PainelDeControleController.encontrarEmpresa);
-routes.post('/paineldecontrole', AutenticacaoUsuario, PainelDeControleController.cadastrarEmpresa);
-routes.put('/paineldecontrole/:id', AutenticacaoUsuario, PainelDeControleController.alterarEmpresa);
+routes.get('/paineldecontrole/:id', 
+    AutenticacaoUsuario, 
+    PainelDeControleController.encontrarEmpresa
+);
+routes.post('/paineldecontrole', 
+    AutenticacaoUsuario,
+    multer(multerConfig).single('file'),
+    PainelDeControleController.cadastrarEmpresa
+);
+routes.put('/paineldecontrole/:id', 
+    AutenticacaoUsuario, 
+    multer(multerConfig).single('file'), 
+    PainelDeControleController.alterarEmpresa
+);
 
 routes.get('/anuncio', AnuncioController.listarAnuncio);
 

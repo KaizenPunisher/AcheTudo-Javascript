@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { api, buscarAnuncio, cadastrarEmpresa, alterarEmpresa } from '../../services/api';
 import { AuthContext } from '../../contexts/autorizacao';
 
+
 import './style.css';
 import logo from "../../imagens/logo.svg";
 
@@ -30,11 +31,18 @@ export default function Cadastro(){
     const [ddd, setDdd] = useState('');
     const [tipo, setTipo] = useState('');
     const [descricao_telefone, setDescricaoTelefone] = useState('');
+    const [imagem, setImagem] = useState(['']);
 
     async function handleCadastro(e){
         e.preventDefault();
-        
-        const data = {
+
+        const headers = {
+            'header': {
+                'Content-Type': 'application/json'
+            }
+        }
+        /*
+        const formData = {
             usuario_id,
             razao_social,
             nome_fantasia,
@@ -55,11 +63,38 @@ export default function Cadastro(){
             numero,
             ddd,
             tipo,
-            descricao_telefone
-        };
-
+            descricao_telefone,
+            imagem
+        }
+        */
+        
+        const formData = new FormData();
+        formData.append("usuario_id", usuario_id);
+        formData.append("razao_social", razao_social);
+        formData.append("nome_fantasia", nome_fantasia);
+        formData.append("cnpj", cnpj);
+        formData.append("cpf", cpf);
+        formData.append("setor", setor);
+        formData.append("horario_de_atendimento", horario_de_atendimento);
+        formData.append("descricao", descricao);
+        formData.append("redes_sociais", redes_sociais);
+        formData.append("servico_id", servico_id);
+        formData.append("logradouro", logradouro);
+        formData.append("cep", cep);
+        formData.append("bairro", bairro);
+        formData.append("cidade", cidade);
+        formData.append("regiao", regiao);
+        formData.append("uf", uf);
+        formData.append("descricao_endereco", descricao_endereco);
+        formData.append("numero", numero);
+        formData.append("ddd", ddd);
+        formData.append("tipo", tipo);
+        formData.append("descricao_telefone", descricao_telefone);
+        formData.append("file", imagem);
+        
         try{
-            const response =  await cadastrarEmpresa(data);
+            //console.log(formData);
+            const response =  await cadastrarEmpresa(formData, headers);
             alert(`Seu ID de acesso: ${response.data.id}`);
             
         } catch(erro){
@@ -168,7 +203,7 @@ export default function Cadastro(){
                     </div>
                     <div className="painel-de-controle-dados" id='painel-de-controle-dados'>
                         <h3>Dados</h3>
-                        <form onSubmit={handleCadastro} id='painel-de-controle-cadastro'>
+                        <form onSubmit={handleCadastro} id='painel-de-controle-cadastro' encType="multipart/form-data" method='post'>
                             <div className="dados">
                                 <label>Razão Social</label>
                                 <input 
@@ -374,16 +409,16 @@ export default function Cadastro(){
                                 </select>
                                 <div className="clear"></div>
                             </div>
-                            {/*
-                            <label for="arquivo" className="botao-enviar-imagem">ENVIAR IMAGEM DO ANUNCIO</label>
+                            
+                            <label className="botao-enviar-imagem">ENVIAR IMAGEM DO ANUNCIO</label>
+                            
                             <input 
                                 id="arquivo"
                                 type="file"
                                 placeholder="ENVIAR"
-                                value={imagem}
-                                onChange={e => setImagem(e.target.value)}
+                                onChange={e => setImagem(e.target.files[0])}
                             />
-                            */}
+                            
                             <button className="button" type="submit">CADASTRAR ANUNCIO</button>
                         </form>
                         <br/>
