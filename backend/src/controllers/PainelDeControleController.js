@@ -39,18 +39,18 @@ module.exports = {
     },
 
     async cadastrarEmpresa(request, response){
-        console.log(request.file);
+        //console.log(request.file);
         const empresa = new Empresa(request.body);
         const endereco = new Endereco(request.body);
         const telefone = new Telefone(request.body);
-        //const anuncio = new Anuncio(request.file);
-        //console.log(anuncio);
-        //const cadastrar = await empresa.cadastrar();
-        //await endereco.cadastrar(cadastrar.id);
-        //await telefone.cadastrar(cadastrar.id);
-        //await anuncio.cadastrar(cadastrar.id);
+        const anuncio = new Anuncio(request.file);
+        //console.log(telefone);
+        const cadastrar = await empresa.cadastrar();
+        await endereco.cadastrar(cadastrar.id);
+        await telefone.cadastrar(cadastrar.id);
+        await anuncio.cadastrar(cadastrar.id);
         
-        return response.json(request.file);
+        return response.json(cadastrar);
 
     },
 
@@ -60,7 +60,7 @@ module.exports = {
         const endereco = new Endereco(request.body);
         const telefone = new Telefone(request.body);
         const anuncio = new Anuncio(request.body);
-        console.log(anuncio);
+        
         //const alterar = await empresa.alterar(id);
         //await endereco.alterar(alterar.id);
         //await telefone.alterar(alterar.id);

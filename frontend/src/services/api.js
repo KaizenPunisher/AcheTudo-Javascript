@@ -18,7 +18,6 @@ export const cadastrarUsuario = async (data) => {
 }
 
 export const cadastrarEmpresa = async (formData, headers) => {
-    //console.log(headers);
     return api.post('paineldecontrole', formData, headers);
 }
 

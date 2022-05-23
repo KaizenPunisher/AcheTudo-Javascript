@@ -29,12 +29,12 @@ routes.get('/paineldecontrole/:id',
 );
 routes.post('/paineldecontrole', 
     AutenticacaoUsuario,
-    multer(multerConfig).single('file'),
+    multer(multerConfig).single('imagem'),
     PainelDeControleController.cadastrarEmpresa
 );
 routes.put('/paineldecontrole/:id', 
     AutenticacaoUsuario, 
-    multer(multerConfig).single('file'), 
+    multer(multerConfig).single('imagem'), 
     PainelDeControleController.alterarEmpresa
 );
 

@@ -90,7 +90,7 @@ export default function Cadastro(){
         formData.append("ddd", ddd);
         formData.append("tipo", tipo);
         formData.append("descricao_telefone", descricao_telefone);
-        formData.append("file", imagem);
+        formData.append("imagem", imagem);
         
         try{
             //console.log(formData);
