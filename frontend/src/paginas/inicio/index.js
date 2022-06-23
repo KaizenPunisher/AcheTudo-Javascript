@@ -77,19 +77,23 @@ export default function Inicio(){
                 <ul>
                     {empresas.map(empresa => (
                         <li key={empresa.id}>
-                            <a href="#image">
-                                <img src={imagem} alt="teste" />
-                                <header><p>{empresa.id}</p></header>
+                            <a href={`#image${empresa.id}`}>
+                                <img src={empresa.url} alt="teste" />
+                                <header><p className='titulo'>{empresa.nome_fantasia}</p></header>
                                 <section>
-                                <p>{empresa.nome_fantasia}</p>
                                 </section>
                             </a>
-                            <div className="vitrine" id="image">
+                            <div className="vitrine" id={`image${empresa.id}`}>
                                 <a href="#page" className="fechar">x Fechar</a>
-                                <img src={imagem} alt="image01" />
-                                <div>
-                                    <h3>pointe /point/</h3>
-                                    <h4 className="descricao">Dance performed on the tips of the toes</h4>
+                                <img src={empresa.url} alt="image01" />
+                                <div className='informacao'>
+                                    <h2>{empresa.nome_fantasia}</h2>
+                                    <div className='descricao'>{empresa.descricao}</div>
+                                    <div className='logradouro'>Endereço - {empresa.logradouro}</div>
+                                    <div className='endereco_descricao'>Próximo ao - {empresa.endereco_descricao}</div>
+                                    <div className='numero'>Telefone: {empresa.ddd} | {empresa.numero} | {empresa.descricao_telefone}</div>
+                                    <h3>Horario: {empresa.horario_de_atendimento}</h3>
+                                    <div className='clear'></div>
                                 </div>
 						    </div>
                             {/* <button type="button" onClick={() => handleDeletarEmpresas(empresa.id)}>Apagar</button> */}

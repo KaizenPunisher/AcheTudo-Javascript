@@ -17,6 +17,7 @@ module.exports = {
             .join('servicos', 'servicos.id', '=', 'empresas.servico_id')
             .leftJoin('enderecos', 'enderecos.empresa_id', '=', 'empresas.id')
             .leftJoin('telefones', 'telefones.empresa_id', '=', 'empresas.id')
+            .leftJoin('anuncios', 'anuncios.empresa_id', '=', 'empresas.id')
             .limit(20)
             .offset((page-1)*20)
             .select([
@@ -37,10 +38,15 @@ module.exports = {
                 'telefones.ddd',
                 'telefones.numero',
                 'telefones.tipo',
-                'telefones.descricao as descricao_telefone'
+                'telefones.descricao as descricao_telefone',
+                'anuncios.id as anuncios_id',
+                'anuncios.imagem',
+                'anuncios.tamanho',
+                'anuncios.key',
+                'anuncios.url'
             ]);
         ;
-        console.log(empresas);
+        //console.log(empresas);
         
         response.header('X-Total-Count', count['count(*)']);
 

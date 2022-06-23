@@ -353,7 +353,7 @@ export default function Cadastro(){
                                 <div className="clear"></div>
                             </div>
                             <div className="dados">
-                                <label>Ponto de<br/>Referência</label>
+                                <label>Próximo ao</label>
                                 <input 
                                     placeholder="Nome de registro"
                                     value={descricao_endereco}
@@ -572,7 +572,7 @@ export default function Cadastro(){
                                 <div className="clear"></div>
                             </div>
                             <div className="dados">
-                                <label>Ponto de<br/>Referência</label>
+                                <label>Próximo ao</label>
                                 <input 
                                     placeholder="Nome de registro"
                                     value={descricao_endereco}

@@ -12,6 +12,7 @@ module.exports = {
             .join('servicos', 'servicos.id', '=', 'empresas.servico_id')
             .leftJoin('enderecos', 'enderecos.empresa_id', '=', 'empresas.id')
             .leftJoin('telefones', 'telefones.empresa_id', '=', 'empresas.id')
+            .leftJoin('anuncios', 'anuncios.empresa_id', '=', 'empresas.id')
             .where('usuario_id', id)
             .select([
                 'usuario_id',
@@ -31,7 +32,12 @@ module.exports = {
                 'telefones.ddd',
                 'telefones.numero',
                 'telefones.tipo',
-                'telefones.descricao as descricao_telefone'
+                'telefones.descricao as descricao_telefone',
+                'anuncios.id as anuncios_id',
+                'anuncios.imagem',
+                'anuncios.tamanho',
+                'anuncios.key',
+                'anuncios.url'
             ]);
         ;
 
@@ -59,13 +65,13 @@ module.exports = {
         const empresa = new Empresa(request.body);
         const endereco = new Endereco(request.body);
         const telefone = new Telefone(request.body);
-        const anuncio = new Anuncio(request.body);
+        //const anuncio = new Anuncio(request.body);
         
-        //const alterar = await empresa.alterar(id);
-        //await endereco.alterar(alterar.id);
-        //await telefone.alterar(alterar.id);
-        //await anuncio.alterar(cadastrar.id);
+        const alterar = await empresa.alterar(id);
+        await endereco.alterar(alterar.id);
+        await telefone.alterar(alterar.id);
+        //await anuncio.alterar(alterar.id);
         
-        return response.json(anuncio);
+        return response.json(alterar);
     }
 }
