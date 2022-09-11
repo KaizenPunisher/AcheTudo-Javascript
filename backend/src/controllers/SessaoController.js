@@ -7,7 +7,7 @@ module.exports = {
         //const { email, senha } = request.body;
         const usuarioLogin = new Usuario(request.body);
         const usuario = await usuarioLogin.encontrar(usuarioLogin.email);
-
+        
         if (!usuario){
             return response.status(401).json({ error: 'Usuario não existe'});
         }

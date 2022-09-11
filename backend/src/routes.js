@@ -23,11 +23,16 @@ routes.get('/inicio',
     EmpresaController.listarEmpresas
 );
 
+routes.post('/usuario', UsuarioController.cadastrarUsuario);
+routes.get('/usuario', UsuarioController.listarUsuarios);
+
+routes.post('/sessao', SessaoController.criarSessao);
+
 routes.get('/paineldecontrole/:id', 
     AutenticacaoUsuario, 
     PainelDeControleController.encontrarEmpresa
 );
-routes.post('/paineldecontrole', 
+routes.post('/paineldecontrole',
     AutenticacaoUsuario,
     multer(multerConfig).single('imagem'),
     PainelDeControleController.cadastrarEmpresa
@@ -40,10 +45,6 @@ routes.put('/paineldecontrole/:id',
 
 routes.get('/anuncio', AnuncioController.listarAnuncio);
 
-routes.post('/usuario', UsuarioController.cadastrarUsuario);
-routes.get('/usuario', UsuarioController.listarUsuarios);
-
-routes.post('/sessao', SessaoController.criarSessao);
 
 routes.get('/empresa', 
     celebrate({[Segments.QUERY]: Joi.object().keys({

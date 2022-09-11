@@ -13,11 +13,11 @@ exports.up = function(knex) {
         table.string('redes_sociais').nullable();
         table.timestamps();
 
-        table.integer('servico_id').nullable();
-        table.foreign('servico_id').references('id').inTable('servicos');
+        table.integer('servico_id').unsigned();
+        table.foreign('servico_id').references('id');
 
-        table.string('usuario_id').nullable();
-        table.foreign('usuario_id').references('id').inTable('usuarios');
+        table.string('usuario_id').unsigned();
+        table.foreign('usuario_id').references('id');
     });
 };
 

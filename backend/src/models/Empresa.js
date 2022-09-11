@@ -55,7 +55,7 @@ class Empresa {
             redes_sociais:          this.redes_sociais,
             servico_id:             this.servico_id,
             usuario_id:             this.usuario_id,
-        });
+        }).returning('id');
         
         return {id: cadastro};
     }

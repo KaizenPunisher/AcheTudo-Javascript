@@ -1,25 +1,28 @@
 const Empresa = require("../models/Empresa");
+const Endereco = require("../models/Endereco");
 const connection = require('../database/connection');
 const { listarTelefone } = require('./TelefoneController');
 const crypto = require('crypto');
 
 const Anuncio = require("../models/Anuncio");
+const { leftJoin } = require("../database/connection");
 
 module.exports = {
 
     async listarEmpresas(request, response){
         
         const [count] = await connection('empresas').count();
-
+        
         const { page = 1 } = request.query;
-
-        const empresas = await connection('empresas')
-            .join('servicos', 'servicos.id', '=', 'empresas.servico_id')
-            .leftJoin('enderecos', 'enderecos.empresa_id', '=', 'empresas.id')
-            .leftJoin('telefones', 'telefones.empresa_id', '=', 'empresas.id')
-            .leftJoin('anuncios', 'anuncios.empresa_id', '=', 'empresas.id')
-            .limit(20)
-            .offset((page-1)*20)
+        
+        const empresas = await connection('empresas')  
+            .leftJoin('servicos', 'empresas.id', 'servicos.id')
+            .leftJoin('enderecos', 'empresas.id', 'enderecos.id')
+            .leftJoin('telefones', 'empresas.id', 'telefones.id')
+            .leftJoin('anuncios', 'empresas.id', 'anuncios.id')
+            .limit(5)
+            .offset((page-1)*5)
+            .orderBy('id')
             .select([
                 'usuario_id',
                 'empresas.*',
@@ -44,18 +47,20 @@ module.exports = {
                 'anuncios.tamanho',
                 'anuncios.key',
                 'anuncios.url'
-            ]);
+            ])
         ;
-        //console.log(empresas);
+        //response.header('X-Total-Count', count['count(*)']);
+        response.header('X-Total-Count', count['count']);
         
-        response.header('X-Total-Count', count['count(*)']);
-
-        return response.json(empresas);
-        
+        return response.json(empresas);  
     },
     async cadastrarEmpresa(request, response){
         const empresa = new Empresa(request.body);
+        const endereco = new Endereco(request.body);
+
         const cadastrar = await empresa.cadastrar();
+        await endereco.cadastrar(cadastrar.id);
+
         return response.json(cadastrar);
     },
     async cadastrarEmpres(request, response) {

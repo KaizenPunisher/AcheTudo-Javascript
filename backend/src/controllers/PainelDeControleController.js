@@ -9,10 +9,10 @@ module.exports = {
         const { id } = request.params;
 
         const empresa = await connection('empresas')
-            .join('servicos', 'servicos.id', '=', 'empresas.servico_id')
-            .leftJoin('enderecos', 'enderecos.empresa_id', '=', 'empresas.id')
-            .leftJoin('telefones', 'telefones.empresa_id', '=', 'empresas.id')
-            .leftJoin('anuncios', 'anuncios.empresa_id', '=', 'empresas.id')
+            .leftJoin('servicos', 'empresas.id', 'servicos.id')
+            .leftJoin('enderecos', 'empresas.id', 'enderecos.id')
+            .leftJoin('telefones', 'empresas.id', 'telefones.id')
+            .leftJoin('anuncios', 'empresas.id', 'anuncios.id')
             .where('usuario_id', id)
             .select([
                 'usuario_id',
@@ -40,7 +40,6 @@ module.exports = {
                 'anuncios.url'
             ]);
         ;
-
         return response.json(empresa);
     },
 

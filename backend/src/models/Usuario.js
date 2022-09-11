@@ -16,7 +16,7 @@ class Usuario {
     }
 
     async encontrar(email){
-        const [usuario] = await connection('usuarios').where('email', email).select('*');
+        const usuario = await connection('usuarios').where('email', email).first();
         return usuario;
     }
 
@@ -31,13 +31,12 @@ class Usuario {
             nome: this.nome,
             email: this.email,
             password_hash: this.senha,
-        });
-        
-        return {id: this.id};
+        }).returning('id');
+        return {id: cadastro};
     }
 
     async gerarToken(email){
-        const [usuario] = await connection('usuarios').where('email', email).select('*');
+        const usuario = await connection('usuarios').where('email', email).select('*');
         //this.id = usuario.id;
         //console.log(usuario);
         return jwt.sign({ id: usuario.id }, process.env.APP_SECRET);

@@ -9,9 +9,8 @@ exports.up = function(knex) {
         table.string('descricao').nullable();
         table.timestamps();
 
-        table.string('empresa_id').nullable();
-
-        table.foreign('empresa_id').references('id').inTable('empresas');
+        table.string('empresa_id').unsigned();
+        table.foreign('empresa_id').references('id');
     });
 };
 

@@ -25,7 +25,7 @@ class Telefone {
             tipo:       this.tipo,
             descricao:  this.descricao_telefone,
             empresa_id: empresa_id,
-        });
+        }).returning('id');
         
         return {id: cadastro};
     }

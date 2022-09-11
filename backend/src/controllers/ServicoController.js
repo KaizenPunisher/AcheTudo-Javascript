@@ -1,3 +1,4 @@
+const { json } = require('express');
 const connection = require('../database/connection');
 
 module.exports = {
@@ -19,7 +20,7 @@ module.exports = {
         const [id] = await connection('servicos').insert({
             empreendimento,
             adm_id,
-        })
+        }).returning('id')
     
         return response.json({ id });
     },

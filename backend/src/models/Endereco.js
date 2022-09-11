@@ -31,7 +31,7 @@ class Endereco {
             uf:          this.uf,
             descricao:   this.descricao_endereco,
             empresa_id:  empresa_id,
-        });
+        }).returning('id');
         
         return {id: cadastro};
     }
