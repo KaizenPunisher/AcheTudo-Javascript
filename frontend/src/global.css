@@ -67,6 +67,7 @@ input[type="file"] {
     padding: 0px 0px 0px 50px;
 }
 
+/* AREA USUARIO */
 .principal .topo .area-usuario {
     /*border: 1px solid rgb(245, 6, 6);*/
     width: 35%;
@@ -75,6 +76,32 @@ input[type="file"] {
     padding: 10px 10px 10px 10px;
     
 }
+
+.principal .topo .area-usuario .cadastro{
+    font-family:"Franklin Gothic Heavy";
+    font-size: 13px;
+    float: right;
+    margin-top: 5px;
+    margin-right: 5px;
+    width: 100px;
+    height: 25px;
+    background: #fff;
+    border: 0px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    text-decoration: none;
+    filter: opacity(0.6);
+    transition: 0.5s;
+    padding-top: 10px;
+    right: 10px;
+    -webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49); 
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49);
+}
+.principal .topo .area-usuario .cadastro:hover{
+    transition: 0.5s;
+    filter: opacity(1.0);
+}
+
 .principal .topo .area-usuario .entrar{
     font-family:"Franklin Gothic Heavy";
     font-size: 13px;
@@ -99,15 +126,17 @@ input[type="file"] {
     filter: opacity(1.0);
     transition: 0.5s;
 }
-.principal .topo .area-usuario .cadastro{
+
+.principal .topo .area-usuario .fazeranuncio{
     font-family:"Franklin Gothic Heavy";
     font-size: 13px;
+    display: none;
     float: right;
     margin-top: 5px;
     margin-right: 5px;
     width: 100px;
     height: 25px;
-    background: #fff;
+    background: rgb(250, 253, 208);
     border: 0px;
     color: rgb(0, 0, 0);
     text-align: center;
@@ -119,11 +148,11 @@ input[type="file"] {
     -webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49); 
     box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49);
 }
-
-.principal .topo .area-usuario .cadastro:hover{
+.principal .topo .area-usuario .fazeranuncio:hover{
     transition: 0.5s;
     filter: opacity(1.0);
 }
+
 .principal .topo .area-usuario .sair{
     /*border: 1px solid black;*/
     font-family:"Franklin Gothic Heavy";
@@ -151,8 +180,9 @@ input[type="file"] {
     filter: opacity(1.0);
 }
 
-.principal .topo .area-usuario .saudacao{
-    /*border: 3px solid black;*/
+/* AREA SAUDACAO */
+.principal .topo .area-saudacao{
+    /*border: 1px solid blue;*/
     font-family: Calibri;
     margin-right: 10px;
     display: none;
@@ -160,30 +190,8 @@ input[type="file"] {
     width: auto;
     height: auto;
 }
-.principal .topo .area-usuario .fazeranuncio{
-    font-family:"Franklin Gothic Heavy";
-    font-size: 13px;
-    display: none;
-    float: right;
-    margin-top: 20px;
-    margin-right: 5px;
-    width: 100px;
-    height: 25px;
-    background: rgb(250, 253, 208);
-    border: 0px;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    text-decoration: none;
-    filter: opacity(0.6);
-    transition: 0.5s;
-    padding-top: 10px;
-    right: 10px;
-    -webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49); 
-    box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49);
-}
-.principal .topo .area-usuario .fazeranuncio:hover{
-    transition: 0.5s;
-    filter: opacity(1.0);
+.principal .topo .area-saudacao h3{
+    font-size: 12px;
 }
 
 /* MENU */
@@ -191,7 +199,8 @@ input[type="file"] {
     /*border: 1px solid black;*/
     width: auto;
     height: 40px;
-    clear:both;
+    padding: 0px;
+    margin: -13px -4px 0px 0px;
 }
 .principal .topo .menu ul{
     display: grid;

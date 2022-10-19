@@ -4,28 +4,23 @@ import './style.css';
 import { listarAnuncios } from '../../services/api';
 import { AuthContext } from '../../contexts/autorizacao';
 
-import imagem from '../../imagens/imagem.jpg';
 import logo from "../../imagens/logo.svg";
 
 export default function Inicio(){
     const { logout } = useContext(AuthContext);
     const [nome, setNome] = useState();
     const [empresas, setEmpresas] = useState([]);
-    const [count, setCount] = useState(0);
 
     const usuario = JSON.parse(localStorage.getItem('usuario'));
     
     useEffect(() => {
-        if(count<5){
-            listarAnuncios().then(response => {
-                setEmpresas(response.data);
-            });
-            setCount(count+1);
-        };
-
+        listarAnuncios().then(response => {
+            setEmpresas(response.data);
+        });
+        
         if(usuario !== null){
             setNome(usuario.nome)
-
+    
             document.getElementById("saudacao").style.display = "block";
             document.getElementById("fazeranuncio").style.display = "block";
             document.getElementById("sair").style.display = "block";
@@ -33,7 +28,7 @@ export default function Inicio(){
             document.getElementById("entrar").style.display = "none";
         };
         
-    }, [count]);
+    }, []);
     /*
     async function handleDeletarEmpresas(id){
         try {
@@ -50,22 +45,25 @@ export default function Inicio(){
     const handleLogout = () => {
         logout();
     }
-
+    
     return (
         <div className="principal">
             <div className="topo">
+                <Link to="/">
+                    <div className="logo" style={{ backgroundImage: `url(${logo})` }}></div>
+                </Link>
+                <div className="titulo-local"><h3>Centro Comercial Cidade Tiradentes</h3></div>
                 <div className="area-usuario">
                     <Link className="entrar" id='entrar' to="/login">ENTRAR</Link>
                     <Link className="cadastro" id='cadastro' to="/cadastro">CADASTRO</Link>
                     <button className="sair" id='sair' onClick={handleLogout} to="/" type="button">SAIR</button>
-                    <div className='clear'></div>
-                    <h3 className="saudacao" id='saudacao'>Bem vindo, {nome}</h3>
                     <Link className="fazeranuncio" id='fazeranuncio' to="/paineldecontrole">ANUNCIO</Link>
+                    <div className='clear'></div>
                 </div>
-                <div className="titulo-local"><h3>Centro Comercial Cidade Tiradentes</h3></div>
-                <Link to="/">
-                    <div className="logo" style={{ backgroundImage: `url(${logo})` }}></div>
-                </Link>
+                <div className="area-saudacao" id='saudacao'>
+                    <h3 className="saudacao">Bem vindo, {nome}</h3>
+                </div>
+                <div className='clear'></div>
                 <div className="menu">
                     <ul>
                         <li>SERVIÇOS PUBLICOS</li>
