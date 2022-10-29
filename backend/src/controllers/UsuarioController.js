@@ -7,6 +7,18 @@ module.exports = {
         return response.json(cadastrar);
     },
 
+    async esqueciSenha(request, response){
+        const usuario = new Usuario(request.body);
+        const esquecisenha = await usuario.esqueciSenha();
+        return response.json(esquecisenha);
+    },
+
+    async resetSenha(request, response){
+        const usuario = new Usuario(request.body);
+        const resetSenha = await usuario.resetSenha();
+        return response.json(resetSenha);
+    },
+
     async listarUsuarios(request, response){
         const usuario = new Usuario(request.body);
         const listar = await usuario.listar();

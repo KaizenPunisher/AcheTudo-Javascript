@@ -5,6 +5,9 @@ exports.up = function(knex) {
         table.string('nome').notNullable();
         table.string('email').unique().notNullable();
         table.string('password_hash').notNullable();
+        table.string('senha_reset_token');
+        table.string('senha_reset_expiracao');
+        table.string('now');
         table.timestamps();
 
     });

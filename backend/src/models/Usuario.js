@@ -2,12 +2,14 @@ const connection = require('../database/connection');
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
+const mailer = require('../modulos/mailer');
 
 class Usuario {
-    constructor({nome, email, senha}){
-        this.nome       = nome
-        this.email      = email
-        this.senha      = senha
+    constructor({nome, email, senha, token}){
+        this.nome                = nome
+        this.email               = email
+        this.senha               = senha
+        this.senha_reset_token   = token
     }
 
     async listar(){
@@ -33,6 +35,68 @@ class Usuario {
             password_hash: this.senha,
         }).returning('id');
         return {id: cadastro};
+    }
+
+    async esqueciSenha(){
+        const usuario = await connection('usuarios').where('email', this.email).first();
+        
+        if(!usuario){
+            return { error: 'Usuario não encontrado' };
+        }
+        
+        const senhaResetToken = crypto.randomBytes(20).toString('hex');
+
+        const senhaResetExpiracao = new Date();
+        senhaResetExpiracao.setHours(senhaResetExpiracao.getHours() + 1);
+        
+        await connection('usuarios').where('email', this.email).update({
+            senha_reset_token:     senhaResetToken,
+            senha_reset_expiracao: senhaResetExpiracao,
+        });
+
+        mailer.sendMail({
+            to:       this.email,
+            from:     'contato@achetudotiradentes.com.br',
+            subject: 'Esqueci a senha (Não responda esse email)',
+            template: 'auth/esqueciasenha',
+            context:  {senhaResetToken},
+        }, (err) => {
+            if (err)
+                return { error: 'Não foi possivel enviar recuperação de senha'};
+        });
+        
+    }
+
+    async resetSenha(){
+        const nowUpdate = new Date();
+        await connection('usuarios').where('email', this.email).update({
+            now: nowUpdate,
+        });
+
+        const [usuario] = await connection('usuarios')
+            .select('senha_reset_token', 'senha_reset_expiracao', 'now')
+            .where('email', this.email);
+
+        if(!usuario){
+            return { error: 'Usuario não encontrado' };
+        }
+        console.log(usuario.now);
+
+        if(this.senha_reset_token !== usuario.senha_reset_token){
+            return { error: 'Token invalido' };
+        }
+
+        if(usuario.now > usuario.senha_reset_expiracao){
+            return { error: 'Token inspirou, faça um novo' };
+        }
+        
+        const password_hash = await bcrypt.hash(this.senha, 8);
+        this.senha = password_hash;
+        await connection('usuarios').where('email', this.email).update({
+            password_hash: this.senha,
+        });
+        
+        return { menssagem: 'Senha trocada com sucesso' };
     }
 
     async gerarToken(email){

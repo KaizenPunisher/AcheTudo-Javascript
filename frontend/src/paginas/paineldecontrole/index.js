@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { api, buscarAnuncio, cadastrarEmpresa, /*alterarEmpresa*/ } from '../../services/api';
+import { api, buscarAnuncio, cadastrarEmpresa, alterarEmpresa } from '../../services/api';
 import { AuthContext } from '../../contexts/autorizacao';
 
 
@@ -10,7 +10,7 @@ import logo from "../../imagens/logo.svg";
 export default function Cadastro(){
     const {usuario} = useContext(AuthContext);
     const {token} = useContext(AuthContext);
-    //const [usuario_id, setUsuarioId] = useState(usuario.id);
+    const [usuario_id, setUsuarioId] = useState(usuario.id);
     const [razao_social, setRazaoSocial] = useState('');
     const [nome_fantasia, setNomeFantasia] = useState('');
     const [cnpj, setCnpj] = useState('');
@@ -69,7 +69,7 @@ export default function Cadastro(){
         */
         
         const formData = new FormData();
-        //formData.append("usuario_id", usuario_id);
+        formData.append("usuario_id", usuario_id);
         formData.append("razao_social", razao_social);
         formData.append("nome_fantasia", nome_fantasia);
         formData.append("cnpj", cnpj);
@@ -105,29 +105,6 @@ export default function Cadastro(){
 
     async function handleAlteracao(e){
         e.preventDefault();
-        /*
-        const data = {
-            razao_social,
-            nome_fantasia,
-            cnpj,
-            cpf,
-            setor,
-            horario_de_atendimento,
-            descricao,
-            redes_sociais,
-            servico_id,
-            logradouro,
-            cep,
-            bairro,
-            cidade,
-            regiao,
-            uf,
-            descricao_endereco,
-            numero,
-            ddd,
-            tipo,
-            descricao_telefone
-        };*/
 
         try{
             //const response =  await alterarEmpresa(usuario.id,data);
@@ -145,6 +122,7 @@ export default function Cadastro(){
         api.defaults.headers.Authorization = `Bearer ${token}`;
         
         await buscarAnuncio(usuario.id).then(response => {
+            //console.log(response.data);
             if(response.data.length != 0){
                 setRazaoSocial(response.data[0].razao_social);
                 setNomeFantasia(response.data[0].nome_fantasia);
@@ -175,9 +153,9 @@ export default function Cadastro(){
         });
         
     };
+
     useEffect(async() => {
         await encontrarEmpresa();
-        
     }, []);
 
     return (

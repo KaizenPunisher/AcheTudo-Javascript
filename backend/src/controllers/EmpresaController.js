@@ -24,7 +24,6 @@ module.exports = {
             .offset((page-1)*5)
             .orderBy('id')
             .select([
-                'usuario_id',
                 'empresas.*',
                 'servicos.id as servico_id',
                 'servicos.empreendimento',

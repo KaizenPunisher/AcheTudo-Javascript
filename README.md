@@ -8,7 +8,7 @@ Sistema Web Mobile com objetivo de centralizar informações de comercios locais
 __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 
 ### (Backend) Tecnologias
-* Banco de dados SQLite - Estrura BD feita no modelo relacional
+* Banco de dados Postgree - Estrura BD feita no modelo relacional
 * Express - Framework web estruturado para node  ( npm install express )
 * Knex - Estrutura para conexão com o banco de dados ( npm install knex )
 * Nodemon - Monitorar todas as alterações nos arquivos da aplicação e reinicia automaticamente o servidor quando for necessário. ( npm install nodemon )
@@ -20,6 +20,8 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 * Morgan - Middleware para logs de requisições HTTP ( npm install morgan )
 * Multer S3 - Biblioteca para realizar store na amazon s3
 * Dotenv - Gerenciamento de variavel ambiente. ( npm install dotenv )
+* Nodemailer - Pacote para envio de email ( yarn add nodemailer )
+* Nodemailer Handlerbars - Template HTML para utilização de variaveis ( yarn add nodemailer-express-handlebars )
 
 ### (Metodo TDD) Tecnologias
 * Jest - Framework de teste em JavaScript projetado para garantir a correção de qualquer código JavaScript. ( npm instal jest -D >> npx jest --init )

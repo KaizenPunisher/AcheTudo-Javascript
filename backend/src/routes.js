@@ -25,6 +25,8 @@ routes.get('/inicio',
 
 routes.post('/usuario', UsuarioController.cadastrarUsuario);
 routes.get('/usuario', UsuarioController.listarUsuarios);
+routes.post('/esqueciasenha', UsuarioController.esqueciSenha);
+routes.post('/resetsenha',UsuarioController.resetSenha);
 
 routes.post('/sessao', SessaoController.criarSessao);
 
@@ -35,7 +37,7 @@ routes.get('/paineldecontrole/:id',
 routes.post('/paineldecontrole',
     AutenticacaoUsuario,
     multer(multerConfig).single('imagem'),
-    PainelDeControleController.cadastrarEmpresa
+    PainelDeControleController.cadastrarEmpresa,
 );
 routes.put('/paineldecontrole/:id', 
     AutenticacaoUsuario, 
