@@ -111,8 +111,9 @@
     padding-left: 5px;
 }
 .descricao{
-    /*border: 1px solid black;*/
+    border: 1px solid black;
     font-family: "Franklin Gothic Heavy";
+    word-break: break-all;
     color: rgb(250, 255, 209);
     text-shadow: 1px 1px 2px rgb(0, 0, 0);
     font-weight: bold;
@@ -123,7 +124,7 @@
     padding-right: 5px;
     width: auto;
     height: auto;
-    max-height: 60px;
+    max-height: 120px;
     text-align: left;
 }
 .logradouro{

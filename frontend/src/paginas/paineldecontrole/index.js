@@ -103,21 +103,6 @@ export default function Cadastro(){
         
     };
 
-    async function handleAlteracao(e){
-        e.preventDefault();
-
-        try{
-            //const response =  await alterarEmpresa(usuario.id,data);
-            alert(`Mensagem: Alteração feita com sucesso`);
-            //alert(`${usuario.id}`)
-            //history.push("/");
-            
-        } catch(erro){
-            alert('Erro na alteração');
-        }
-        
-    };
-
     async function encontrarEmpresa(){
         api.defaults.headers.Authorization = `Bearer ${token}`;
         
@@ -151,6 +136,51 @@ export default function Cadastro(){
                 document.getElementById("painel-de-controle-cadastro").style.display = "none";
             };
         });
+        
+    };
+
+    async function handleAlteracao(e){
+        e.preventDefault();
+
+        const headers = {
+            'header': {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const formData = new FormData();
+        formData.append("usuario_id", usuario_id);
+        formData.append("razao_social", razao_social);
+        formData.append("nome_fantasia", nome_fantasia);
+        formData.append("cnpj", cnpj);
+        formData.append("cpf", cpf);
+        formData.append("setor", setor);
+        formData.append("horario_de_atendimento", horario_de_atendimento);
+        formData.append("descricao", descricao);
+        formData.append("redes_sociais", redes_sociais);
+        formData.append("servico_id", servico_id);
+        formData.append("logradouro", logradouro);
+        formData.append("cep", cep);
+        formData.append("bairro", bairro);
+        formData.append("cidade", cidade);
+        formData.append("regiao", regiao);
+        formData.append("uf", uf);
+        formData.append("descricao_endereco", descricao_endereco);
+        formData.append("numero", numero);
+        formData.append("ddd", ddd);
+        formData.append("tipo", tipo);
+        formData.append("descricao_telefone", descricao_telefone);
+        formData.append("imagem", imagem);
+
+        try{
+            const response =  await alterarEmpresa(usuario.id, formData, headers);
+            alert(`Mensagem: Alteração feita com sucesso`);
+            //alert(`${usuario.id}`)
+            //history.push("/");
+            
+        } catch(erro){
+            alert('Erro na alteração');
+        }
         
     };
 
@@ -400,7 +430,7 @@ export default function Cadastro(){
                             <button className="button" type="submit">CADASTRAR ANUNCIO</button>
                         </form>
                         <br/>
-                        <form onSubmit={handleAlteracao} id='painel-de-controle-alteracao' className="painel-de-controle-alteracao">
+                        <form onSubmit={handleAlteracao} id='painel-de-controle-alteracao' className="painel-de-controle-alteracao" encType="multipart/form-data" method='post'>
                             <div className="dados">
                                 <label>Razão Social</label>
                                 <input 

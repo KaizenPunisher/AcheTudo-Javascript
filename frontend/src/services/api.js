@@ -21,8 +21,8 @@ export const cadastrarEmpresa = async (formData, headers) => {
     return api.post('paineldecontrole', formData, headers);
 }
 
-export const alterarEmpresa = async (id, data) => {
-    return api.put(`paineldecontrole/${id}`, data);
+export const alterarEmpresa = async (id, formData, headers) => {
+    return api.put(`paineldecontrole/${id}`, formData, headers);
 }
 
 export const buscarAnuncio = async (id) => {
