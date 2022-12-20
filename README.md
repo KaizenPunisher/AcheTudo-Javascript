@@ -1,10 +1,10 @@
 # AcheTudo-Javascript
-## Estrutura em Node, React e React-Native
+## Estrutura em Node, React e React-Native <br>
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b818efd9-5865-4a58-b863-bbc8109df9f3/deploy-status)](https://app.netlify.com/sites/achetudotiradentes/deploys)
 
 Sistema Web Mobile com objetivo de centralizar informações de comercios locais. Visando a facilidade de pesquisa de produtos e serviços em centros comerciais.
 
 //// Esse projeto estou desenvolvendo sozinho do zero, no modo FULLSTACK. ////
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b818efd9-5865-4a58-b863-bbc8109df9f3/deploy-status)](https://app.netlify.com/sites/achetudotiradentes/deploys)
 
 __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 
