@@ -1,0 +1,150 @@
+@media screen and (max-width:565px){
+    .principal .topo .logo{
+        /*border: 1px solid blue;*/
+        width: 40px;
+        height: 40px;
+        margin: 0px 0px 5px 0px;
+        float: left;
+        padding: 0px;
+    }
+    .principal .topo .titulo-local{
+        /*border: 1px solid red;*/
+        float: right;
+        font-size: 12px;
+        width: 80%;
+        height: 40px;
+        padding: 0px 0px 0px 5px;
+    }
+
+    /* AREA USUARIO */
+    .principal .topo .area-usuario {
+        /*border: 1px solid green;*/
+        float: left;
+        width: 100%;
+        height: auto;
+        padding: 0px;
+    }
+
+    .principal .topo .area-usuario .cadastro{
+        font-family:"Franklin Gothic Heavy";
+        font-size: 13px;
+        float: left;
+        margin-top: 0px;
+        margin-right: 0px;
+        width: 100px;
+        height: 25px;
+        background: #fff;
+        border: 0px;
+        color: rgb(0, 0, 0);
+        text-align: center;
+        text-decoration: none;
+        filter: opacity(0.6);
+        transition: 0.5s;
+        padding-top: 10px;
+        right: 10px;
+        -webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49); 
+        box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49);
+    }
+    .principal .topo .area-usuario .cadastro:hover{
+        transition: 0.5s;
+        filter: opacity(1.0);
+    }
+
+    .principal .topo .area-usuario .entrar{
+        font-family:"Franklin Gothic Heavy";
+        font-size: 13px;
+        float: right;
+        margin-top: 0px;
+        margin-right: 0px;
+        width: 100px;
+        height: 25px;
+        background: #fff;
+        border: 0px;
+        color: rgb(65, 76, 124);
+        text-align: center;
+        text-decoration: none;
+        transition: 0.5s;
+        filter: opacity(0.7);
+        padding-top: 10px;
+        right: 10px;
+        -webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49); 
+        box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49);
+    }
+    .principal .topo .area-usuario .entrar:hover{
+        filter: opacity(1.0);
+        transition: 0.5s;
+    }
+
+    .principal .topo .area-usuario .fazeranuncio{
+        font-family:"Franklin Gothic Heavy";
+        font-size: 13px;
+        display: none;
+        float: left;
+        margin-top: 0px;
+        margin-right: 0px;
+        width: 100px;
+        height: 25px;
+        background: rgb(250, 253, 208);
+        border: 0px;
+        color: rgb(0, 0, 0);
+        text-align: center;
+        text-decoration: none;
+        filter: opacity(0.6);
+        transition: 0.5s;
+        padding-top: 10px;
+        right: 10px;
+        -webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49); 
+        box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49);
+    }
+    .principal .topo .area-usuario .fazeranuncio:hover{
+        transition: 0.5s;
+        filter: opacity(1.0);
+    }
+    
+    .principal .topo .area-usuario .sair{
+        /*border: 1px solid black;*/
+        font-family:"Franklin Gothic Heavy";
+        font-size: 13px;
+        display: none;
+        float: right;
+        margin-top: 0px;
+        margin-right: 0px;
+        width: 100px;
+        height: 35px;
+        background: rgb(255, 213, 213);
+        border: 0px;
+        color: rgb(0, 0, 0);
+        text-align: center;
+        text-decoration: none;
+        filter: opacity(0.6);
+        transition: 0.5s;
+        padding-top: 0px;
+        right: 10px;
+        -webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49); 
+        box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.49);
+    }
+    .principal .topo .area-usuario .sair:hover{
+        transition: 0.5s;
+        filter: opacity(1.0);
+    }
+
+    /* AREA SAUDACAO */
+    .principal .topo .area-saudacao{
+        /*border: 1px solid blue;*/
+        font-family: Calibri;
+        margin-right: 10px;
+        display: none;
+        float: left;
+        width: auto;
+        height: auto;
+    }
+    .principal .topo .area-saudacao h3{
+        font-size: 12px;
+    }
+
+    /* MENU */
+    .principal .topo .menu ul li{
+        font-size: 80%;
+    }
+    
+}
