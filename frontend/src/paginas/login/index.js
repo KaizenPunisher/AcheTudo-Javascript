@@ -5,10 +5,9 @@ import './style.css';
 import './mobile.css';
 
 //import { criarSessao } from '../../services/api';
-//import logo from "../../imagens/logo.png";
+import logo from "../../imagens/logo.png";
 
 export default function Login() {
-    /*
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -18,10 +17,12 @@ export default function Login() {
     async function handleLogin(e){
         e.preventDefault();
         try{
+            /*
             const response = await criarSessao(email, senha);
             
             login(response.data);
             navigate("/");
+            */
         } catch (error){
             alert('Falha no login');
         }
@@ -65,4 +66,4 @@ export default function Login() {
             </div>
         </div>
     );
-    */}
+}

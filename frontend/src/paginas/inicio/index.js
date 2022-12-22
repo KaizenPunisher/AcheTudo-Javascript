@@ -2,23 +2,23 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
 //import { listarAnuncios } from '../../services/api';
-//import { AuthContext } from '../../contexts/autorizacao';
+import { AuthContext } from '../../contexts/autorizacao';
 
 import logo from "../../imagens/logo.png";
 
 export default function Inicio(){
-    /*
     const { logout } = useContext(AuthContext);
     const [nome, setNome] = useState();
     const [empresas, setEmpresas] = useState([]);
 
     const usuario = JSON.parse(localStorage.getItem('usuario'));
-    */
-    useEffect(() => {{/*
+    
+    useEffect(() => {
+        /*
         listarAnuncios().then(response => {
             setEmpresas(response.data);
         });
-        
+        */
         if(usuario !== null){
             setNome(usuario.nome)
     
@@ -27,7 +27,7 @@ export default function Inicio(){
             document.getElementById("sair").style.display = "block";
             document.getElementById("cadastro").style.display = "none";
             document.getElementById("entrar").style.display = "none";
-        };*/}
+        };
         
     }, []);
     /*
@@ -43,13 +43,10 @@ export default function Inicio(){
         }
     }
     */
-    /*
     const handleLogout = () => {
         logout();
     }
     
-    onClick= {handleLogout} 
-    */
     return (
         <div className="principal">
             <div className="topo">
@@ -60,12 +57,12 @@ export default function Inicio(){
                 <div className="area-usuario">
                     <Link className="entrar" id='entrar' to="/login">ENTRAR</Link>
                     <Link className="cadastro" id='cadastro' to="/cadastro">CADASTRO</Link>
-                    <button className="sair" id='sair' to="/" type="button">SAIR</button>
+                    <button className="sair" id='sair' onClick={handleLogout} to="/" type="button">SAIR</button>
                     <Link className="fazeranuncio" id='fazeranuncio' to="/paineldecontrole">ANUNCIO</Link>
                     <div className='clear'></div>
                 </div>
                 <div className="area-saudacao" id='saudacao'>
-                    <h3 className="saudacao">Bem vindo,{/* {nome} */}</h3>
+                    <h3 className="saudacao">Bem vindo, {nome}</h3>
                 </div>
                 <div className='clear'></div>
                 <div className="menu">
@@ -75,9 +72,8 @@ export default function Inicio(){
                     </ul>
                 </div>
             </div>
-            
             <div className="conteudo">
-                <ul>{/*
+                <ul>
                     {empresas.map(empresa => (
                         <li key={empresa.id}>
                             <a href={`#image${empresa.id}`}>
@@ -99,9 +95,9 @@ export default function Inicio(){
                                     <div className='clear'></div>
                                 </div>
 						    </div>
-                            {/* <button type="button" onClick={() => handleDeletarEmpresas(empresa.id)}>Apagar</button>
+                            {/* <button type="button" onClick={() => handleDeletarEmpresas(empresa.id)}>Apagar</button> */}
                         </li>
-                    ))} */}
+                    ))}
                 </ul>
             </div>
         </div>
