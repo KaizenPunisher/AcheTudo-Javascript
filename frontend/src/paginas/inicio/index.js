@@ -13,11 +13,11 @@ export default function Inicio(){
 
     const usuario = JSON.parse(localStorage.getItem('usuario'));
     
-    useEffect(() => {
+    useEffect(() => {{/*
         listarAnuncios().then(response => {
             setEmpresas(response.data);
         });
-        
+        */}
         if(usuario !== null){
             setNome(usuario.nome)
     
@@ -71,6 +71,7 @@ export default function Inicio(){
                     </ul>
                 </div>
             </div>
+            
             <div className="conteudo">
                 <ul>
                     {empresas.map(empresa => (
@@ -96,7 +97,7 @@ export default function Inicio(){
 						    </div>
                             {/* <button type="button" onClick={() => handleDeletarEmpresas(empresa.id)}>Apagar</button> */}
                         </li>
-                    ))}
+                    ))} 
                 </ul>
             </div>
         </div>
