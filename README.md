@@ -1,12 +1,17 @@
 # AcheTudo-Javascript
 ## Estrutura em Node, React e React-Native <br>
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b818efd9-5865-4a58-b863-bbc8109df9f3/deploy-status)](https://app.netlify.com/sites/achetudotiradentes/deploys)
 
 Sistema Web Mobile com objetivo de centralizar informações de comercios locais. Visando a facilidade de pesquisa de produtos e serviços em centros comerciais.
 
 //// Esse projeto estou desenvolvendo sozinho do zero, no modo FULLSTACK. ////
 
 __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
+
+### (Frontend) Tecnologias
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b818efd9-5865-4a58-b863-bbc8109df9f3/deploy-status)](https://app.netlify.com/sites/achetudotiradentes/deploys)
+* React APP - Estrutura para criação de projeto frontend ( npx create-react-app frontend )
+* React Router DOM - Estrutura de rotas para frontend ( npm install react-router-dom )
+* Axios - Estrutura cliente HTTP para fazer a conexão de serviços junto as rotas da aplicação. ( npm install axios )
 
 ### (Backend) Tecnologias
 * Banco de dados Postgree - Estrura BD feita no modelo relacional
@@ -27,11 +32,6 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 ### (Metodo TDD) Tecnologias
 * Jest - Framework de teste em JavaScript projetado para garantir a correção de qualquer código JavaScript. ( npm instal jest -D >> npx jest --init )
 * Supertest - Estrutura cliente HTTP para simular testes na aplicação. ( npm install supertest -D )
-
-### (Frontend) Tecnologias
-* React APP - Estrutura para criação de projeto frontend ( npx create-react-app frontend )
-* React Router DOM - Estrutura de rotas para frontend ( npm install react-router-dom )
-* Axios - Estrutura cliente HTTP para fazer a conexão de serviços junto as rotas da aplicação. ( npm install axios )
 
 ### (Mobile) Tecnologias
 * Expo - Estrutura para criação de projeto mobile ( npm intall -g expo-cli )
