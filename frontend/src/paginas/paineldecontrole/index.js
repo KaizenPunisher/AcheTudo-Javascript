@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { api, buscarAnuncio, cadastrarEmpresa, alterarEmpresa } from '../../services/api';
+//import { api, buscarAnuncio, cadastrarEmpresa, alterarEmpresa } from '../../services/api';
 import { AuthContext } from '../../contexts/autorizacao';
-
 
 import './style.css';
 import logo from "../../imagens/logo.png";
 
 export default function Cadastro(){
+    /*
     const {usuario} = useContext(AuthContext);
     const {token} = useContext(AuthContext);
     const [usuario_id, setUsuarioId] = useState(usuario.id);
@@ -32,10 +32,11 @@ export default function Cadastro(){
     const [tipo, setTipo] = useState('');
     const [descricao_telefone, setDescricaoTelefone] = useState('');
     const [imagem, setImagem] = useState(['']);
-
+    */
     async function handleCadastro(e){
         e.preventDefault();
 
+        /*
         const headers = {
             'header': {
                 'Content-Type': 'application/json'
@@ -67,7 +68,7 @@ export default function Cadastro(){
             imagem
         }
         */
-        
+        /*
         const formData = new FormData();
         formData.append("usuario_id", usuario_id);
         formData.append("razao_social", razao_social);
@@ -100,10 +101,11 @@ export default function Cadastro(){
         } catch(erro){
             alert('Erro no cadastro');
         }
-        
+        */
     };
 
     async function encontrarEmpresa(){
+        /*
         api.defaults.headers.Authorization = `Bearer ${token}`;
         
         await buscarAnuncio(usuario.id).then(response => {
@@ -136,12 +138,12 @@ export default function Cadastro(){
                 document.getElementById("painel-de-controle-cadastro").style.display = "none";
             };
         });
-        
+        */
     };
 
     async function handleAlteracao(e){
         e.preventDefault();
-
+        /*
         const headers = {
             'header': {
                 'Content-Type': 'application/json'
@@ -181,15 +183,16 @@ export default function Cadastro(){
         } catch(erro){
             alert('Erro na alteração');
         }
-        
+        */
     };
 
     useEffect(async() => {
-        await encontrarEmpresa();
+        //await encontrarEmpresa();
     }, []);
 
     return (
         <div className="painel-de-controle">
+            {/*
             <div className="conteudo">
                 <Link to="/">
                     <div className="logo" style={{ backgroundImage: `url(${logo})` }}></div>
@@ -645,7 +648,7 @@ export default function Cadastro(){
                                 value={imagem}
                                 onChange={e => setImagem(e.target.value)}
                             />
-                            */}
+                            **}
                             <button className="button" type="submit">ALTERAR ANUNCIO</button>
                         </form>
                     </div>
@@ -655,6 +658,8 @@ export default function Cadastro(){
                     </div>
                 </div>
             </div>
+
+        */}
         </div>
     );
 }

@@ -4,10 +4,11 @@ import { AuthContext } from '../../contexts/autorizacao';
 import './style.css';
 import './mobile.css';
 
-import { criarSessao } from '../../services/api';
-import logo from "../../imagens/logo.png";
+//import { criarSessao } from '../../services/api';
+//import logo from "../../imagens/logo.png";
 
 export default function Login() {
+    /*
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -64,4 +65,4 @@ export default function Login() {
             </div>
         </div>
     );
-}
+    */}

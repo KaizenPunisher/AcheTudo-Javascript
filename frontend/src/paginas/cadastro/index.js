@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { cadastrarUsuario } from '../../services/api';
+//import { cadastrarUsuario } from '../../services/api';
 
 import './style.css';
 import './mobile.css';
 import logo from "../../imagens/logo.png";
 
 export default function Cadastro(){
+    /*
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
@@ -33,7 +34,7 @@ export default function Cadastro(){
         }
         
     }
-
+    */
     return (
         <div className="cadastro-usuario">
             <div className="conteudo">
@@ -52,22 +53,26 @@ export default function Cadastro(){
                         <div className="clear"></div>
                     </div>
                 </section>
-                <form onSubmit={handleCadastro}>
+                <form > 
+                    {/* onSubmit={handleCadastro} */} 
+                    {/* value={nome} onChange={e => setNome(e.target.value)}  */} 
+                    {/* value={email} onChange={e => setEmail(e.target.value)} */} 
+                    {/* value={senha} onChange={e => setSenha(e.target.value)} */}
                     <input 
                         placeholder="NOME"
-                        value={nome}
-                        onChange={e => setNome(e.target.value)} 
+                        
+                        
                     />
                     <input 
                         placeholder="EMAIL"
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}  
+                        
+                          
                     />
                     <input 
                         type="password"
                         placeholder="SENHA"
-                        value={senha}
-                        onChange={e => setSenha(e.target.value)}
+                        
+                        
                     />
                     <button className="button" type="submit">CADASTRAR</button>
                 </form>
