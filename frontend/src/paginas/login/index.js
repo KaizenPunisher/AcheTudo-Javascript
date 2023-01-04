@@ -4,7 +4,7 @@ import { AuthContext } from '../../contexts/autorizacao';
 import './style.css';
 import './mobile.css';
 
-//import { criarSessao } from '../../services/api';
+import { criarSessao } from '../../services/api';
 import logo from "../../imagens/logo.png";
 
 export default function Login() {
@@ -17,12 +17,12 @@ export default function Login() {
     async function handleLogin(e){
         e.preventDefault();
         try{
-            /*
+            
             const response = await criarSessao(email, senha);
             
             login(response.data);
             navigate("/");
-            */
+            
         } catch (error){
             alert('Falha no login');
         }

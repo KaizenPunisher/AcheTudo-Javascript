@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-//import { cadastrarUsuario } from '../../services/api';
+import { cadastrarUsuario } from '../../services/api';
 
 import './style.css';
 import './mobile.css';
@@ -21,7 +21,7 @@ export default function Cadastro(){
             email,
             senha
         };
-        /*
+        
         try{
             const response =  await cadastrarUsuario(data);
             alert(`Seu ID de acesso: ${response.data.id}`);
@@ -31,7 +31,7 @@ export default function Cadastro(){
         } catch(erro){
             alert('Erro no cadastro');
         }
-        */
+        
     }
 
     return (
