@@ -76,3 +76,89 @@
     font-weight: bold;
     transition: 0.5s;
 }
+
+.login-aviso {
+    /*border: 5px solid red;*/
+    background-color: #fff;
+    border-radius: 25px;
+    width: 0px;
+	height: 0px;
+	position: fixed;
+	overflow: hidden;
+	left: 0px;
+	top: 0px;
+	padding: 0px;
+	z-index: 99;
+	text-align: center;
+}
+.login-aviso:target {
+    border: 1px solid rgb(196, 196, 196);
+    margin: auto;
+	width: 60%;
+	height: 40%;
+	right: 0px;
+    top: 20%;
+    -webkit-animation: fadeInScale 1.2s ease-in-out;
+	-moz-animation: fadeInScale 1.2s ease-in-out;
+	-o-animation: fadeInScale 1.2s ease-in-out;
+	-ms-animation: fadeInScale 1.2s ease-in-out;
+	animation: fadeInScale 1.2s ease-in-out;
+}
+.login-aviso a.fechar{
+	background: black;
+	z-index: 1001;
+	color: #fff;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	font-size: 15px;
+	text-align: center;
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+	opacity: 0;
+	filter: alpha(opacity=0); /* internet explorer */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; /*IE8*/
+	-webkit-transition: opacity 0.3s linear 1.2s;
+	-moz-transition: opacity 0.3s linear 1.2s;
+	-o-transition: opacity 0.3s linear 1.2s;
+	-ms-transition: opacity 0.3s linear 1.2s;
+	transition: opacity 0.3s linear 1.2s;
+}
+.login-aviso:target a.fechar, .login-aviso:target > div{
+	opacity: 1;
+	filter: alpha(opacity=99); /* internet explorer */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=99)"; /*IE8*/
+}
+.login-aviso div {
+    /*border: 1px solid blue;*/
+    position: relative;
+    top: 40%;
+    width: auto;
+    height: auto;
+    font-family:"Franklin Gothic Heavy";
+    color: rgb(224, 16, 16);
+    font-size: 25px;
+    align-items: center;
+    transition: 0.5s;
+}
+@-webkit-keyframes fadeInScale {
+    0% { -webkit-transform: scale(0.6); opacity: 0; }
+    100% { -webkit-transform: scale(1); opacity: 1; }
+}
+@-moz-keyframes fadeInScale {
+    0% { -moz-transform: scale(0.6); opacity: 0; }
+    100% { -moz-transform: scale(1); opacity: 1; }
+}
+@-o-keyframes fadeInScale {
+    0% { -o-transform: scale(0.6); opacity: 0; }
+    100% { -o-transform: scale(1); opacity: 1; }
+}
+@-ms-keyframes fadeInScale {
+    0% { -ms-transform: scale(0.6); opacity: 0; }
+    100% { -ms-transform: scale(1); opacity: 1; }
+}
+@keyframes fadeInScale {
+    0% { transform: scale(0.6); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}

@@ -24,7 +24,11 @@ export default function Login() {
             navigate("/");
             
         } catch (error){
-            alert('Falha no login');
+            if(error.code==="ERR_NETWORK"){
+                window.location.href = "#login-aviso";
+                document.getElementById("aviso").innerText = "OFFLINE";
+            }
+            console.log(error.code)
         }
     }
 
@@ -63,6 +67,12 @@ export default function Login() {
                         <Link className="link" to="/cadastro">Não tenho cadastro</Link>
                     </div>
                 </form>
+                
+                <div className="login-aviso" id="login-aviso">
+                    <a href="#page" className="fechar">x Fechar</a>
+                    <div id="aviso"></div>
+				</div>
+
             </div>
         </div>
     );

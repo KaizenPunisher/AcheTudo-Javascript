@@ -31,7 +31,6 @@ input[type="file"] {
     background-image: linear-gradient(#fff, #6fbbdb);
     border-radius: 25px;
     border: 20px solid #fff;
-    border-radius: 25px;
     -webkit-box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.8);
     box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.8), 
         inset 0px 5px 20px -15px rgba(0,0,0,0.8), 
