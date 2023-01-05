@@ -28,8 +28,12 @@ export default function Cadastro(){
             
             navigate("/");
             
-        } catch(erro){
-            alert('Erro no cadastro');
+        } catch(error){
+            if(error.code==="ERR_NETWORK"){
+                window.location.href = "#cadastro-aviso";
+                document.getElementById("aviso").innerText = "OFFLINE";
+            }
+            console.log(error.code)
         }
         
     }
@@ -71,6 +75,11 @@ export default function Cadastro(){
                     />
                     <button className="button" type="submit">CADASTRAR</button>
                 </form>
+
+                <div className="cadastro-aviso" id="cadastro-aviso">
+                    <a href="#page" className="fechar">x Fechar</a>
+                    <div id="aviso"></div>
+				</div>
             </div>
         </div>
     );
