@@ -22,20 +22,32 @@ export default function Cadastro(){
             senha
         };
         
-        try{
-            const response =  await cadastrarUsuario(data);
-            alert(`Seu ID de acesso: ${response.data.id}`);
-            
-            navigate("/");
-            
-        } catch(error){
-            if(error.code==="ERR_NETWORK"){
-                window.location.href = "#cadastro-aviso";
-                document.getElementById("aviso").innerText = "OFFLINE";
-            }
-            console.log(error.code)
+        if(nome==='') {
+            document.getElementById("nome").focus();
+            document.getElementById("nome").placeholder = "Digite seu Nome !";
         }
-        
+        else if(email==='') {
+            document.getElementById("email").focus();
+            document.getElementById("email").placeholder = "Digite seu Email !";
+        }
+        else if(senha==='') {
+            document.getElementById("senha").focus();
+            document.getElementById("senha").placeholder = "Digite sua senha !";
+        } 
+        else {
+            try{
+                const response =  await cadastrarUsuario(data);
+                alert(`Seu ID de acesso: ${response.data.id}`);
+                navigate("/");
+                
+            } catch(error){
+                if(error.code==="ERR_NETWORK"){
+                    window.location.href = "#cadastro-aviso";
+                    document.getElementById("aviso").innerText = "OFFLINE";
+                }
+                console.log(error)
+            }
+        }
     }
 
     return (
@@ -58,17 +70,22 @@ export default function Cadastro(){
                 </section>
                 <form onSubmit={handleCadastro}>
                     <input 
+                        type="text"
+                        id="nome"
                         placeholder="NOME"
                         value={nome}
                         onChange={e => setNome(e.target.value)} 
                     />
                     <input 
+                        type="text"
+                        id="email"
                         placeholder="EMAIL"
                         value={email}
                         onChange={e => setEmail(e.target.value)}  
                     />
                     <input 
                         type="password"
+                        id="senha"
                         placeholder="SENHA"
                         value={senha}
                         onChange={e => setSenha(e.target.value)}
