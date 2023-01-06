@@ -86,6 +86,7 @@ input[type="file"] {
     height: 25px;
     background: #fff;
     border: 0px;
+    border-radius: 25px;
     color: rgb(0, 0, 0);
     text-align: center;
     text-decoration: none;
@@ -111,6 +112,7 @@ input[type="file"] {
     height: 25px;
     background: #fff;
     border: 0px;
+    border-radius: 25px;
     color: rgb(65, 76, 124);
     text-align: center;
     text-decoration: none;
