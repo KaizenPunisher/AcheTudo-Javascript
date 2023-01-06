@@ -16,19 +16,31 @@ export default function Login() {
 
     async function handleLogin(e){
         e.preventDefault();
-        try{
-            
-            const response = await criarSessao(email, senha);
-            
-            login(response.data);
-            navigate("/");
-            
-        } catch (error){
-            if(error.code==="ERR_NETWORK"){
-                window.location.href = "#login-aviso";
-                document.getElementById("aviso").innerText = "OFFLINE";
+
+        if(email==='') {
+            document.getElementById("email").focus();
+            document.getElementById("email").placeholder = "Digite seu Email !";
+        }
+        else if(senha==='') {
+            document.getElementById("senha").focus();
+            document.getElementById("senha").placeholder = "Digite sua senha !";
+        }
+        else {
+            try{
+                const response = await criarSessao(email, senha);
+                login(response.data);
+                navigate("/");
+            } catch (error){
+                if(error.code==="ERR_NETWORK"){
+                    window.location.href = "#login-aviso";
+                    document.getElementById("aviso").innerText = "OFFLINE";
+                }
+                else if(error.code==="ERR_BAD_REQUEST"){
+                    window.location.href = "#login-aviso";
+                    document.getElementById("aviso").innerText = "Login e Senha Errados";
+                }
+                console.log(error.message)
             }
-            console.log(error.code)
         }
     }
 
@@ -52,12 +64,14 @@ export default function Login() {
                 <form onSubmit={handleLogin}>
                     <input 
                         type="text"
+                        id="email"
                         placeholder="Seu Email"
                         value={email}
-                        onChange={e => setEmail(e.target.value)} 
+                        onChange={e => setEmail(e.target.value)}
                     />
                     <input 
                         type="password"
+                        id="senha"
                         placeholder="Senha"
                         value={senha}
                         onChange={e => setSenha(e.target.value)} 
