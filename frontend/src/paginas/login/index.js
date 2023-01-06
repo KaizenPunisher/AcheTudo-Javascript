@@ -33,7 +33,7 @@ export default function Login() {
             } catch (error){
                 if(error.code==="ERR_NETWORK"){
                     window.location.href = "#login-aviso";
-                    document.getElementById("aviso").innerText = "OFFLINE";
+                    document.getElementById("aviso").innerText = "Serviço OFFLINE";
                 }
                 else if(error.code==="ERR_BAD_REQUEST"){
                     window.location.href = "#login-aviso";

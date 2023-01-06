@@ -43,7 +43,7 @@ export default function Cadastro(){
             } catch(error){
                 if(error.code==="ERR_NETWORK"){
                     window.location.href = "#cadastro-aviso";
-                    document.getElementById("aviso").innerText = "OFFLINE";
+                    document.getElementById("aviso").innerText = "Serviço OFFLINE";
                 }
                 console.log(error)
             }

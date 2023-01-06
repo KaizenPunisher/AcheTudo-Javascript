@@ -3,7 +3,7 @@ exports.up = function(knex) {
         
         table.string('id').primary();
         table.string('nome').notNullable();
-        table.string('email').unique().notNullable();
+        table.string('email').notNullable().unique();
         table.string('password_hash').notNullable();
         table.string('senha_reset_token');
         table.string('senha_reset_expiracao');
