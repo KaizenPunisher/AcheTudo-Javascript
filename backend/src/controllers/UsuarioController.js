@@ -12,6 +12,12 @@ module.exports = {
         }
     },
 
+    async ativarEmail(request, response){
+        const usuario = new Usuario(request.body);
+        const ativar = await usuario.ativar();
+        return response.json(ativar);
+    },
+
     async esqueciSenha(request, response){
         const usuario = new Usuario(request.body);
         const esquecisenha = await usuario.esqueciSenha();

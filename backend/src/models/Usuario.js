@@ -5,9 +5,10 @@ const crypto = require('crypto');
 const mailer = require('../modulos/mailer');
 
 class Usuario {
-    constructor({nome, email, senha, token}){
+    constructor({nome, email, email_token, senha, token}){
         this.nome                = nome
         this.email               = email
+        this.email_token         = email_token
         this.senha               = senha
         this.senha_reset_token   = token
     }
@@ -28,13 +29,53 @@ class Usuario {
         const password_hash = await bcrypt.hash(this.senha, 8);
         this.senha = password_hash;
 
+        this.emailToken = crypto.randomBytes(2).toString('hex');
+
         const [cadastro] = await connection('usuarios').insert({
             id: this.id,
             nome: this.nome,
             email: this.email,
+            email_verificado: false,
+            email_token: this.email_token,
             password_hash: this.senha,
         }).returning('id');
-        return {id: cadastro};
+
+        mailer.sendMail({
+            to:       this.email,
+            from:     'contato@achetudotiradentes.com.br',
+            subject:  'Ative seu cadastro no Achetudo (Não responda esse email)',
+            template: 'auth/ativacaoemail',
+            context:  {emailToken},
+        }, (err) => {
+            if (err)
+                return { error: 'Não foi possivel enviar recuperação de senha'};
+        });
+
+        return {id: cadastro}; 
+    }
+
+    async ativar() {
+        const [usuario] = await connection('usuarios')
+            .select('email_verificado', 'email_token')
+            .where('email', this.email)
+        ;
+
+        if(!usuario){
+            return { error: 'Usuario não encontrado' };
+        }
+
+        if(this.email_token !== usuario.email_token){
+            return { error: 'Token invalido' };
+        }
+
+        if(usuario.email_verificado === true){
+            return { error: 'Conta ja está ativa' };
+        }
+
+        await connection('usuarios').where('email', this.email).update({
+            email_verificado:     'true',
+        });
+        return { mensagem: 'Email ativado com sucesso' };
     }
 
     async esqueciSenha(){
@@ -80,7 +121,7 @@ class Usuario {
         if(!usuario){
             return { error: 'Usuario não encontrado' };
         }
-        console.log(usuario.now);
+        //console.log(usuario.now);
 
         if(this.senha_reset_token !== usuario.senha_reset_token){
             return { error: 'Token invalido' };
