@@ -29,7 +29,8 @@ class Usuario {
         const password_hash = await bcrypt.hash(this.senha, 8);
         this.senha = password_hash;
 
-        this.emailToken = crypto.randomBytes(2).toString('hex');
+        this.email_token = crypto.randomBytes(2).toString('hex');
+        const emailToken = this.email_token;
 
         const [cadastro] = await connection('usuarios').insert({
             id: this.id,
@@ -61,15 +62,15 @@ class Usuario {
         ;
 
         if(!usuario){
-            return { error: 'Usuario não encontrado' };
+            return { mensagem: 'Usuario não encontrado' };
         }
 
         if(this.email_token !== usuario.email_token){
-            return { error: 'Token invalido' };
+            return { mensagem: 'Token invalido' };
         }
 
         if(usuario.email_verificado === true){
-            return { error: 'Conta ja está ativa' };
+            return { mensagem: 'Conta ja está ativa' };
         }
 
         await connection('usuarios').where('email', this.email).update({
@@ -82,7 +83,7 @@ class Usuario {
         const usuario = await connection('usuarios').where('email', this.email).first();
         
         if(!usuario){
-            return { error: 'Usuario não encontrado' };
+            return { mensagem: 'Usuario não encontrado' };
         }
         
         const senhaResetToken = crypto.randomBytes(20).toString('hex');

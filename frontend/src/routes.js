@@ -8,6 +8,7 @@ import {
 
 import Login from './paginas/login';
 import Cadastro from './paginas/cadastro';
+import Ativar from './paginas/ativaremail';
 import PainelDeControle from './paginas/paineldecontrole';
 import Inicio from './paginas/inicio';
 
@@ -34,6 +35,7 @@ export default function AppRoutes(){
                 <Routes>
                     <Route exact path="/" element={<Inicio />} />
                     <Route exact path="/cadastro" element={<Cadastro />} />
+                    <Route exact path="/ativaremail" element={<Ativar />} />
                     <Route exact path="/login" element={<Login />} />
                     <Route exact path="/paineldecontrole" element={<Private><PainelDeControle /></Private>} />
                 </Routes>

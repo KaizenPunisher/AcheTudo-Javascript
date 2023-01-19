@@ -37,8 +37,12 @@ export default function Cadastro(){
         else {
             try{
                 const response =  await cadastrarUsuario(data);
-                alert(`Seu ID de acesso: ${response.data.id}`);
-                navigate("/");
+                //console.log(data);
+                const email = JSON.stringify(data.email);
+                sessionStorage.setItem('email', email);
+
+                //alert(`Seu ID de acesso: ${response.data.id}`);
+                navigate("/ativaremail");
                 
             } catch(error){
                 if(error.code==="ERR_NETWORK"){

@@ -17,6 +17,10 @@ export const cadastrarUsuario = async (data) => {
     return api.post('usuario', data);
 }
 
+export const ativarEmail = async (data) => {
+    return api.post('ativaremail', data);
+}
+
 export const cadastrarEmpresa = async (formData, headers) => {
     return api.post('paineldecontrole', formData, headers);
 }
