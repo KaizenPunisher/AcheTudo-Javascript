@@ -36,10 +36,16 @@ export default function Login() {
                     document.getElementById("aviso").innerText = "Serviço OFFLINE";
                 }
                 else if(error.code==="ERR_BAD_REQUEST"){
-                    window.location.href = "#login-aviso";
-                    document.getElementById("aviso").innerText = "Login e Senha Errados";
+                    console.log(error.response.data)
+                    if(error.response.data.error==='Email não está verificado'){
+                        navigate("/ativaremail");
+                    }
+                    else{
+                        window.location.href = "#login-aviso";
+                        document.getElementById("aviso").innerText = JSON.stringify(error.response.data.error);
+                    }
                 }
-                console.log(error.message)
+                
             }
         }
     }

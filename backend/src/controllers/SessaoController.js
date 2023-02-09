@@ -11,11 +11,15 @@ module.exports = {
         if (!usuario){
             return response.status(401).json({ error: 'Usuario não existe'});
         }
-        
+
         const verificarSenha = await bcrypt.compare(request.body.senha, usuario.password_hash);
 
         if (!verificarSenha){
             return response.status(401).json({ error: 'Senha incorreta'});
+        }
+
+        if (usuario.email_verificado===false){
+            return response.status(401).json({ error: 'Email não está verificado'});
         }
 
         const token = await usuarioLogin.gerarToken(usuario.email);
