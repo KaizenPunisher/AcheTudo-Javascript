@@ -9,13 +9,13 @@ module.exports = {
         const usuario = await usuarioLogin.encontrar(usuarioLogin.email);
         
         if (!usuario){
-            return response.status(401).json({ error: 'Usuario não existe'});
+            return response.status(401).json({ error: 'Usuario ou senha incorretos'});
         }
 
         const verificarSenha = await bcrypt.compare(request.body.senha, usuario.password_hash);
 
         if (!verificarSenha){
-            return response.status(401).json({ error: 'Senha incorreta'});
+            return response.status(401).json({ error: 'Usuario ou senha incorretos'});
         }
 
         if (usuario.email_verificado===false){
