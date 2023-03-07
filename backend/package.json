@@ -25,7 +25,7 @@
     "supertest": "^6.1.6"
   },
   "scripts": {
-    "build:digitalocean": "yarn install --production=false && yarn run build && rm -rf node_modules && yarn install --production --frozen-lockfile",
+    "build:digitalocean": "npm install --production=false && npm run build && npm ci",
     "start": "nodemon src/server.js",
     "test": "jest"
   },
