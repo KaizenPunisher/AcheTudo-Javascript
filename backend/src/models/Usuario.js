@@ -49,10 +49,41 @@ class Usuario {
             context:  {emailToken},
         }, (err) => {
             if (err)
-                return { error: 'Não foi possivel enviar recuperação de senha'};
+                return { error: 'Não foi possivel enviar codigo'};
         });
 
         return {id: cadastro}; 
+    }
+
+    async reenviarCodigo(){
+        const [usuario] = await connection('usuarios')
+            .select('email_token')
+            .where('email', this.email)
+        ;
+
+        const emailToken = usuario.email_token;
+
+        console.log()
+        if(!usuario){
+            return { mensagem: 'Usuario não encontrado' };
+        }
+
+        if(usuario.email_verificado === true){
+            return { mensagem: 'Conta ja está ativa' };
+        }
+        
+        mailer.sendMail({
+            to:       this.email,
+            from:     'contato@achetudotiradentes.com.br',
+            subject:  'Ative seu cadastro no Achetudo (Não responda esse email)',
+            template: 'auth/ativacaoemail',
+            context:  {emailToken},
+        }, (err) => {
+            if (err)
+                return { error: 'Não foi possivel enviar codigo'};
+        });
+        console.log(emailToken)
+        return { mensagem: 'Codigo enviado' };
     }
 
     async ativar() {

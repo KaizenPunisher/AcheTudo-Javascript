@@ -1,7 +1,11 @@
 const path = require('path');
 const nodemailer = require('nodemailer');
 const hbs = require('nodemailer-express-handlebars');
-const { host, port, user, pass } = require('../configmail/umbler.json');
+
+const host = process.env.SMTP_HOST;
+const port = process.env.SMTP_PORT;
+const user = process.env.SMTP_USER;
+const pass = process.env.SMTP_PASS;
 
 var transport = nodemailer.createTransport({
     host,

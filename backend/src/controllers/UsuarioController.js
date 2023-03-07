@@ -12,6 +12,12 @@ module.exports = {
         }
     },
 
+    async reenviarCodigo(request, response){
+        const usuario = new Usuario(request.body);
+        const reenviarCodigo = await usuario.reenviarCodigo();
+        return response.json(reenviarCodigo);
+    },
+
     async ativarEmail(request, response){
         const usuario = new Usuario(request.body);
         const ativar = await usuario.ativar();

@@ -27,6 +27,7 @@ routes.post('/usuario', UsuarioController.cadastrarUsuario);
 routes.get('/usuario', UsuarioController.listarUsuarios);
 routes.post('/esqueciasenha', UsuarioController.esqueciSenha);
 routes.post('/resetsenha', UsuarioController.resetSenha);
+routes.post('/reenviarcodigo' , UsuarioController.reenviarCodigo);
 routes.post('/ativaremail', UsuarioController.ativarEmail);
 
 routes.post('/sessao', SessaoController.criarSessao);
