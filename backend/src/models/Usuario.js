@@ -14,8 +14,16 @@ class Usuario {
     }
 
     async listar(){
-        const listagem = await connection('usuarios').select('*');
-        return listagem;
+        try {
+            const listagem = await connection('usuarios').select('*');
+            return listagem;
+        } 
+        catch (error) {
+            return error;
+        } 
+        finally {
+            connection.destroy;
+        }
     }
 
     async encontrar(email){

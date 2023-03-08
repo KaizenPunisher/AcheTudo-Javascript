@@ -52,7 +52,7 @@ module.exports = {
   },
 
   production: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
       host :     `${process.env.DB_HOST}`,
       port :     `${process.env.DB_PORT}`,
@@ -65,7 +65,8 @@ module.exports = {
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: 'knex_migrations',
+      directory: './src/database/migrations'
     }
   }
 };
