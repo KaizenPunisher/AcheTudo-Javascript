@@ -1,4 +1,4 @@
-const connection = require('../database/connection');
+//const connection = require('../database/connection');
 
 class Endereco {
     constructor({logradouro, cep, bairro, cidade, regiao, uf, descricao_endereco}){

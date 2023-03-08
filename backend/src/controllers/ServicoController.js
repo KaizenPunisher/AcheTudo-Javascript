@@ -1,5 +1,5 @@
+//const connection = require('../database/connection');
 const { json } = require('express');
-const connection = require('../database/connection');
 
 module.exports = {
 

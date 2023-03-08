@@ -1,4 +1,4 @@
-const connection = require('../database/connection');
+//const connection = require('../database/connection');
 const Anuncio = require("../models/Anuncio");
 
 module.exports = {

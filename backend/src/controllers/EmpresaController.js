@@ -1,11 +1,12 @@
+//const connection = require('../database/connection');
 const Empresa = require("../models/Empresa");
 const Endereco = require("../models/Endereco");
-const connection = require('../database/connection');
+
 const { listarTelefone } = require('./TelefoneController');
 const crypto = require('crypto');
 
 const Anuncio = require("../models/Anuncio");
-const { leftJoin } = require("../database/connection");
+//const { leftJoin } = require("../database/connection");
 
 module.exports = {
 

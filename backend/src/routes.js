@@ -30,7 +30,7 @@ routes.post('/resetsenha', UsuarioController.resetSenha);
 routes.post('/reenviarcodigo' , UsuarioController.reenviarCodigo);
 routes.post('/ativaremail', UsuarioController.ativarEmail);
 
-routes.post('/sessao', SessaoController.criarSessao);
+//routes.post('/sessao', SessaoController.criarSessao);
 
 routes.get('/paineldecontrole/:id', 
     AutenticacaoUsuario, 

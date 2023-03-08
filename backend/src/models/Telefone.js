@@ -1,4 +1,4 @@
-const connection = require('../database/connection');
+//const connection = require('../database/connection');
 
 class Telefone {
     constructor({ddd, numero, tipo, descricao_telefone}){

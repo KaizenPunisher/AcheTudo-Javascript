@@ -1,4 +1,4 @@
-const connection = require('../database/connection');
+//const connection = require('../database/connection');
 const { response } = require('express');
 
 class Anuncio {

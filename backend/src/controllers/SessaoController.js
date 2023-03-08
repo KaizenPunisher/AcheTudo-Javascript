@@ -1,4 +1,3 @@
-const connection = require('../database/connection');
 const Usuario = require("../../src/models/Usuario");
 const bcrypt = require("bcryptjs");
 
