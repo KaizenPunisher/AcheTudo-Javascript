@@ -1,14 +1,13 @@
 // Update with your config settings.
 module.exports = {
   development: {
-    client: 'pg',
+    client: 'postgresql',
     connection: {
       host :     'localhost',
       port :     '5432',
       database : 'db',
       user :     'postgres',
       password : '213254'
-      
     },
     pool: {
       min: 2,
@@ -79,8 +78,7 @@ module.exports = {
       ssl: {
         require: true,
         rejectUnauthorized: false
-      },
-      sslfactory: 'org.postgresql.ssl.NonValidatingFactory'
+      }
     },
     pool: {
       min: 2,

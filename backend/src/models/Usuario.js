@@ -14,8 +14,9 @@ class Usuario {
     }
 
     async listar(){
+        console.log(process.env.NODE_ENV);
         try {
-            const listagem = await connection('usuarios').select('*');
+            const [listagem] = await connection('usuarios').select('*');
             return listagem;
         } 
         catch (error) {
@@ -24,6 +25,11 @@ class Usuario {
         finally {
             connection.destroy;
         }
+    }
+
+    async encontrar(email){
+        const usuario = await connection('usuarios').where('email', email).first();
+        return usuario;
     }
 
     async cadastrar() {
@@ -35,71 +41,58 @@ class Usuario {
         this.email_token = crypto.randomBytes(2).toString('hex');
         const emailToken = this.email_token;
 
-        try {
-            const [cadastro] = await connection('usuarios').insert({
-                id: this.id,
-                nome: this.nome,
-                email: this.email,
-                email_verificado: false,
-                email_token: this.email_token,
-                password_hash: this.senha,
-            }).returning('id');
-    
-            mailer.sendMail({
-                to:       this.email,
-                from:     'contato@achetudotiradentes.com.br',
-                subject:  'Ative seu cadastro no Achetudo (Não responda esse email)',
-                template: 'auth/ativacaoemail',
-                context:  {emailToken},
-            }, (err) => {
-                if (err)
-                    return { error: 'Não foi possivel enviar codigo'};
-            });
-    
-            return {id: cadastro}; 
-        } 
-        catch (error) {
-            return error;
-        } 
-        finally {
-            connection.destroy;
-        }
+        const [cadastro] = await connection('usuarios').insert({
+            id: this.id,
+            nome: this.nome,
+            email: this.email,
+            email_verificado: false,
+            email_token: this.email_token,
+            password_hash: this.senha,
+        }).returning('id');
+
+        mailer.sendMail({
+            to:       this.email,
+            from:     'contato@achetudotiradentes.com.br',
+            subject:  'Ative seu cadastro no Achetudo (Não responda esse email)',
+            template: 'auth/ativacaoemail',
+            context:  {emailToken},
+        }, (err) => {
+            if (err)
+                return { error: 'Não foi possivel enviar codigo'};
+        });
+
+        return {id: cadastro}; 
     }
 
     async reenviarCodigo(){
-        try {
-            const [usuario] = await connection('usuarios')
-                .select('email_token')
-                .where('email', this.email)
-            ;
-            if(!usuario){
-                return { mensagem: 'Usuario não encontrado' };
-            }
-    
-            if(usuario.email_verificado === true){
-                return { mensagem: 'Conta ja está ativa' };
-            }
-            const emailToken = usuario.email_token;
-        
-            mailer.sendMail({
-                to:       this.email,
-                from:     'contato@achetudotiradentes.com.br',
-                subject:  'Ative seu cadastro no Achetudo (Não responda esse email)',
-                template: 'auth/ativacaoemail',
-                context:  {emailToken},
-            }, (err) => {
-                if (err)
-                    return {error: 'Não foi possivel enviar codigo'};
-            });
-            console.log(emailToken)
-            return { mensagem: 'Codigo enviado' };
-        } 
-        catch (error) {
-            return error;
-        } 
-        finally {
-            connection.destroy;
+        const [usuario] = await connection('usuarios')
+            .select('email_token')
+            .where('email', this.email)
+        ;
+
+        const emailToken = usuario.email_token;
+
+        console.log()
+        if(!usuario){
+            return { mensagem: 'Usuario não encontrado' };
         }
+
+        if(usuario.email_verificado === true){
+            return { mensagem: 'Conta ja está ativa' };
+        }
+        
+        mailer.sendMail({
+            to:       this.email,
+            from:     'contato@achetudotiradentes.com.br',
+            subject:  'Ative seu cadastro no Achetudo (Não responda esse email)',
+            template: 'auth/ativacaoemail',
+            context:  {emailToken},
+        }, (err) => {
+            if (err)
+                return { error: 'Não foi possivel enviar codigo'};
+        });
+        console.log(emailToken)
+        return { mensagem: 'Codigo enviado' };
     }
 
     async ativar() {
@@ -124,11 +117,6 @@ class Usuario {
             email_verificado:     'true',
         });
         return { mensagem: 'Email ativado com sucesso' };
-    }
-
-    async encontrar(email){
-        const usuario = await connection('usuarios').where('email', email).first();
-        return usuario;
     }
 
     async esqueciSenha(){
