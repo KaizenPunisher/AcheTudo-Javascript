@@ -14,7 +14,6 @@ class Usuario {
     }
 
     async listar(){
-        console.log(process.env.NODE_ENV);
         try {
             const [listagem] = await connection('usuarios').select('*');
             return listagem;
