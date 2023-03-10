@@ -39,6 +39,7 @@ module.exports = {
     async listarUsuarios(request, response){
         const usuario = new Usuario(request.body);
         const listar = await usuario.listar();
+        console.log(process.env.DB_CLI);
         return response.json(listar);
     }
 };
