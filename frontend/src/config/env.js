@@ -1,5 +1,5 @@
 const env = {
-    backendBaseUrl: 'http://192.168.18.3:3333/'
+    backendBaseUrl: 'https://achetudo-app-nedjm.ondigitalocean.app/'
 }
 
 export default env;
