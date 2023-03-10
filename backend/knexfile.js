@@ -78,7 +78,8 @@ module.exports = {
       ssl: {
         require: true,
         rejectUnauthorized: false
-      }
+      },
+      sslfactory: 'org.postgresql.ssl.NonValidatingFactory'
     },
     pool: {
       min: 2,
