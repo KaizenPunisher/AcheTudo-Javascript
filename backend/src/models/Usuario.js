@@ -103,27 +103,34 @@ class Usuario {
     }
 
     async ativar() {
-        const [usuario] = await connection('usuarios')
+        try {
+            const [usuario] = await connection('usuarios')
             .select('email_verificado', 'email_token')
             .where('email', this.email)
-        ;
-
-        if(!usuario){
-            return { mensagem: 'Usuario não encontrado' };
+            ;
+            if(!usuario){
+                return { mensagem: 'Usuario não encontrado' };
+            }
+    
+            if(this.email_token !== usuario.email_token){
+                return { mensagem: 'Token invalido' };
+            }
+    
+            if(usuario.email_verificado === true){
+                return { mensagem: 'Conta ja está ativa' };
+            }
+    
+            await connection('usuarios').where('email', this.email).update({
+                email_verificado:     'true',
+            });
+            return { mensagem: 'Email ativado com sucesso' };
+        } 
+        catch (error) {
+            return error;
+        } 
+        finally {
+            connection.destroy;
         }
-
-        if(this.email_token !== usuario.email_token){
-            return { mensagem: 'Token invalido' };
-        }
-
-        if(usuario.email_verificado === true){
-            return { mensagem: 'Conta ja está ativa' };
-        }
-
-        await connection('usuarios').where('email', this.email).update({
-            email_verificado:     'true',
-        });
-        return { mensagem: 'Email ativado com sucesso' };
     }
 
     async esqueciSenha(){
