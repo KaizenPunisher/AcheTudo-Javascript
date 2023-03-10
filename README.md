@@ -14,9 +14,9 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 * Axios - Estrutura cliente HTTP para fazer a conexão de serviços junto as rotas da aplicação. ( npm install axios )
 
 ### (Backend) Tecnologias
-<a href=“https://www.digitalocean.com”><img src=“https://www.digitalocean.com/assets/v2/digitalocean-small-badge.png” alt=“cloud server, cloud hosting, VPS server”/></a>
+<img src="https://www.digitalocean.com/assets/v2/digitalocean-small-badge.png"/>
 <br>
-<a href=“https://www.digitalocean.com”><img src=“https://www.digitalocean.com/assets/v2/digitalocean-small-badge-black.png” alt=“cloud server, cloud hosting, VPS server”/></a>
+<img src="https://www.digitalocean.com/assets/v2/digitalocean-small-badge-black.png"/>
 * Banco de dados Postgree - Estrura BD feita no modelo relacional
 * Express - Framework web estruturado para node  ( npm install express )
 * Knex - Estrutura para conexão com o banco de dados ( npm install knex )
