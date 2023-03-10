@@ -15,7 +15,7 @@ class Usuario {
 
     async listar(){
         try {
-            const [listagem] = await connection('usuarios').select('*');
+            const listagem = await connection('usuarios').select('*');
             return listagem;
         } 
         catch (error) {
