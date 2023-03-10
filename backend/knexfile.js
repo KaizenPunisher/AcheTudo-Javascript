@@ -44,7 +44,7 @@ module.exports = {
   },
 
   staging: {
-    client: process.env.DB_CLI,
+    client: `${process.env.DB_CLI}`,
     connection: {
       host :     `${process.env.DB_HOST}`,
       port :     `${process.env.DB_PORT}`,
