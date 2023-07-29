@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-//import { api, buscarAnuncio, cadastrarEmpresa, alterarEmpresa } from '../../services/api';
+import { api, buscarAnuncio, cadastrarEmpresa, alterarEmpresa } from '../../services/api';
 import { AuthContext } from '../../contexts/autorizacao';
 
 
@@ -33,83 +33,12 @@ export default function Cadastro(){
     const [descricao_telefone, setDescricaoTelefone] = useState('');
     const [imagem, setImagem] = useState(['']);
 
-    async function handleCadastro(e){
-        e.preventDefault();
-
-        const headers = {
-            'header': {
-                'Content-Type': 'application/json'
-            }
-        }
-        /*
-        const formData = {
-            usuario_id,
-            razao_social,
-            nome_fantasia,
-            cnpj,
-            cpf,
-            setor,
-            horario_de_atendimento,
-            descricao,
-            redes_sociais,
-            servico_id,
-            logradouro,
-            cep,
-            bairro,
-            cidade,
-            regiao,
-            uf,
-            descricao_endereco,
-            numero,
-            ddd,
-            tipo,
-            descricao_telefone,
-            imagem
-        }
-        */
-        
-        const formData = new FormData();
-        formData.append("usuario_id", usuario_id);
-        formData.append("razao_social", razao_social);
-        formData.append("nome_fantasia", nome_fantasia);
-        formData.append("cnpj", cnpj);
-        formData.append("cpf", cpf);
-        formData.append("setor", setor);
-        formData.append("horario_de_atendimento", horario_de_atendimento);
-        formData.append("descricao", descricao);
-        formData.append("redes_sociais", redes_sociais);
-        formData.append("servico_id", servico_id);
-        formData.append("logradouro", logradouro);
-        formData.append("cep", cep);
-        formData.append("bairro", bairro);
-        formData.append("cidade", cidade);
-        formData.append("regiao", regiao);
-        formData.append("uf", uf);
-        formData.append("descricao_endereco", descricao_endereco);
-        formData.append("numero", numero);
-        formData.append("ddd", ddd);
-        formData.append("tipo", tipo);
-        formData.append("descricao_telefone", descricao_telefone);
-        formData.append("imagem", imagem);
-        
-        try{
-            //console.log(formData);
-            //const response =  await cadastrarEmpresa(formData, headers);
-            //alert(`Seu ID de acesso: ${response.data.id}`);
-            
-        } catch(erro){
-            alert('Erro no cadastro');
-        }
-        
-    };
-
     async function encontrarEmpresa(){
-        /*
+        
         api.defaults.headers.Authorization = `Bearer ${token}`;
-        */
-        /*
+        
         await buscarAnuncio(usuario.id).then(response => {
-            //console.log(response.data);
+            console.log(response.data);
             if(response.data.length != 0){
                 setRazaoSocial(response.data[0].razao_social);
                 setNomeFantasia(response.data[0].nome_fantasia);
@@ -138,12 +67,55 @@ export default function Cadastro(){
                 document.getElementById("painel-de-controle-cadastro").style.display = "none";
             };
         });
-        */
+        
+    };
+
+    async function handleCadastro(e){
+        e.preventDefault();
+        const headers = {
+            'header': {
+                'Content-Type': 'application/json'
+            }
+        }
+        
+        const data = new FormData();
+        data.append("usuario_id", usuario_id);
+        data.append("razao_social", razao_social);
+        data.append("nome_fantasia", nome_fantasia);
+        data.append("cnpj", cnpj);
+        data.append("cpf", cpf);
+        data.append("setor", setor);
+        data.append("horario_de_atendimento", horario_de_atendimento);
+        data.append("descricao", descricao);
+        data.append("redes_sociais", redes_sociais);
+        data.append("servico_id", servico_id);
+        data.append("logradouro", logradouro);
+        data.append("cep", cep);
+        data.append("bairro", bairro);
+        data.append("cidade", cidade);
+        data.append("regiao", regiao);
+        data.append("uf", uf);
+        data.append("descricao_endereco", descricao_endereco);
+        data.append("numero", numero);
+        data.append("ddd", ddd);
+        data.append("tipo", tipo);
+        data.append("descricao_telefone", descricao_telefone);
+        data.append("imagem", imagem);
+        
+        try{
+            console.log(data);
+            const response =  await cadastrarEmpresa(data, headers);
+            alert(`Seu ID de acesso: ${response.data.id}`);
+            
+        } catch(erro){
+            alert('Erro no cadastro');
+        }
+        
     };
 
     async function handleAlteracao(e){
         e.preventDefault();
-
+        /*
         const headers = {
             'header': {
                 'Content-Type': 'application/json'
@@ -183,13 +155,13 @@ export default function Cadastro(){
         } catch(erro){
             alert('Erro na alteração');
         }
-        
+        */
     };
-
+    /*
     useEffect(async() => {
         await encontrarEmpresa();
     }, []);
-
+    */
     return (
         <div className="painel-de-controle">
             <div className="conteudo">
@@ -213,6 +185,7 @@ export default function Cadastro(){
                     </div>
                     <div className="painel-de-controle-dados" id='painel-de-controle-dados'>
                         <h3>Dados</h3>
+                        
                         <form onSubmit={handleCadastro} id='painel-de-controle-cadastro' encType="multipart/form-data" method='post'>
                             <div className="dados">
                                 <label>Razão Social</label>
@@ -419,19 +392,18 @@ export default function Cadastro(){
                                 </select>
                                 <div className="clear"></div>
                             </div>
-                            
                             <label className="botao-enviar-imagem">ENVIAR IMAGEM DO ANUNCIO</label>
-                            
                             <input 
                                 id="arquivo"
                                 type="file"
                                 placeholder="ENVIAR"
                                 onChange={e => setImagem(e.target.files[0])}
                             />
-                            
                             <button className="button" type="submit">CADASTRAR ANUNCIO</button>
                         </form>
+                        
                         <br/>
+                        {/*
                         <form onSubmit={handleAlteracao} id='painel-de-controle-alteracao' className="painel-de-controle-alteracao" encType="multipart/form-data" method='post'>
                             <div className="dados">
                                 <label>Razão Social</label>
@@ -638,7 +610,6 @@ export default function Cadastro(){
                                 </select>
                                 <div className="clear"></div>
                             </div>
-                            {/*
                             <label for="arquivo" className="botao-enviar-imagem">ENVIAR IMAGEM DO ANUNCIO</label>
                             <input 
                                 id="arquivo"
@@ -647,13 +618,13 @@ export default function Cadastro(){
                                 value={imagem}
                                 onChange={e => setImagem(e.target.value)}
                             />
-                            */}
+                            
                             <button className="button" type="submit">ALTERAR ANUNCIO</button>
                         </form>
+                        */}
                     </div>
                     <div className='painel-de-controle-acesso'>
-                        <h3>Alterar a senha</h3>
-                        
+                        <h3>Alterar a senha</h3>                       
                     </div>
                 </div>
             </div>

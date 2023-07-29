@@ -33,7 +33,7 @@ routes.post('/ativaremail', UsuarioController.ativarEmail);
 routes.post('/sessao', SessaoController.criarSessao);
 
 routes.get('/paineldecontrole/:id', 
-    AutenticacaoUsuario, 
+    AutenticacaoUsuario,
     PainelDeControleController.encontrarEmpresa
 );
 routes.post('/paineldecontrole',
@@ -41,8 +41,8 @@ routes.post('/paineldecontrole',
     multer(multerConfig).single('imagem'),
     PainelDeControleController.cadastrarEmpresa,
 );
-routes.put('/paineldecontrole/:id', 
-    AutenticacaoUsuario, 
+routes.put('/paineldecontrole/:id',
+    /*AutenticacaoUsuario,*/  
     multer(multerConfig).single('imagem'), 
     PainelDeControleController.alterarEmpresa
 );

@@ -1,4 +1,4 @@
-//const connection = require('../database/connection');
+const connection = require('../database/connection');
 const Empresa = require("../models/Empresa");
 const Endereco = require("../models/Endereco");
 const Telefone = require("../models/Telefone");

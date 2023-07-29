@@ -36,7 +36,6 @@ export default function Login() {
                     document.getElementById("aviso").innerText = "Serviço OFFLINE";
                 }
                 else if(error.code==="ERR_BAD_REQUEST"){
-                    console.log(error.response.data)
                     if(error.response.data.error==='Email não está verificado'){
                         navigate("/ativaremail");
                     }
