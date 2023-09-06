@@ -3,6 +3,7 @@ const Empresa = require("../models/Empresa");
 const Endereco = require("../models/Endereco");
 const Telefone = require("../models/Telefone");
 const Anuncio = require("../models/Anuncio");
+const { json } = require('express');
 
 module.exports = {
     async encontrarEmpresa(request, response){
@@ -44,18 +45,25 @@ module.exports = {
     },
 
     async cadastrarEmpresa(request, response){
-        //console.log(request.file);
-        const empresa = new Empresa(request.body);
-        const endereco = new Endereco(request.body);
-        const telefone = new Telefone(request.body);
-        const anuncio = new Anuncio(request.file);
-        //console.log(telefone);
-        const cadastrar = await empresa.cadastrar();
-        await endereco.cadastrar(cadastrar.id);
-        await telefone.cadastrar(cadastrar.id);
-        await anuncio.cadastrar(cadastrar.id);
-        
-        return response.json(cadastrar);
+        try{
+            const empresa = new Empresa(request.body);
+            const endereco = new Endereco(request.body);
+            const telefone = new Telefone(request.body);
+            //const anuncio = new Anuncio(request.file);
+            //console.log(telefone);
+            const cadastrar = await empresa.cadastrar();
+            await endereco.cadastrar(cadastrar.id);
+            await telefone.cadastrar(cadastrar.id);
+            //await anuncio.cadastrar(cadastrar.id);
+
+            return response.json(cadastrar);
+        }
+        catch (error) {
+            return error;
+        } 
+        finally{
+            connection.destroy;
+        }
 
     },
 
@@ -72,5 +80,19 @@ module.exports = {
         //await anuncio.alterar(alterar.id);
         
         return response.json(alterar);
+    },
+
+    async testeUpload(request, response){
+        const { id }  = request.params;
+        //const empresa = new Empresa(request.body);
+        const anuncio = new Anuncio(request.file);
+
+        //const cadastrar = await empresa.cadastrar();
+        const cadastrar = {
+            id: "5656"
+        };
+        await anuncio.cadastrar(cadastrar.id);
+
+        return response.json(anuncio);
     }
 }

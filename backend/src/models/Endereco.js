@@ -1,4 +1,4 @@
-//const connection = require('../database/connection');
+const connection = require('../database/connection');
 
 class Endereco {
     constructor({logradouro, cep, bairro, cidade, regiao, uf, descricao_endereco}){
@@ -22,18 +22,27 @@ class Endereco {
     }
 
     async cadastrar(empresa_id) {
-        const [cadastro] = await connection('enderecos').insert({
-            logradouro:  this.logradouro,
-            cep:         this.cep,
-            bairro:      this.bairro,
-            cidade:      this.cidade,
-            regiao:      this.regiao,
-            uf:          this.uf,
-            descricao:   this.descricao_endereco,
-            empresa_id:  empresa_id,
-        }).returning('id');
-        
-        return {id: cadastro};
+        //console.log(this.logradouro,this.cep,this.bairro,this.cidade,this.regiao,this.uf,this.descricao_endereco,empresa_id);
+        try {
+            const [cadastro] = await connection('enderecos').insert({
+                logradouro:  this.logradouro,
+                cep:         this.cep,
+                bairro:      this.bairro,
+                cidade:      this.cidade,
+                regiao:      this.regiao,
+                uf:          this.uf,
+                descricao:   this.descricao_endereco,
+                empresa_id:  empresa_id,
+            }).returning('id');
+            
+            return {id: cadastro};
+        } 
+        catch (error) {
+            return error;
+        } 
+        finally {
+            connection.destroy;
+        }
     }
 
     async alterar(empresa_id){

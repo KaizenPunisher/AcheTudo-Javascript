@@ -1,4 +1,4 @@
-//const connection = require('../database/connection');
+const connection = require('../database/connection');
 const { response } = require('express');
 
 class Anuncio {
@@ -20,15 +20,22 @@ class Anuncio {
     }
 
     async cadastrar(empresa_id) {
-        const [cadastro] = await connection('anuncios').insert({
-            imagem:     this.imagem,
-            tamanho:    this.tamanho,
-            key:        this.key,
-            url:        this.url,
-            empresa_id: empresa_id,
-        });
-        
-        return {id: cadastro};
+        try {
+            const cadastro = await connection('anuncios').insert({
+                imagem:     this.imagem,
+                tamanho:    this.tamanho,
+                key:        this.key,
+                url:        this.url,
+                empresa_id: empresa_id,
+            });
+            return cadastro;
+        } 
+        catch (error) {
+            return error;
+        } 
+        finally {
+            connection.destroy;
+        }
     }
 
     async alterar(id){

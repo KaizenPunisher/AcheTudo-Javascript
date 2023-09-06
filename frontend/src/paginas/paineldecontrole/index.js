@@ -109,6 +109,7 @@ export default function Cadastro(){
             
         } catch(erro){
             alert('Erro no cadastro');
+            console.log(erro);
         }
         
     };
@@ -157,11 +158,11 @@ export default function Cadastro(){
         }
         */
     };
-    /*
-    useEffect(async() => {
-        await encontrarEmpresa();
+    
+    useEffect(() => {
+        encontrarEmpresa();
     }, []);
-    */
+    
     return (
         <div className="painel-de-controle">
             <div className="conteudo">
@@ -392,6 +393,7 @@ export default function Cadastro(){
                                 </select>
                                 <div className="clear"></div>
                             </div>
+                            
                             <label className="botao-enviar-imagem">ENVIAR IMAGEM DO ANUNCIO</label>
                             <input 
                                 id="arquivo"
@@ -399,11 +401,12 @@ export default function Cadastro(){
                                 placeholder="ENVIAR"
                                 onChange={e => setImagem(e.target.files[0])}
                             />
+                            
                             <button className="button" type="submit">CADASTRAR ANUNCIO</button>
                         </form>
                         
                         <br/>
-                        {/*
+                        
                         <form onSubmit={handleAlteracao} id='painel-de-controle-alteracao' className="painel-de-controle-alteracao" encType="multipart/form-data" method='post'>
                             <div className="dados">
                                 <label>Razão Social</label>
@@ -621,7 +624,7 @@ export default function Cadastro(){
                             
                             <button className="button" type="submit">ALTERAR ANUNCIO</button>
                         </form>
-                        */}
+                        
                     </div>
                     <div className='painel-de-controle-acesso'>
                         <h3>Alterar a senha</h3>                       

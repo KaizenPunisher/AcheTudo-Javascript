@@ -1,5 +1,5 @@
-//const connection = require('../database/connection');
-const { response } = require('express');
+const connection = require('../database/connection');
+const { response, json } = require('express');
 
 class Empresa {
     constructor({
@@ -44,20 +44,28 @@ class Empresa {
     }
 
     async cadastrar() {
-        const [cadastro] = await connection('empresas').insert({
-            razao_social:           this.razao_social,
-            nome_fantasia:          this.nome_fantasia,
-            cnpj:                   this.cnpj,
-            cpf:                    this.cpf,
-            setor:                  this.setor,
-            horario_de_atendimento: this.horario_de_atendimento,
-            descricao:              this.descricao,
-            redes_sociais:          this.redes_sociais,
-            servico_id:             this.servico_id,
-            usuario_id:             this.usuario_id,
-        }).returning('id');
-        
-        return {id: cadastro};
+        try {
+            const [cadastro] = await connection('empresas').insert({
+                razao_social:           this.razao_social,
+                nome_fantasia:          this.nome_fantasia,
+                cnpj:                   this.cnpj,
+                cpf:                    this.cpf,
+                setor:                  this.setor,
+                horario_de_atendimento: this.horario_de_atendimento,
+                descricao:              this.descricao,
+                redes_sociais:          this.redes_sociais,
+                servico_id:             this.servico_id,
+                usuario_id:             this.usuario_id,
+            }).returning('id');
+            
+            return {id: cadastro};
+        } 
+        catch (error) {
+            return error;
+        } 
+        finally {
+            connection.destroy;
+        }
     }
 
     async alterar(id){

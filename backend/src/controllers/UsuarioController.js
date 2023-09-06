@@ -1,3 +1,4 @@
+const connection = require('../database/connection');
 const Usuario = require("../models/Usuario");
 
 module.exports = {

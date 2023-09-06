@@ -38,7 +38,7 @@ routes.get('/paineldecontrole/:id',
 );
 routes.post('/paineldecontrole',
     AutenticacaoUsuario,
-    multer(multerConfig).single('imagem'),
+    //multer(multerConfig).single('imagem'),
     PainelDeControleController.cadastrarEmpresa,
 );
 routes.put('/paineldecontrole/:id',
@@ -49,14 +49,9 @@ routes.put('/paineldecontrole/:id',
 
 routes.get('/anuncio', AnuncioController.listarAnuncio);
 
-
-routes.get('/empresa', 
-    celebrate({[Segments.QUERY]: Joi.object().keys({
-        page: Joi.number(),
-        })
-    }), EmpresaController.listarEmpresas);
-routes.post('/empresa',/*
-    multer(multerConfig).single('file'),/*
+routes.post('/testeupload',
+    multer(multerConfig).single('file'),
+    /*
     celebrate({[Segments.BODY]: Joi.object().keys({
             razao_social: Joi.string().required(),
             nome_fantasia: Joi.string().required(),
@@ -76,8 +71,15 @@ routes.post('/empresa',/*
             uf: Joi.string().required().length(2),
             descricao_endereco: Joi.string(),
         }),
-    }),*/ 
-    EmpresaController.cadastrarEmpresa);
+    }),*/
+    PainelDeControleController.testeUpload);
+
+routes.get('/empresa', 
+    celebrate({[Segments.QUERY]: Joi.object().keys({
+        page: Joi.number(),
+        })
+    }), EmpresaController.listarEmpresas);
+
 routes.delete('/empresa/:id', EmpresaController.deletarEmpresa);
 
 routes.get('/endereco', 
