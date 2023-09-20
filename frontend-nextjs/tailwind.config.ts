@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        botoes: ['var(--font-comfortaa)'],
-        sans: ['var(--font-anton)']
+        botoes: ['var(--font-anton)'],
+        sans: ['var(--font-comfortaa)']
       },
 
       borderWidth: {
