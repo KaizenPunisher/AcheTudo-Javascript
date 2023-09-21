@@ -9,7 +9,7 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 
 ### (Frontend) Tecnologias
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b818efd9-5865-4a58-b863-bbc8109df9f3/deploy-status)](https://app.netlify.com/sites/achetudotiradentes/deploys)
-* NextJS - Framework React
+* NextJS - React Framework
 
 ### (Backend) Tecnologias
 * Banco de dados Postgree - Estrura BD feita no modelo relacional
