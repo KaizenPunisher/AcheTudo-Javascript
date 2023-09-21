@@ -9,29 +9,23 @@ __ Biblioteca de ferramentas ou tecnologias instaladas através do NPM ou NPX:
 
 ### (Frontend) Tecnologias
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b818efd9-5865-4a58-b863-bbc8109df9f3/deploy-status)](https://app.netlify.com/sites/achetudotiradentes/deploys)
-* React APP - Estrutura para criação de projeto frontend ( npx create-react-app frontend )
-* React Router DOM - Estrutura de rotas para frontend ( npm install react-router-dom )
-* Axios - Estrutura cliente HTTP para fazer a conexão de serviços junto as rotas da aplicação. ( npm install axios )
+* NextJS - Framework React
 
 ### (Backend) Tecnologias
 * Banco de dados Postgree - Estrura BD feita no modelo relacional
-* Express - Framework web estruturado para node  ( npm install express )
-* Knex - Estrutura para conexão com o banco de dados ( npm install knex )
-* Nodemon - Monitorar todas as alterações nos arquivos da aplicação e reinicia automaticamente o servidor quando for necessário. ( npm install nodemon )
-* Cors - (Cross-origin Resource Sharing) é um mecanismo utilizado pelos navegadores para compartilhar recursos entre diferentes origens. O CORS é uma especificação do W3C e faz uso de headers do HTTP para informar aos navegadores se determinado recurso pode ser ou não acessado. ( npm install cors )
-* Celebrate - Ferramenta para validação. É uma estrutura que faz a união do Joi com Express informando os erros de validação através de JSON ( npm install celebrate )
-* Bcryptjs -  Biblioteca para encriptação de dados - ( npm add bcryptjs )
-* Jsonwebtoken - JWT é uma forma de garantir a autenticação e autorização de APIs de maneira bem simples e segura, sendo o JWT um padrão para segurança de APIs RESTful ( npm add jsonwebtoken )
-* Multer - Middleware que facilita receber arquivos binários nas requisições. ( npm install multer )
-* Morgan - Middleware para logs de requisições HTTP ( npm install morgan )
+* Express - Framework web estruturado para node
+* Knex - Estrutura para conexão com o banco de dados
+* Nodemon - Monitorar todas as alterações nos arquivos da aplicação e reinicia automaticamente o servidor quando for necessário.
+* Cors - (Cross-origin Resource Sharing) é um mecanismo utilizado pelos navegadores para compartilhar recursos entre diferentes origens. O CORS é uma especificação do W3C e faz uso de headers do HTTP para informar aos navegadores se determinado recurso pode ser ou não acessado.
+* Celebrate - Ferramenta para validação. É uma estrutura que faz a união do Joi com Express informando os erros de validação através de JSON
+* Bcryptjs -  Biblioteca para encriptação de dados
+* Jsonwebtoken - JWT é uma forma de garantir a autenticação e autorização de APIs de maneira bem simples e segura, sendo o JWT um padrão para segurança de APIs RESTful
+* Multer - Middleware que facilita receber arquivos binários nas requisições.
+* Morgan - Middleware para logs de requisições HTTP
 * Multer S3 - Biblioteca para realizar store na amazon s3
-* Dotenv - Gerenciamento de variavel ambiente. ( npm install dotenv )
-* Nodemailer - Pacote para envio de email ( yarn add nodemailer )
-* Nodemailer Handlerbars - Template HTML para utilização de variaveis ( yarn add nodemailer-express-handlebars )
-
-### (Metodo TDD) Tecnologias
-* Jest - Framework de teste em JavaScript projetado para garantir a correção de qualquer código JavaScript. ( npm instal jest -D >> npx jest --init )
-* Supertest - Estrutura cliente HTTP para simular testes na aplicação. ( npm install supertest -D )
+* Dotenv - Gerenciamento de variavel ambiente
+* Nodemailer - Pacote para envio de email
+* Nodemailer Handlerbars - Template HTML para utilização de variaveis
 
 ### (Mobile) Tecnologias
 * Expo - Estrutura para criação de projeto mobile ( npm intall -g expo-cli )
