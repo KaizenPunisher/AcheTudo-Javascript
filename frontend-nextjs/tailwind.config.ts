@@ -24,7 +24,7 @@ const config: Config = {
       },
 
       screens: {
-        'smartphone': '565px',
+        'smartphone': '450px',
         // => @media (min-width: 565px) { ... }
 
         'tablet': '640px',
