@@ -4,10 +4,14 @@ import BotaoEntrar from "../(componentes)/botoes/entrar"
 export default function Login() {
     return (
         <div className='
-            container w-2/5 w-auto h-auto float-left
+            container w-auto h-auto float-right
             border-2 border-yellow-400
+            pr-2
+            
         '>
-            <BotaoCadastro/><BotaoEntrar/>
+            <BotaoCadastro/>
+            <br/>
+            <BotaoEntrar/>
         </div>
     )
   }

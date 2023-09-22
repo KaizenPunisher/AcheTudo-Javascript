@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Logo from '../app/(imagens)/logo.png'
 import Login from './(modulos)/login'
+import Saudacao from './(componentes)/mensagensdosistema/saudacao'
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
         border-3 border-blue-500
       '>
         <div className='
-          container w-2/4 h-auto pt-8 pr-10 float-left
+          container w-5/12 h-auto pt-2 pr-7 float-left
           border-2 border-black
         '>
           <h2 className='
@@ -23,7 +24,7 @@ export default function Home() {
           '>Centro Comercial<br/>Cidade Tiradentes</h2>
         </div>
         <Link href="/" className='
-          container w-auto h-auto float-left
+          container w-auto h-auto mt-2 float-left
           border-10 border-black
         '>
           <Image alt="Ache Tudo Logo" src={Logo} width={80} className='
@@ -31,6 +32,7 @@ export default function Home() {
           '/>
         </Link>
         <Login/>
+        <Saudacao/>
       </header>
     </main>
   )
