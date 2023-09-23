@@ -24,8 +24,8 @@ const config: Config = {
       },
 
       screens: {
-        'smartphone': '400px',
-        // => @media (min-width: 400px) { ... }
+        'smartphone': '350px',
+        // => @media (min-width: 350px) { ... }
 
         'tablet': '640px',
         // => @media (min-width: 640px) { ... }
@@ -35,6 +35,11 @@ const config: Config = {
   
         'desktop': '1280px',
         // => @media (min-width: 1280px) { ... }
+      },
+
+      width: {
+        '97': '32rem',
+        '98': '40rem',
       },
     },
   },
